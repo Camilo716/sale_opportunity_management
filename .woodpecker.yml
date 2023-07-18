@@ -1,11 +1,3 @@
-#clone:
-  # git:
-  #   image: woodpeckerci/plugin-git
-  #   # necesario para el entorno docker-compose
-  #   # de lo contrario los agentes no pueden acceder al servidor gitea local
-  #   network_mode: host
-  #   privileged: true
-
 pipeline:
   tests:
     image: python:3.9
@@ -14,7 +6,6 @@ pipeline:
       - DB_NAME=trytontest
       - TRYTOND_DATABASE_URI=postgresql://tryton:tryton@postgres:5432/
     commands:
-      - cd party_ciiu
       - pip3 install psycopg2 proteus
       - python3 setup.py install
       - python3 -m unittest
