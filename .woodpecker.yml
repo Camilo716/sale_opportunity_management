@@ -14,7 +14,7 @@ pipeline:
     settings:
       home_server: https://matrix.org
       roomid: "!oxZmsJwfvciTuLYIwg:matrix.org"
-      user:
+      username:
         from_secret: matrix_user
       password:
         from_secret: matrix_password
