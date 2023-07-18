@@ -1,0 +1,4 @@
+trytond<6.9,>=6.8
+
+[test]
+proteus<6.9,>=6.8
