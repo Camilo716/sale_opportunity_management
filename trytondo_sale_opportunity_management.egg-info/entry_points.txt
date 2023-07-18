@@ -1,2 +1,0 @@
-[trytond.modules]
-sale_opportunity_management = trytond.modules.sale_opportunity_management
