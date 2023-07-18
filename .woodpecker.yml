@@ -9,7 +9,17 @@ pipeline:
       - pip3 install psycopg2 proteus
       - python3 setup.py install
       - python3 -m unittest
-
+  notify:
+    image: plugins/matrix
+    settings:
+      home_server: https://matrix.org
+      roomid: "!oxZmsJwfvciTuLYIwg:matrix.org"
+      user:
+        from_secret: matrix_user
+      password:
+        from_secret: matrix_password
+    template: >
+      "Actualización Disponible"
 services:
   postgres:
     image: postgres:12
