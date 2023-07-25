@@ -26,6 +26,11 @@
 * en todo momento debo poder el programa
 * en todo momento especulo, me ilustro y aprendo
 
+### consideraciones en pruebas
+
+* los escenarios (*.rst) se escriben en espanol
+* el identificador de clase y metodo en (*.py) se escribe en espanol
+
 ### convencion commit
 
 ante cada commit el mensaje se clasifica en:
