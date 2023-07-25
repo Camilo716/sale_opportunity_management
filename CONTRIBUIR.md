@@ -7,6 +7,13 @@
 * docker-compose >= 2
 * pre-commit >= 2
 * git >= 2.30
+* rake >= 13
+
+### procedimiento
+
+1. iniciar entorno `rake init`
+2. iterar con `rake tdd`
+3. detener el entorno `rake down`
 
 ### consideraciones
 
