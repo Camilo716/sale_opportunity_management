@@ -28,7 +28,7 @@
 * evito usar `git add .`
 * a todo momento hago expresivo lo escrito, renombro, muevo o elimino
 * en todo momento debo poder ejecutar las pruebas
-* en todo momento debo poder el programa
+* en todo momento debo poder ejecutar el programa
 * en todo momento especulo, me ilustro y aprendo
 
 ### consideraciones en pruebas
