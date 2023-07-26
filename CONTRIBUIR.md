@@ -4,7 +4,6 @@
 
 [![Build Status](http://170.16.238.10:8000/api/badges/OneTeam/trytondo-sale_opportunity_management/status.svg)]
 
-
 ### requerimientos tecnicos
 
 * python >= 3.9
