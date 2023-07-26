@@ -11,6 +11,7 @@ pipeline:
       - python3 -m unittest
   notify:
     image: plugins/matrix
+    failure: ignore
     settings:
       home_server: https://matrix.org
       roomid: "!oxZmsJwfvciTuLYIwg:matrix.org"
@@ -19,7 +20,10 @@ pipeline:
       password:
         from_secret: matrix_password
     template: >
-      "Actualización Disponible"
+      PikPukPak..
+      ${CI_COMMIT_AUTHOR}: ${CI_REPO}/${CI_COMMIT_BRANCH}@${CI_COMMIT_REF} ${CI_PIPELINE_STATUS}
+      ${CI_COMMIT_MESSAGE}
+
 services:
   postgres:
     image: postgres:12
