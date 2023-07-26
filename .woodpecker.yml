@@ -21,8 +21,10 @@ pipeline:
         from_secret: matrix_password
     template: >
       PikPukPak..
-      <p>${CI_COMMIT_AUTHOR}: <a href="${CI_COMMIT_URL}">${CI_REPO}/${CI_COMMIT_BRANCH}</a><b>${CI_PREV_PIPELINE_STATUS}</b></p>
+      <p>${CI_COMMIT_AUTHOR}: <a href="${CI_COMMIT_URL}">${CI_REPO}/${CI_COMMIT_BRANCH}</a><b>${CI_PIPELINE_STATUS}</b></p>
       <pre>${CI_COMMIT_MESSAGE}</pre>
+    when:
+      - status: [ success, failure ]
 
 services:
   postgres:
