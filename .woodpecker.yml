@@ -23,8 +23,6 @@ pipeline:
       PikPukPak..
       <p>${CI_COMMIT_AUTHOR}: <a href="${CI_COMMIT_URL}">${CI_REPO}/{{build.branch}}#{{truncate build.commit 8}}</a><b>{{build.status}}</b></p>
       <pre>${CI_COMMIT_MESSAGE}</pre>
-    when:
-      - status: [ success, failure ]
 
 services:
   postgres:
