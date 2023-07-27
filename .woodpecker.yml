@@ -21,9 +21,8 @@ pipeline:
         from_secret: matrix_password
     template: >
       PikPukPak..
-      <p>${CI_COMMIT_AUTHOR}: Task ${CI_BUILD_NUMBER} <b style="color: green">TODO BIEN PARA</b></p>
+      <p>${CI_COMMIT_AUTHOR}: Task ${CI_BUILD_NUMBER} <font color="green"><b>TODO BIEN PARA</b></font></p>
       <pre><a href="${CI_COMMIT_LINK}">${CI_COMMIT_MESSAGE}</a></pre>
-      <p>&#9995;</p>
     when:
       status: [ success ]
 
@@ -38,9 +37,8 @@ pipeline:
         from_secret: matrix_password
     template: >
       PikPukPak..
-      <p>${CI_COMMIT_AUTHOR}: Task ${CI_BUILD_NUMBER} <b style="color: red">!!!TODO MAL PARA</b></p>
+      <p>${CI_COMMIT_AUTHOR}: Task ${CI_BUILD_NUMBER} <font color="red"><b>!!!TODO MAL PARA</b></font></p>
       <pre><a href="${CI_COMMIT_LINK}">${CI_COMMIT_MESSAGE}</a></pre>
-      <p>&#9995;</p>
     when:
       status: [ failure ]
 
