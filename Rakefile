@@ -1,6 +1,7 @@
 require 'yaml'
 
 WOODPECKER_YML='.woodpecker.yml'
+DOCKER_COMPOSE='docker-compose.test.yml'
 
 desc 'iniciar entorno'
 task :up do
@@ -26,5 +27,5 @@ task :down do
 end
 
 def compose(*arg)
-  sh "docker-compose -f docker-compose.dev.yml #{arg.join(' ')}"
+  sh "docker-compose -f #{DOCKER_COMPOSE} #{arg.join(' ')}"
 end
