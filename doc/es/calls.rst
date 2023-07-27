@@ -29,7 +29,7 @@ El seguimiento de llamadas consiste en realizar llamadas a diferentes contactos 
     * Brigada
     * Equipos
 
-Luego de realizar estas llamadas, el operador dejará un registro sobre aspectos como el interés del cliente, descripción o observaciones importantes, tipificación del cliente...
+Luego de realizar estas llamadas, el operador dejará registro sobre aspectos como el interés del cliente, descripción u observaciones importantes, tipificación del cliente...
 
 Cada conjunto de **llamadas** a un cliente, se llamará **seguimiento de cliente**, por lo que este podrá tener varias llamadas, y una llamada solo podrá  pertenecer a un seguimiento de cliente. Ej:
 
@@ -42,7 +42,7 @@ Seguimiento de cliente 2
     * llamada 2
     * llamada 3
 
-**Seguimiento**:
+**Seguimiento de cliente**:
     * Razon social del cliente (Tercero)
     * Metodo de contacto del cliente
     * Unidad de negocio
@@ -59,18 +59,28 @@ Seguimiento de cliente 2
         * 3 - Interés alto, generar venta
     
     * Estado (realizada - pendiente)
+    * Seguimiento de cliente al que pertence
 
 --------
 Reportes
 --------
+* Reporte de llamadas realizadas en un periodo de tiempo (Análisis de operarios):
+    * Nivel de interés
+    * Unidad de negocio
+    * Observaciones
+    * Operario
 
-Reportes a realizar:
-    * Llamadas realizadas en un periodo de tiempo:
-        * Nivel de interés
-        * Unidad de negocio
-        * Observaciones
+* Reporte de seguimientos a clientes (Análisis de clientes):
+    * Interés durante distintas etapas del seguimiento
 
-    * Llamadas a realizar (Pendientes)
-    * Tercero sin asignar - Asignados
 
-.. TODO
+* Reporte de Llamadas a realizar (Analisis de trabajo pendiente):
+    * Llamadas pendientes
+    * Seguimientos a clientes abiertos
+
+* Reporte de seguimientos sin asignar - asignados:
+    * Seguimientos a clientes pendientes por asignar a operador
+
+* Reporte de clientes potenciales
+    * llamadas con un nivel de interés alto
+    * Seguimiento de cliente al que pertenecen las llamadas
