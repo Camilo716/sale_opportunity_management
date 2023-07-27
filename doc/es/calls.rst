@@ -31,9 +31,7 @@ El seguimiento de llamadas consiste en realizar llamadas a diferentes contactos 
 
 Luego de realizar estas llamadas, el operador dejará un registro sobre aspectos como el interés del cliente, descripción o observaciones importantes, tipificación del cliente...
 
-Cada conjunto de **llamadas** a un cliente, se llamará **seguimiento de cliente**, por lo que
-este podrá tener varias llamadas, y una llamada solo podrá  pertenecer a un seguimiento
-de cliente. Ej:
+Cada conjunto de **llamadas** a un cliente, se llamará **seguimiento de cliente**, por lo que este podrá tener varias llamadas, y una llamada solo podrá  pertenecer a un seguimiento de cliente. Ej:
 
 Seguimiento de cliente 1
     * llamada 1
