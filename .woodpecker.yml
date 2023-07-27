@@ -9,7 +9,8 @@ pipeline:
       - pip3 install psycopg2 proteus
       - python3 setup.py install
       - python3 -m unittest
-  notify:
+
+  notify-success:
     image: plugins/matrix
     settings:
       home_server: https://matrix.org
@@ -20,8 +21,26 @@ pipeline:
         from_secret: matrix_password
     template: >
       PikPukPak..
-      <p>${CI_COMMIT_AUTHOR}: <a href="${CI_COMMIT_URL}">${CI_REPO}/{{build.branch}}#{{truncate build.commit 8}}</a><b>{{build.status}}</b></p>
-      <pre>${CI_COMMIT_MESSAGE}</pre>
+      <p>${CI_COMMIT_AUTHOR}: JOB ${CI_BUILD_NUMBER} <b style="color: green">TODO BIEN PARA</b></p>
+      <pre><a href="${CI_COMMIT_LINK}">${CI_COMMIT_MESSAGE}</a></pre>
+    when:
+      status: [ success ]
+
+  notify-failure:
+    image: plugins/matrix
+    settings:
+      home_server: https://matrix.org
+      roomid: "!oxZmsJwfvciTuLYIwg:matrix.org"
+      username:
+        from_secret: matrix_user
+      password:
+        from_secret: matrix_password
+    template: >
+      PikPukPak..
+      <p>${CI_COMMIT_AUTHOR}: JOB ${CI_BUILD_NUMBER} <b style="color: red">!!!TODO MAL PARA</b></p>
+      <pre><a href="${CI_COMMIT_LINK}">${CI_COMMIT_MESSAGE}</a></pre>
+    when:
+      status: [ failure ]
 
 services:
   postgres:
