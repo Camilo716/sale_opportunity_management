@@ -26,6 +26,25 @@ task :down do
   compose('down')
 end
 
-def compose(*arg)
-  sh "docker-compose -f #{DOCKER_COMPOSE} #{arg.join(' ')}"
+desc 'entorno vivo'
+namespace :live do
+
+  desc 'iniciar entorno'
+  task :up do
+    compose('up', '--build', '-d', compose: 'docker-compose.yml')
+  end
+
+  desc 'monitorear salida'
+  task :tail do
+    compose('logs', '-f', 'app.dev', compose: 'docker-compose.yml')
+  end
+
+  desc 'detener entorno'
+  task :down do
+    compose('down', compose: 'docker-compose.yml')
+  end
+end
+
+def compose(*arg, compose: DOCKER_COMPOSE)
+  sh "docker-compose -f #{compose} #{arg.join(' ')}"
 end

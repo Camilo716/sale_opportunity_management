@@ -1,0 +1,2 @@
+trytond: trytond -d ${DB_NAME} --dev -v -c $SCRIPT_DIR/trytond.cfg
+monitor: python3 $SCRIPT_DIR/dev.py

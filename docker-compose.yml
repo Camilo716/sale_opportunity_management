@@ -1,0 +1,23 @@
+version: '3.9'
+services:
+  db.dev:
+    image: postgres:12
+    environment:
+      - POSTGRES_USER=tryton
+      - POSTGRES_PASSWORD=tryton
+      - POSTGRES_DB=tryton
+
+  app.dev:
+    image: python:3.9
+    depends_on:
+      - db.dev
+    command: bash .dev/run.sh
+    environment:
+      - DB_NAME=tryton
+      - SRC=/app
+      - TRYTOND_DATABASE_URI=postgresql://tryton:tryton@db.dev:5432/
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    working_dir: /app

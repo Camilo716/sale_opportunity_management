@@ -13,11 +13,18 @@
 * git >= 2.30
 * rake >= 13
 
-### procedimiento
+### procedimiento en pruebas
 
 1. iniciar entorno `rake init`
 2. iterar con `rake tdd`
 3. detener el entorno `rake down`
+
+### entorno vivo de desarrollo
+
+1. iniciar entorno `rake live:up`
+2. conectar cliente tryton a `localhost:8000` usuario: `admin` y clave: `admin`
+  1. si desea ver la salida de trytond usar `rake live:tail`
+3. detener entorno `rake live:down`
 
 ### consideraciones
 
