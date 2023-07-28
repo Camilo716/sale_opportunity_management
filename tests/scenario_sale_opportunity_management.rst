@@ -6,6 +6,7 @@ Imports::
 
     >>> from proteus import Model, Wizard
     >>> from trytond.tests.tools import activate_modules
+    >>> from datetime import date
 
 Activate modules::
 
@@ -36,3 +37,14 @@ Crear seguimiento de prospecto::
     'guchito S.A.S'
     >>> prospect_trace.prospect_tel 
     3123423422
+
+----------------------------------------------------------------------------
+Como operador quiero poder registrar una llamada para luego generar reportes
+----------------------------------------------------------------------------
+
+Crear llamada a un seguimiento de prospecto::
+    >>> Call = Model.get('sale.call')
+    >>> call = Call()
+
+    >>> call.date == date.today()
+    True
