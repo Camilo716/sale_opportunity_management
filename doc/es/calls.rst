@@ -2,11 +2,11 @@
 Gestión de oportunidades por llamadas
 =====================================
 
---------------------
-Registro de clientes
---------------------
+----------------------
+Registro de prospectos
+----------------------
 
-El administrador deberá poder registrar los contactos de diferentes clientes, junto con  su información básica:
+El administrador deberá poder registrar los contactos de diferentes prospectos, junto con  su información básica:
     * Razón social (Nombre de la empresa)
     * Ciudad
     * Metodos de contacto
@@ -14,9 +14,9 @@ El administrador deberá poder registrar los contactos de diferentes clientes, j
         * Nombre
         * Cargo
 
-----------------------------------
-Asignación de clientes a operarios
-----------------------------------
+------------------------------------
+Asignación de prospectos a operarios
+------------------------------------
 
 .. TODO
 
@@ -70,17 +70,17 @@ Reportes
     * Observaciones
     * Operario
 
-* Reporte de seguimientos a clientes (Análisis de clientes):
+* Reporte de seguimientos a prospectos (Análisis de prospectos):
     * Interés durante distintas etapas del seguimiento
 
 
 * Reporte de Llamadas a realizar (Analisis de trabajo pendiente):
     * Llamadas pendientes
-    * Seguimientos a clientes abiertos
+    * Seguimientos a prospectos abiertos
 
 * Reporte de seguimientos sin asignar - asignados:
-    * Seguimientos a clientes pendientes por asignar a operador
+    * Seguimientos a prospectos pendientes por asignar a operador
 
-* Reporte de clientes potenciales
+* Reporte de prospectos potenciales
     * llamadas con un nivel de interés alto
     * Seguimiento de cliente al que pertenecen las llamadas
