@@ -29,22 +29,22 @@ El seguimiento de llamadas consiste en realizar llamadas a diferentes contactos 
     * Brigada
     * Equipos
 
-Luego de realizar estas llamadas, el operador dejará registro sobre aspectos como el interés del cliente, descripción u observaciones importantes, tipificación del cliente...
+Luego de realizar estas llamadas, el operador dejará registro sobre aspectos como el interés del prospecto, descripción u observaciones importantes, tipificación del prospecto...
 
-Cada conjunto de **llamadas** a un cliente, se llamará **seguimiento de cliente**, por lo que este podrá tener varias llamadas, y una llamada solo podrá  pertenecer a un seguimiento de cliente. Ej:
+Cada conjunto de **llamadas** a un prospecto, se llamará **seguimiento de prospecto**, por lo que este podrá tener varias llamadas, y una llamada solo podrá  pertenecer a un seguimiento de prospecto. Ej:
 
-Seguimiento de cliente 1
+Seguimiento de prospecto 1
     * llamada 1
     * llamada 2
 
-Seguimiento de cliente 2
+Seguimiento de prospecto 2
     * llamada 1
     * llamada 2
     * llamada 3
 
-**Seguimiento de cliente**:
-    * Razon social del cliente (Tercero)
-    * Metodo de contacto del cliente
+**Seguimiento de prospecto**:
+    * Razon social del prospecto (Tercero)
+    * Metodo de contacto del prospecto
     * Unidad de negocio
     * Estado (Abierto o cerrado)
     * Llamadas
@@ -59,7 +59,7 @@ Seguimiento de cliente 2
         * 3 - Interés alto, generar venta
     
     * Estado (realizada - pendiente)
-    * Seguimiento de cliente al que pertence
+    * Seguimiento de prospecto al que pertence
 
 --------
 Reportes
@@ -83,4 +83,4 @@ Reportes
 
 * Reporte de prospectos potenciales
     * llamadas con un nivel de interés alto
-    * Seguimiento de cliente al que pertenecen las llamadas
+    * Seguimiento de prospecto al que pertenecen las llamadas
