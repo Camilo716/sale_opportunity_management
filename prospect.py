@@ -8,3 +8,4 @@ class Prospect(ModelSQL, ModelView):
     __name__ = 'sale.prospect'
 
     name = fields.Char('Name')
+    tel = fields.Integer('Tel')
