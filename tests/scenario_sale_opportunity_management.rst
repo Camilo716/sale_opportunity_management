@@ -22,6 +22,7 @@ Crear prospecto::
 
     >>> prospect.name = 'guchito S.A.S'
     >>> prospect.tel = 3123423422
+    >>> prospect.city = 'Bogotá'
     >>> prospect.save()
 
 
@@ -30,16 +31,17 @@ Como operador quiero poder crear un seguimiento de prospecto para luego hacer un
 -----------------------------------------------------------------------------------------
 
 Crear seguimiento de prospecto::
-    >>> ProspectTrace = Model.get('sale.prospect_trace')
-    >>> prospect_trace = ProspectTrace()
+    >>> ProspectTracker = Model.get('sale.prospect_tracker')
+    >>> prospect_tracker = ProspectTracker()
 
-    >>> prospect_trace.prospect = prospect
-    >>> prospect_trace.save()
+    >>> prospect_tracker.prospect = prospect
+    >>> prospect_tracker.save()
 
-    >>> prospect_trace.prospect_name
+    >>> prospect_tracker.prospect_name
     'guchito S.A.S'
-    >>> prospect_trace.prospect_tel 
+    >>> prospect_tracker.prospect_tel 
     3123423422
+    >>> prospect_tracker.prospect_city
 
 ----------------------------------------------------------------------------
 Como operador quiero poder registrar una llamada para luego generar reportes
@@ -50,12 +52,12 @@ Crear llamada a un seguimiento de prospecto::
     >>> call = Call()
 
     >>> call.description = 'Descripción u observaciones de la llamada'
-    >>> call.prospect_trace = prospect_trace
+    >>> call.prospect_tracker = prospect_tracker
     >>> call.save()
 
-    >>> call.prospect_trace.prospect_name
+    >>> call.prospect_tracker.prospect_name
     'guchito S.A.S'
-    >>> call.prospect_trace.prospect_tel 
+    >>> call.prospect_tracker.prospect_tel 
     3123423422
     >>> call.date == date.today()
     True
@@ -65,14 +67,14 @@ Crear otra llamada al mismo seguimiento de prospecto::
     >>> call = Call()
 
     >>> call.description = 'Segunda llamada al mismo seguimiento'
-    >>> call.prospect_trace = prospect_trace
+    >>> call.prospect_tracker = prospect_tracker
     >>> call.save()
 
-    >>> call.prospect_trace.prospect_name
+    >>> call.prospect_tracker.prospect_name
     'guchito S.A.S'
-    >>> call.prospect_trace.prospect_tel 
+    >>> call.prospect_tracker.prospect_tel 
     3123423422
     >>> call.date == date.today()
     True
-    >>> len(prospect_trace.calls) == 2
+    >>> len(prospect_tracker.calls) == 2
     True
