@@ -19,6 +19,7 @@ Como administrador quiero poder registrar un prospecto para lugo poder hacerle u
 Crear prospecto::
     >>> Prospect = Model.get('sale.prospect')
     >>> prospect = Prospect()
+
     >>> prospect.name = 'guchito S.A.S'
     >>> prospect.tel = 3123423422
     >>> prospect.save()
@@ -31,7 +32,9 @@ Como operador quiero poder crear un seguimiento de prospecto para luego hacer un
 Crear seguimiento de prospecto::
     >>> ProspectTrace = Model.get('sale.prospect_trace')
     >>> prospect_trace = ProspectTrace()
+
     >>> prospect_trace.prospect = prospect
+    >>> prospect_trace.save()
 
     >>> prospect_trace.prospect_name
     'guchito S.A.S'
@@ -46,5 +49,30 @@ Crear llamada a un seguimiento de prospecto::
     >>> Call = Model.get('sale.call')
     >>> call = Call()
 
+    >>> call.description = 'Descripción u observaciones de la llamada'
+    >>> call.prospect_trace = prospect_trace
+    >>> call.save()
+
+    >>> call.prospect_trace.prospect_name
+    'guchito S.A.S'
+    >>> call.prospect_trace.prospect_tel 
+    3123423422
     >>> call.date == date.today()
+    True
+
+Crear otra llamada al mismo seguimiento de prospecto::
+    >>> Call = Model.get('sale.call')
+    >>> call = Call()
+
+    >>> call.description = 'Segunda llamada al mismo seguimiento'
+    >>> call.prospect_trace = prospect_trace
+    >>> call.save()
+
+    >>> call.prospect_trace.prospect_name
+    'guchito S.A.S'
+    >>> call.prospect_trace.prospect_tel 
+    3123423422
+    >>> call.date == date.today()
+    True
+    >>> len(prospect_trace.calls) == 2
     True
