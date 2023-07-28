@@ -16,7 +16,7 @@ Como administrador quiero poder registrar un prospecto para lugo poder hacerle u
 ---------------------------------------------------------------------------------------------
 
 Crear prospecto::
-    >>> Prospect = Model.get('call.prospect')
+    >>> Prospect = Model.get('sale.prospect')
     >>> prospect = Prospect()
     >>> prospect.name = 'guchito S.A.S'
     >>> prospect.save()

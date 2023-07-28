@@ -4,6 +4,7 @@ from trytond.model import ModelSQL, ModelView, fields
 
 class Prospect(ModelSQL, ModelView):
     'Prospecto'
-    __name__ = 'call.prospect'
+    
+    __name__ = 'sale.prospect'
 
     name = fields.Char('Name')
