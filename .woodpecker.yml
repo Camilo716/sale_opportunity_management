@@ -1,3 +1,6 @@
+# 
+# variables que puedo usar? https://woodpecker-ci.org/docs/0.15/usage/environment#built-in-environment-variables
+
 pipeline:
   tests:
     image: python:3.9
@@ -21,7 +24,7 @@ pipeline:
         from_secret: matrix_password
     template: >
       PikPukPak..
-      <p>${CI_COMMIT_AUTHOR}: Task ${CI_BUILD_NUMBER} <font color="green"><b>TODO BIEN EN ${CI_REPO}</b></font></p>
+      <p>${CI_COMMIT_AUTHOR}: <a href="${CI_BUILD_LINK}">Task ${CI_BUILD_NUMBER}</a> <font color="green"><b>TODO BIEN EN ${CI_REPO}</b></font></p>
       <pre><a href="${CI_COMMIT_LINK}">${CI_COMMIT_MESSAGE}</a></pre>
     when:
       status: [ success ]
@@ -37,7 +40,7 @@ pipeline:
         from_secret: matrix_password
     template: >
       PikPukPak..
-      <p>${CI_COMMIT_AUTHOR}: Task ${CI_BUILD_NUMBER} <font color="red"><b>!!!TODO MAL EN ${CI_REPO} </b></font></p>
+      <p>${CI_COMMIT_AUTHOR}: <a href="${CI_BUILD_LINK}">Task ${CI_BUILD_NUMBER}</a> <font color="red"><b>!!!TODO MAL EN ${CI_REPO} </b></font></p>
       <pre><a href="${CI_COMMIT_LINK}">${CI_COMMIT_MESSAGE}</a></pre>
     when:
       status: [ failure ]
