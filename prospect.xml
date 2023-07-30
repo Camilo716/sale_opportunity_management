@@ -35,5 +35,33 @@ this repository contains the full copyright notices and license terms. -->
             sequence="10"
             id="menu_prospects_tree"
             action="act_prospect_tree"/>
+
+
+        <record model="ir.action.act_window" id="act_contact_method_tree">
+            <field name="name">Contact method</field> 
+            <field name="res_model">prospect.contact_method</field> 
+        </record>
+
+        <record model="ir.ui.view" id="contact_method_view_tree">
+            <field name="model">prospect.contact_method</field> 
+            <field name="type">tree</field>
+            <field name="name">contact_method_tree</field>
+        </record>
+        <record model="ir.ui.view" id="contact_method_view_form">
+            <field name="model">prospect.contact_method</field> 
+            <field name="type">form</field>
+            <field name="name">contact_method_form</field>
+        </record>
+
+        <record model="ir.action.act_window.view" id="act_contact_method_tree_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="contact_method_view_tree"/>
+            <field name="act_window" ref="act_contact_method_tree"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_contact_method_form_view1">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="contact_method_view_form"/>
+            <field name="act_window" ref="act_contact_method_tree"/>
+        </record>
     </data>
 </tryton>
