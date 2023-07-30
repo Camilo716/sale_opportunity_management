@@ -9,7 +9,6 @@ class Prospect(ModelSQL, ModelView):
     name = fields.Char('Name')
     city = fields.Char('City')
 
-    # Un prospecto (clase actual) se vincula a Muchos mecanismos de contacto (propiedad actual)
     contact_methods = fields.One2Many('prospect.contact_method', 'prospect', 'Contact methods') 
 
 
@@ -26,6 +25,5 @@ class ContactMethod(ModelSQL, ModelView):
 
     value = fields.Char('Value')
 
-    # Muchos mecanismos de contacto (clase actual) se vinculan a un prospecto (propiedad actual)
     prospect = fields.Many2One('sale.prospect', 'Prospect')
     
