@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="prospect"/>
+    <field name="prospect"/>
+
+    <label name="prospect_name"/>
+    <field name="prospect_name"/>
+
+    <label name="prospect_contact"/>
+    <field name="prospect_contact"/>
+
+    <label name="prospect_city"/>
+    <field name="prospect_city"/>
+
+    <label name="calls"/>
+    <field name="calls"/>
+</form>

@@ -57,8 +57,7 @@ Seguimiento de prospecto 2
         * 1 - total desinterés
         * 2 - Interés intermedio, brindar mas información
         * 3 - Interés alto, generar venta
-    
-    * Estado (realizada - pendiente)
+            
     * Seguimiento de prospecto al que pertence
 
 --------

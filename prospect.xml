@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.action.act_window" id="act_prospect_tree">
+            <field name="name">Prospects</field> 
+            <field name="res_model">sale.prospect</field> 
+        </record>
+
+        <record model="ir.ui.view" id="prospect_view_tree">
+            <field name="model">sale.prospect</field> 
+            <field name="type">tree</field>
+            <field name="name">prospect_tree</field>
+        </record>
+        <record model="ir.ui.view" id="prospect_view_form">
+            <field name="model">sale.prospect</field> 
+            <field name="type">form</field>
+            <field name="name">prospect_form</field>
+        </record>
+
+        <record model="ir.action.act_window.view" id="act_prospect_tree_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="prospect_view_tree"/>
+            <field name="act_window" ref="act_prospect_tree"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_prospect_form_view1">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="prospect_view_form"/>
+            <field name="act_window" ref="act_prospect_tree"/>
+        </record>
+
+        <menuitem
+            parent="menu_calls"
+            sequence="10"
+            id="menu_prospects_tree"
+            action="act_prospect_tree"/>
+    </data>
+</tryton>
