@@ -9,7 +9,7 @@ class ProspectTrace(ModelSQL, ModelView):
 
     prospect = fields.Many2One('sale.prospect', 'Prospect')
     prospect_name = fields.Char('Name')
-    prospect_contact = fields.Char('Contact')
+    prospect_contact = fields.Many2One('prospect.contact_method', 'Contact method')
     prospect_city = fields.Char('City') 
 
     calls = fields.One2Many('sale.call', 'prospect_trace', "Calls")

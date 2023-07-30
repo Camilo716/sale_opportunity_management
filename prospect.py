@@ -15,7 +15,8 @@ class Prospect(ModelSQL, ModelView):
 class ContactMethod(ModelSQL, ModelView):
     'Mecanismo de contacto'
     __name__ = 'prospect.contact_method'
-
+    _rec_name = 'value'
+    
     _type = [
         ('phone', 'Phone'),
         ('mobile', 'Mobile'),

@@ -16,8 +16,6 @@ Activate modules::
 Como administrador quiero registrar un prospecto para lugo poder hacerle un seguimiento
 ---------------------------------------------------------------------------------------------
 
-Crear mecanismos de contacto::
-
 
 Crear prospecto::
     >>> Prospect = Model.get('sale.prospect')
