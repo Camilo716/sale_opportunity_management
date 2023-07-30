@@ -4,7 +4,7 @@ this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
         <record model="ir.action.act_window" id="act_prospect_trace_tree">
-            <field name="name">Prospect Trace</field> 
+            <field name="name">Prospect Traces</field> 
             <field name="res_model">sale.prospect_trace</field> 
         </record>
 

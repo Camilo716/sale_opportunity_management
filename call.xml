@@ -4,7 +4,7 @@ this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
         <record model="ir.action.act_window" id="act_call_tree">
-            <field name="name">Calls</field> 
+            <field name="name">Prospect</field> 
             <field name="res_model">sale.call</field> 
         </record>
 
