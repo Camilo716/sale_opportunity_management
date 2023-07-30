@@ -5,8 +5,8 @@ this repository contains the full copyright notices and license terms. -->
     <label name="date"/>
     <field name="date"/>
 
-    <label name="prospect_tracker"/>
-    <field name="prospect_tracker"/>
+    <label name="prospect_trace"/>
+    <field name="prospect_trace"/>
 
     <label name="description"/>
     <field name="description"/>

@@ -9,7 +9,7 @@ class Call(ModelSQL, ModelView):
     date = fields.Date('Date')
     description = fields.Char('Description')
 
-    prospect_tracker = fields.Many2One('sale.prospect_tracker', 'Prospect trace')
+    prospect_trace = fields.Many2One('sale.prospect_trace', 'Prospect track')
 
     @classmethod
     def default_date(cls):
