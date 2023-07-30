@@ -36,7 +36,7 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_calls"/>
         <menuitem
             parent="menu_calls"
-            sequence="10"
+            sequence="20"
             id="menu_calls_tree"
             action="act_call_tree"/>
     </data>
