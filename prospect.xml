@@ -31,12 +31,8 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <menuitem
-            name="prospects"
+            parent="menu_calls"
             sequence="10"
-            id="menu_prospects"/>
-        <menuitem
-            parent="menu_prospects"
-            sequence="20"
             id="menu_prospects_tree"
             action="act_prospect_tree"/>
     </data>

@@ -32,7 +32,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <menuitem
             parent="menu_calls"
-            sequence="10"
+            sequence="20"
             id="menu_prospect_trace_tree"
             action="act_prospect_trace_tree"/>
     </data>
