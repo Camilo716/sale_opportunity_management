@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.action.act_window" id="act_prospect_trace_tree">
+            <field name="name">Prospect Trace</field> 
+            <field name="res_model">sale.prospect_trace</field> 
+        </record>
+
+        <record model="ir.ui.view" id="prospect_trace_view_tree">
+            <field name="model">sale.prospect_trace</field> 
+            <field name="type">tree</field>
+            <field name="name">prospect_trace_tree</field>
+        </record>
+        <record model="ir.ui.view" id="prospect_trace_view_form">
+            <field name="model">sale.prospect_trace</field> 
+            <field name="type">form</field>
+            <field name="name">prospect_trace_form</field>
+        </record>
+
+        <record model="ir.action.act_window.view" id="act_prospect_trace_tree_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="prospect_trace_view_tree"/>
+            <field name="act_window" ref="act_prospect_trace_tree"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_prospect_trace_form_view1">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="prospect_trace_view_form"/>
+            <field name="act_window" ref="act_prospect_trace_tree"/>
+        </record>
+
+        <menuitem
+            parent="menu_calls"
+            sequence="10"
+            id="menu_prospect_trace_tree"
+            action="act_prospect_trace_tree"/>
+    </data>
+</tryton>
