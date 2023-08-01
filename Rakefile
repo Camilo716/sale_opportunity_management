@@ -1,7 +1,7 @@
 require 'yaml'
 
 WOODPECKER_YML='.woodpecker.yml'
-DOCKER_COMPOSE='docker-compose.test.yml'
+DOCKER_COMPOSE='compose.test.yml'
 
 desc 'iniciar entorno'
 task :up do
@@ -36,17 +36,17 @@ namespace :live do
 
   desc 'iniciar entorno'
   task :up do
-    compose('up', '--build', '-d', compose: 'docker-compose.yml')
+    compose('up', '--build', '-d', compose: 'compose.yml')
   end
 
   desc 'monitorear salida'
   task :tail do
-    compose('logs', '-f', 'app.dev', compose: 'docker-compose.yml')
+    compose('logs', '-f', 'app.dev', compose: 'compose.yml')
   end
 
   desc 'detener entorno'
   task :down do
-    compose('down', compose: 'docker-compose.yml')
+    compose('down', compose: 'compose.yml')
   end
 end
 
