@@ -3,7 +3,8 @@ include:
   - compose.base.yml
 services:
   app.dev:
-    image: python:3.9
+    build:
+      context: .
     depends_on:
       - db.dev
     command: bash .dev/run.sh
