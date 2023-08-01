@@ -6,6 +6,7 @@ services:
     build:
       context: .
     environment:
+      - SRC=/app
       - DB_CACHE=/tmp
       - DB_NAME=trytontest
       - TRYTOND_DATABASE_URI=postgresql://tryton:tryton@db.dev:5432/

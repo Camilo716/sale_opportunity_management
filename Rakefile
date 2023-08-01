@@ -14,6 +14,7 @@ task :init => [:up] do
   pecker.dig('pipeline', 'tests', 'commands').grep(/install/).each do |cmd|
     compose('exec', 'app.dev', cmd)
   end
+  compose('exec', 'app.dev', 'bash .dev/install_module.sh')
 end
 
 desc 'terminal'
