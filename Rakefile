@@ -16,6 +16,11 @@ task :init => [:up] do
   end
 end
 
+desc 'terminal'
+task :sh do
+  compose('exec', 'app.dev', 'bash')
+end
+
 desc 'iterar'
 task :tdd do
   compose('exec', 'app.dev', 'python3 -m unittest')
