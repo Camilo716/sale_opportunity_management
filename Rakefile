@@ -1,4 +1,5 @@
 require 'yaml'
+require 'digest'
 
 WOODPECKER_YML='.woodpecker.yml'
 DOCKER_COMPOSE='compose.test.yml'
@@ -24,6 +25,24 @@ end
 
 desc 'iterar'
 task :tdd do
+  # cuando se realizan cambios sobre los modelos
+  # que afectan las tablas es necesario limpiar el cache
+  # de trytond
+  if `which git`.then { $? }.success?
+    changes = %x{git diff}.split("\n").grep(/^[-+]/)
+    num = changes.grep(/fields/).length
+    hash = Digest::MD5.hexdigest(changes.flatten.join(''))
+
+    File.open('.tdd_cache', 'r+') do |cache|
+      tdd_cache = cache.read()
+
+      if num > 0 && (tdd_cache != hash)
+        compose('exec', 'app.dev', 'rm -f /tmp/*.dump')
+        cache.seek(0); cache.write(hash)
+      end
+    end
+  end
+
   compose('exec', 'app.dev', 'python3 -m unittest')
 end
 
