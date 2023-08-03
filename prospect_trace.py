@@ -12,11 +12,23 @@ class ProspectTrace(ModelSQL, ModelView):
     prospect_contact = fields.Many2One('prospect.contact_method', 'Contact method')
     prospect_city = fields.Char('City') 
 
-    calls = fields.One2Many('sale.call', 'prospect_trace', "Calls")
+    calls = fields.One2Many('sale.call', 'prospect_trace', "Calls") 
 
+    interest_types = [
+        ('0', '0 - No contestó'),
+        ('1', '1 - total desinterés'),
+        ('2', '2 - Interés intermedio'),
+        ('3', '3 - Interés alto, generar venta')
+    ]
+
+    current_interest = fields.Function(fields.Selection(interest_types, 'Interest'), '_get_current_interest')
+    
     @fields.depends('prospect')
     def on_change_prospect(self):
         if self.prospect:
             self.prospect_name = self.prospect.name
-            # self.prospect_contact = self.prospect.contact_methods.index('contact_type 'mobile')
             self.prospect_city = self.prospect.city
+
+    def _get_current_interest(self, name):
+        return self.calls[-1].interest
+        
