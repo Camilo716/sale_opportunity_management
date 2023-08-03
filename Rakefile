@@ -33,6 +33,9 @@ task :tdd do
     num = changes.grep(/fields/).length
     hash = Digest::MD5.hexdigest(changes.flatten.join(''))
 
+    # touch
+    File.open('.tdd_cache', 'a+').close
+
     File.open('.tdd_cache', 'r+') do |cache|
       tdd_cache = cache.read()
 
