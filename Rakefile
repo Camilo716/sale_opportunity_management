@@ -47,7 +47,7 @@ task :tdd do
       end
     end
   end
-  compose('exec', 'app.dev', 'flake8 --exclude .git,__pycache__,docs/source/conf.py,old,build,dist,.dev')
+  compose('exec', 'app.dev', 'flake8')
   compose('exec', 'app.dev', 'python3 -m unittest')
 end
 
