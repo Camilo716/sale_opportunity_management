@@ -129,6 +129,7 @@ Crear llamada a un seguimiento de prospecto::
     >>> call.description = 'Descripción u observaciones de la llamada'
     >>> call.prospect_trace = prospect_trace
     >>> call.interest = '1'
+    >>> call.call_type = 'first_call'
     >>> call.save()
 
     >>> call.prospect_trace.prospect_name
@@ -143,6 +144,7 @@ Crear otra llamada al mismo seguimiento de prospecto::
     >>> call.description = 'Segunda llamada al mismo seguimiento'
     >>> call.prospect_trace = prospect_trace
     >>> call.interest = '2'
+    >>> call.call_type = 'followup_call'
     >>> call.save()
 
     >>> call.prospect_trace.prospect_name
