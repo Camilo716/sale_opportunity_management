@@ -2,6 +2,12 @@
 # variables que puedo usar? https://woodpecker-ci.org/docs/0.15/usage/environment#built-in-environment-variables
 
 pipeline:
+  style:
+    image: python:3.9
+    commands:
+      - pip3 install flake8
+      - flake8
+
   tests:
     image: python:3.9
     environment:

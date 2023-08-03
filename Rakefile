@@ -12,8 +12,10 @@ end
 desc 'poblar entorno'
 task :init => [:up] do
   pecker = YAML.load_file(WOODPECKER_YML)
-  pecker.dig('pipeline', 'tests', 'commands').grep(/install/).each do |cmd|
-    compose('exec', 'app.dev', cmd)
+  ['tests', 'style'].each do |pipeline|
+    pecker.dig('pipeline', pipeline, 'commands').grep(/install/).each do |cmd|
+      compose('exec', 'app.dev', cmd)
+    end
   end
   compose('exec', 'app.dev', 'bash .dev/install_module.sh')
 end
@@ -45,7 +47,7 @@ task :tdd do
       end
     end
   end
-
+  compose('exec', 'app.dev', 'flake8 --exclude .git,__pycache__,docs/source/conf.py,old,build,dist,.dev')
   compose('exec', 'app.dev', 'python3 -m unittest')
 end
 
