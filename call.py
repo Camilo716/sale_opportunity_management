@@ -1,5 +1,6 @@
 from trytond.model import ModelSQL, ModelView, fields 
 from datetime import date
+from Util.interest import Interest
 
 class Call(ModelSQL, ModelView):
     'Llamada'
@@ -11,15 +12,7 @@ class Call(ModelSQL, ModelView):
 
     prospect_trace = fields.Many2One('sale.prospect_trace', 'Prospect track')
 
-    interest_types = [
-        ('0', '0 - No contestó'),
-        ('1', '1 - total desinterés'),
-        ('2', '2 - Interés intermedio'),
-        ('3', '3 - Interés alto, generar venta')
-    ]
-
-    interest = fields.Selection(interest_types, 'Interest')
-
+    interest = fields.Selection(Interest.get_interest_levels(), 'Interest')
 
     @classmethod
     def default_date(cls):

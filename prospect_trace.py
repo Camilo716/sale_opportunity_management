@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from trytond.model import ModelSQL, ModelView, fields 
+from Util.interest import Interest
 
 class ProspectTrace(ModelSQL, ModelView):
     'Seguimiento de un prospecto'
@@ -14,14 +15,8 @@ class ProspectTrace(ModelSQL, ModelView):
 
     calls = fields.One2Many('sale.call', 'prospect_trace', "Calls") 
 
-    interest_types = [
-        ('0', '0 - No contestó'),
-        ('1', '1 - total desinterés'),
-        ('2', '2 - Interés intermedio'),
-        ('3', '3 - Interés alto, generar venta')
-    ]
-
-    current_interest = fields.Function(fields.Selection(interest_types, 'Interest'), '_get_current_interest')
+    _interest_field_type = fields.Selection(Interest.get_interest_levels(), 'Interest')
+    current_interest = fields.Function(_interest_field_type, '_get_current_interest')
     
     @fields.depends('prospect')
     def on_change_prospect(self):
