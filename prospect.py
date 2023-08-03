@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from trytond.model import ModelSQL, ModelView, fields 
+from trytond.model import ModelSQL, ModelView, fields
+
 
 class Prospect(ModelSQL, ModelView):
     'Prospecto'
@@ -9,14 +10,15 @@ class Prospect(ModelSQL, ModelView):
     name = fields.Char('Name')
     city = fields.Char('City')
 
-    contact_methods = fields.One2Many('prospect.contact_method', 'prospect', 'Contact methods') 
+    contact_methods = fields.One2Many(
+        'prospect.contact_method', 'prospect', 'Contact methods')
 
 
 class ContactMethod(ModelSQL, ModelView):
     'Mecanismo de contacto'
     __name__ = 'prospect.contact_method'
     _rec_name = 'value'
-    
+
     _type = [
         ('phone', 'Phone'),
         ('mobile', 'Mobile'),
@@ -27,4 +29,3 @@ class ContactMethod(ModelSQL, ModelView):
     value = fields.Char('Value')
 
     prospect = fields.Many2One('sale.prospect', 'Prospect')
-    

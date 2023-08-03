@@ -1,12 +1,13 @@
-from trytond.model import ModelSQL, ModelView, fields 
+from trytond.model import ModelSQL, ModelView, fields
 from datetime import date
 
 from .Util.interest import Interest
 from .Util.call_types import CallTypes
 
+
 class Call(ModelSQL, ModelView):
     'Llamada'
-    
+
     __name__ = 'sale.call'
 
     date = fields.Date('Date')
