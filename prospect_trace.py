@@ -1,7 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from trytond.model import ModelSQL, ModelView, fields 
-from Util.interest import Interest
+from .Util.interest import Interest
 
 class ProspectTrace(ModelSQL, ModelView):
     'Seguimiento de un prospecto'
