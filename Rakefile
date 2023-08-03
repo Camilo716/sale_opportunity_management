@@ -40,7 +40,7 @@ task :tdd do
       tdd_cache = cache.read()
 
       if num > 0 && (tdd_cache != hash)
-        compose('exec', 'app.dev', 'rm -f /tmp/*.dump')
+        compose('exec', 'app.dev', 'bash -c "rm -f /tmp/*.dump"')
         cache.seek(0); cache.write(hash)
       end
     end
