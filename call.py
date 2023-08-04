@@ -1,8 +1,10 @@
 from trytond.model import ModelSQL, ModelView, fields
 from datetime import date
 
+
 from .Util.interest import Interest
 from .Util.call_types import CallTypes
+from .Util.call_results import CallResults
 
 
 class Call(ModelSQL, ModelView):
@@ -17,7 +19,17 @@ class Call(ModelSQL, ModelView):
 
     interest = fields.Selection(Interest.get_interest_levels(), 'Interest')
     call_type = fields.Selection(CallTypes.get_call_types(), 'Call type')
+    call_result = fields.Selection(
+        CallResults.get_call_results(), 'Call result', required=False)
 
     @classmethod
     def default_date(cls):
         return date.today()
+
+    @fields.depends('interest')
+    def on_change_interest(self):
+        if self.interest:
+            if self.interest == '0':
+                self.call_result = 'missed_call'
+            else:
+                self.call_result = 'answered_call'

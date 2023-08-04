@@ -128,7 +128,7 @@ Crear llamada a un seguimiento de prospecto::
 
     >>> call.description = 'Descripción u observaciones de la llamada'
     >>> call.prospect_trace = prospect_trace
-    >>> call.interest = '1'
+    >>> call.interest = '0'
     >>> call.call_type = 'first_call'
     >>> call.save()
 
@@ -136,6 +136,8 @@ Crear llamada a un seguimiento de prospecto::
     'guchito S.A.S'
     >>> call.date == date.today()
     True
+    >>> call.call_result
+    'missed_call'
 
 Crear otra llamada al mismo seguimiento de prospecto::
     >>> Call = Model.get('sale.call')
@@ -153,6 +155,8 @@ Crear otra llamada al mismo seguimiento de prospecto::
     'Bogotá'
     >>> call.date == date.today()
     True
+    >>> call.call_result 
+    'answered_call'
 
     >>> len(prospect_trace.calls) == 2
     True
