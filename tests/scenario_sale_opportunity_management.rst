@@ -42,13 +42,15 @@ El administrador deberá poder registrar los contactos de diferentes prospectos,
 Crear prospecto::
     >>> Prospect = Model.get('sale.prospect')
     >>> prospect = Prospect()
-
+    
     >>> prospect.name = 'guchito S.A.S'
     >>> prospect.city = 'Bogotá'
-    >>> phone = prospect.contact_methods.new()
-    >>> phone.contact_type = 'mobile'
-    >>> phone.value = '3132923938'
+    >>> contact_method = prospect.contact_methods.new(contact_type = 'mobile', value = '31223425234') 
+    >>> contact_method = prospect.contact_methods.new(contact_type = 'mail', value = 'peralto@guchitos.org') 
     >>> prospect.save()
+    >>> prospect.contact_methods 
+    [proteus.Model.get('prospect.contact_method')(1), proteus.Model.get('prospect.contact_method')(2)]
+
 
 ------------------------------------
 Asignación de prospectos a operarios
@@ -114,13 +116,19 @@ Crear seguimiento de prospecto::
     >>> prospect_trace = ProspectTrace()
 
     >>> prospect_trace.prospect = prospect
+    
+    >>> ContactMethods = Model.get('prospect.contact_method')
+    >>> contact, = ContactMethods.find([('contact_type', '=', 'mobile')])
+    >>> prospect_trace.prospect_contact = contact
+
     >>> prospect_trace.save()
 
     >>> prospect_trace.prospect_name
     'guchito S.A.S'
     >>> prospect_trace.prospect_city
     'Bogotá'
-
+    >>> prospect_trace.prospect_contact.value
+    '31223425234'
 
 Crear llamada a un seguimiento de prospecto::
     >>> Call = Model.get('sale.call')
