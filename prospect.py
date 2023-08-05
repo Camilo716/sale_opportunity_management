@@ -13,7 +13,6 @@ class Prospect(ModelSQL, ModelView):
     contact_methods = fields.One2Many(
         'prospect.contact_method', 'prospect', 'Contact methods')
 
-    country = fields.Many2One('country.country', 'Country')
     department = fields.Char('Department')
     city_ = fields.Char('City')
 

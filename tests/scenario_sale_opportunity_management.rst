@@ -8,6 +8,7 @@ Imports::
     >>> from proteus import Model, Wizard
     >>> from trytond.tests.tools import activate_modules
     >>> from datetime import date
+    >>> import xml.etree.ElementTree as ET
 
 Activate modules::
 
@@ -44,6 +45,25 @@ Crear prospecto::
     >>> prospect = Prospect()
     
     >>> prospect.name = 'guchito S.A.S'
+
+    >>> Department = Model.get('sale.department')
+    >>> antioquia = Department() 
+    >>> antioquia.name = 'Antioquia'
+    >>> antioquia.code = 'CO-05'
+    >>> antioquia.save()
+
+    >>> City = Model.get('sale.city')
+    >>> medellin = City()
+    >>> medellin.name = 'Medellín'
+    >>> antioquia, = Department.find(['code', '=', 'CO-05'])
+    >>> medellin.parent = antioquia
+    >>> medellin.save()  
+
+
+
+    >>> medellin.save()
+
+    >>> prospect.department 
     >>> prospect.city = 'Bogotá'
     >>> contact_method = prospect.contact_methods.new(contact_type = 'mobile', value = '31223425234') 
     >>> contact_method = prospect.contact_methods.new(contact_type = 'mail', value = 'peralto@guchitos.org') 
