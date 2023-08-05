@@ -2,9 +2,9 @@ from trytond.model import ModelSQL, ModelView, fields
 from datetime import date
 
 
-from .Util.interest import Interest
-from .Util.call_types import CallTypes
-from .Util.call_results import CallResults
+from .selections.interest import Interest
+from .selections.call_types import CallTypes
+from .selections.call_results import CallResults
 
 
 class Call(ModelSQL, ModelView):
