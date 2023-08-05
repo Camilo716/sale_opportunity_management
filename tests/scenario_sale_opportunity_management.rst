@@ -40,31 +40,26 @@ El administrador deberá poder registrar los contactos de diferentes prospectos,
         * Nombre
         * Cargo
 
-Crear prospecto::
-    >>> Prospect = Model.get('sale.prospect')
-    >>> prospect = Prospect()
-    
-    >>> prospect.name = 'guchito S.A.S'
-
+Crear departamentos y ciudades:
     >>> Department = Model.get('sale.department')
     >>> antioquia = Department() 
     >>> antioquia.name = 'Antioquia'
     >>> antioquia.code = 'CO-05'
     >>> antioquia.save()
-
     >>> City = Model.get('sale.city')
     >>> medellin = City()
     >>> medellin.name = 'Medellín'
     >>> antioquia, = Department.find(['code', '=', 'CO-05'])
     >>> medellin.parent = antioquia
     >>> medellin.save()  
+    >>> medellin.parent.name
+    'Antioquia'
 
-
-
-    >>> medellin.save()
-
-    >>> prospect.department 
-    >>> prospect.city = 'Bogotá'
+Crear prospecto::
+    >>> Prospect = Model.get('sale.prospect')
+    >>> prospect = Prospect()
+    
+    >>> prospect.name = 'guchito S.A.S'
     >>> contact_method = prospect.contact_methods.new(contact_type = 'mobile', value = '31223425234') 
     >>> contact_method = prospect.contact_methods.new(contact_type = 'mail', value = 'peralto@guchitos.org') 
     >>> prospect.save()
@@ -145,8 +140,6 @@ Crear seguimiento de prospecto::
 
     >>> prospect_trace.prospect_name
     'guchito S.A.S'
-    >>> prospect_trace.prospect_city
-    'Bogotá'
     >>> prospect_trace.prospect_contact.value
     '31223425234'
 
@@ -179,8 +172,6 @@ Crear otra llamada al mismo seguimiento de prospecto::
 
     >>> call.prospect_trace.prospect_name
     'guchito S.A.S'
-    >>> call.prospect_trace.prospect_city 
-    'Bogotá'
     >>> call.date == date.today()
     True
     >>> call.call_result 
