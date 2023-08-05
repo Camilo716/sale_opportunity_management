@@ -8,4 +8,5 @@ class City(ModelSQL, ModelView):
     __name__ = 'sale.city'
 
     name = fields.Char('City')
+    code = fields.Char('Code')
     parent = fields.Many2One('sale.department', 'Departamento')

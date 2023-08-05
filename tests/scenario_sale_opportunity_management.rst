@@ -40,21 +40,6 @@ El administrador deberá poder registrar los contactos de diferentes prospectos,
         * Nombre
         * Cargo
 
-Crear departamentos y ciudades:
-    >>> Department = Model.get('sale.department')
-    >>> antioquia = Department() 
-    >>> antioquia.name = 'Antioquia'
-    >>> antioquia.code = 'CO-05'
-    >>> antioquia.save()
-    >>> City = Model.get('sale.city')
-    >>> medellin = City()
-    >>> medellin.name = 'Medellín'
-    >>> antioquia, = Department.find(['code', '=', 'CO-05'])
-    >>> medellin.parent = antioquia
-    >>> medellin.save()  
-    >>> medellin.parent.name
-    'Antioquia'
-
 Crear prospecto::
     >>> Prospect = Model.get('sale.prospect')
     >>> prospect = Prospect()
@@ -63,6 +48,7 @@ Crear prospecto::
     >>> contact_method = prospect.contact_methods.new(contact_type = 'mobile', value = '31223425234') 
     >>> contact_method = prospect.contact_methods.new(contact_type = 'mail', value = 'peralto@guchitos.org') 
     >>> prospect.save()
+
     >>> prospect.contact_methods 
     [proteus.Model.get('prospect.contact_method')(1), proteus.Model.get('prospect.contact_method')(2)]
 
