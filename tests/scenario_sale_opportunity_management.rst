@@ -47,11 +47,16 @@ Crear prospecto::
     >>> prospect.name = 'guchito S.A.S'
     >>> contact_method = prospect.contact_methods.new(contact_type = 'mobile', value = '31223425234') 
     >>> contact_method = prospect.contact_methods.new(contact_type = 'mail', value = 'peralto@guchitos.org') 
+    >>> City = Model.get('sale.city')
+    >>> medellin, = City.find([('code', '=', 'CO-05001')])
+    >>> prospect.city = medellin
     >>> prospect.save()
 
+Verificar estado final de creación de prospecto::
     >>> prospect.contact_methods 
     [proteus.Model.get('prospect.contact_method')(1), proteus.Model.get('prospect.contact_method')(2)]
-
+    >>> prospect.city.parent.code
+    'CO-05'
 
 ------------------------------------
 Asignación de prospectos a operarios
@@ -163,6 +168,7 @@ Crear otra llamada al mismo seguimiento de prospecto::
     >>> call.call_result 
     'answered_call'
 
+Verificar estado final del seguimiento de prospecto::
     >>> len(prospect_trace.calls) == 2
     True
     >>> prospect_trace.current_interest

@@ -8,13 +8,12 @@ class Prospect(ModelSQL, ModelView):
     __name__ = 'sale.prospect'
 
     name = fields.Char('Name')
-    city = fields.Char('City')
 
     contact_methods = fields.One2Many(
         'prospect.contact_method', 'prospect', 'Contact methods')
 
-    department = fields.Char('Department')
-    city_ = fields.Char('City')
+    department = fields.Many2One('sale.department', 'Department')
+    city = fields.Many2One('sale.city', 'City')
 
 
 class ContactMethod(ModelSQL, ModelView):
