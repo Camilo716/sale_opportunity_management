@@ -4,167 +4,134 @@
 	    <record model="sale.department"  id="CO-91">
             <field name="name">Amazonas</field>
             <field name="code">CO-91</field>
-            <field name="dane_code">91</field>
         </record>
 	    <record model="sale.department"  id="CO-05">
             <field name="name">Antioquia</field>
             <field name="code">CO-05</field>
-            <field name="dane_code">05</field>
         </record>
 	    <record model="sale.department"  id="CO-81">
             <field name="name">Arauca</field>
             <field name="code">CO-81</field>
-            <field name="dane_code">81</field>
         </record>
 	    <record model="sale.department"  id="CO-08">
             <field name="name">Atlántico</field>
             <field name="code">CO-08</field>
-            <field name="dane_code">08</field>
         </record>
 	    <record model="sale.department"  id="CO-13">
             <field name="name">Bolívar</field>
             <field name="code">CO-13</field>
-            <field name="dane_code">13</field>
         </record>
 	    <record model="sale.department"  id="CO-15">
             <field name="name">Boyacá</field>
             <field name="code">CO-15</field>
-            <field name="dane_code">15</field>
         </record>
 	    <record model="sale.department"  id="CO-17">
             <field name="name">Caldas</field>
             <field name="code">CO-17</field>
-            <field name="dane_code">17</field>
         </record>
 	    <record model="sale.department"  id="CO-18">
             <field name="name">Caquetá</field>
             <field name="code">CO-18</field>
-            <field name="dane_code">18</field>
         </record>
 	    <record model="sale.department"  id="CO-85">
             <field name="name">Casanare</field>
             <field name="code">CO-85</field>
-            <field name="dane_code">85</field>
         </record>
 	    <record model="sale.department"  id="CO-19">
             <field name="name">Cauca</field>
             <field name="code">CO-19</field>
-            <field name="dane_code">19</field>
         </record>
 	    <record model="sale.department"  id="CO-20">
             <field name="name">Cesar</field>
             <field name="code">CO-20</field>
-            <field name="dane_code">20</field>
         </record>
 	    <record model="sale.department"  id="CO-27">
             <field name="name">Chocó</field>
             <field name="code">CO-27</field>
-            <field name="dane_code">27</field>
         </record>
 	    <record model="sale.department"  id="CO-23">
             <field name="name">Córdoba</field>
             <field name="code">CO-23</field>
-            <field name="dane_code">23</field>
         </record>
 	    <record model="sale.department"  id="CO-25">
             <field name="name">Cundinamarca</field>
             <field name="code">CO-25</field>
-            <field name="dane_code">25</field>
         </record>
 	    <record model="sale.department"  id="CO-11">
             <field name="name">Bogotá</field>
             <field name="code">CO-11</field>
-            <field name="dane_code">11</field>
         </record>
 	    <record model="sale.department"  id="CO-94">
             <field name="name">Guainía</field>
             <field name="code">CO-94</field>
-            <field name="dane_code">94</field>
         </record>
 	    <record model="sale.department"  id="CO-95">
             <field name="name">Guaviare</field>
             <field name="code">CO-95</field>
-            <field name="dane_code">95</field>
         </record>
 	    <record model="sale.department"  id="CO-41">
             <field name="name">Huila</field>
             <field name="code">CO-41</field>
-            <field name="dane_code">41</field>
         </record>
 	    <record model="sale.department"  id="CO-44">
             <field name="name">La Guajira</field>
             <field name="code">CO-44</field>
-            <field name="dane_code">44</field>
         </record>
 	    <record model="sale.department"  id="CO-47">
             <field name="name">Magdalena</field>
             <field name="code">CO-47</field>
-            <field name="dane_code">47</field>
         </record>
 	    <record model="sale.department"  id="CO-50">
             <field name="name">Meta</field>
             <field name="code">CO-50</field>
-            <field name="dane_code">50</field>
         </record>
 	    <record model="sale.department"  id="CO-52">
             <field name="name">Nariño</field>
             <field name="code">CO-52</field>
-            <field name="dane_code">52</field>
         </record>
 	    <record model="sale.department"  id="CO-54">
             <field name="name">Norte de Santander</field>
             <field name="code">CO-54</field>
-            <field name="dane_code">54</field>
         </record>
 	    <record model="sale.department"  id="CO-86">
             <field name="name">Putumayo</field>
             <field name="code">CO-86</field>
-            <field name="dane_code">86</field>
         </record>
 	    <record model="sale.department"  id="CO-63">
             <field name="name">Quindío</field>
             <field name="code">CO-63</field>
-            <field name="dane_code">63</field>
         </record>
 	    <record model="sale.department"  id="CO-66">
             <field name="name">Risaralda</field>
             <field name="code">CO-66</field>
-            <field name="dane_code">66</field>
         </record>
 	    <record model="sale.department"  id="CO-88">
             <field name="name">San Andrés y Providencia</field>
             <field name="code">CO-88</field>
-            <field name="dane_code">88</field>
         </record>
 	    <record model="sale.department"  id="CO-68">
             <field name="name">Santander</field>
             <field name="code">CO-68</field>
-            <field name="dane_code">68</field>
         </record>
 	    <record model="sale.department"  id="CO-70">
             <field name="name">Sucre</field>
             <field name="code">CO-70</field>
-            <field name="dane_code">70</field>
         </record>
 	    <record model="sale.department"  id="CO-73">
             <field name="name">Tolima</field>
             <field name="code">CO-73</field>
-            <field name="dane_code">73</field>
         </record>
 	    <record model="sale.department"  id="CO-76">
             <field name="name">Valle del Cauca</field>
             <field name="code">CO-76</field>
-            <field name="dane_code">76</field>
         </record>
 	    <record model="sale.department"  id="CO-97">
             <field name="name">Vaupés</field>
             <field name="code">CO-97</field>
-            <field name="dane_code">97</field>
         </record>
 	    <record model="sale.department"  id="CO-99">
             <field name="name">Vichada</field>
             <field name="code">CO-99</field>
-            <field name="dane_code">99</field>
         </record>
     </data>
 </tryton>
