@@ -47,6 +47,11 @@ Crear prospecto::
     >>> prospect.name = 'guchito S.A.S'
     >>> contact_method = prospect.contact_methods.new(contact_type = 'mobile', value = '31223425234') 
     >>> contact_method = prospect.contact_methods.new(contact_type = 'mail', value = 'peralto@guchitos.org') 
+
+    .. >>> Department = Model.get('sale.department')
+    .. >>> cundinamarca, = Department.find([('code', '=', 'CO-25')])
+    .. >>> prospect.department = cundinamarca
+
     >>> City = Model.get('sale.city')
     >>> medellin, = City.find([('code', '=', 'CO-05001')])
     >>> prospect.city = medellin
@@ -57,6 +62,11 @@ Verificar estado final de creación de prospecto::
     [proteus.Model.get('prospect.contact_method')(1), proteus.Model.get('prospect.contact_method')(2)]
     >>> prospect.city.parent.code
     'CO-05'
+    >>> prospect.department.code
+    'CO-05'
+
+
+
 
 ------------------------------------
 Asignación de prospectos a operarios

@@ -26,7 +26,7 @@ class Call(ModelSQL, ModelView):
     def default_date(cls):
         return date.today()
 
-    @fields.depends('interest')
+    @fields.depends('interest', 'call_result')
     def on_change_interest(self):
         if self.interest:
             if self.interest == '0':

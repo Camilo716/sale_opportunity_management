@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from trytond.model import ModelSQL, ModelView, fields
+from trytond.pyson import Eval, If
 
 
 class Prospect(ModelSQL, ModelView):
@@ -13,7 +14,14 @@ class Prospect(ModelSQL, ModelView):
         'prospect.contact_method', 'prospect', 'Contact methods')
 
     department = fields.Many2One('sale.department', 'Department')
-    city = fields.Many2One('sale.city', 'City')
+    city = fields.Many2One('sale.city', 'City',
+                           domain=[If(Eval('department'),
+                                    ('parent', '=', Eval('department')))])
+
+    @fields.depends('city', 'department')
+    def on_change_city(self):
+        if self.city:
+            self.department = self.city.parent
 
 
 class ContactMethod(ModelSQL, ModelView):
