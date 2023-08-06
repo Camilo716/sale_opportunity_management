@@ -27,26 +27,7 @@ end
 
 desc 'iterar'
 task :tdd do
-  # cuando se realizan cambios sobre los modelos
-  # que afectan las tablas es necesario limpiar el cache
-  # de trytond
-  if `which git`.then { $? }.success?
-    changes = %x{git diff}.split("\n").grep(/^[-+]/)
-    num = changes.grep(/fields/).length
-    hash = Digest::MD5.hexdigest(changes.flatten.join(''))
-
-    # touch
-    File.open('.tdd_cache', 'a+').close
-
-    File.open('.tdd_cache', 'r+') do |cache|
-      tdd_cache = cache.read()
-
-      if num > 0 && (tdd_cache != hash)
-        compose('exec', 'app.dev', 'bash -c "rm -f /tmp/*.dump"')
-        cache.seek(0); cache.write(hash)
-      end
-    end
-  end
+  refresh_cache
   compose('exec', 'app.dev', 'flake8')
   compose('exec', 'app.dev', 'python3 -m unittest')
 end
@@ -77,4 +58,47 @@ end
 
 def compose(*arg, compose: DOCKER_COMPOSE)
   sh "docker-compose -f #{compose} #{arg.join(' ')}"
+end
+
+def refresh_cache
+  # cuando se realizan cambios sobre los modelos
+  # que afectan las tablas es necesario limpiar el cache
+  # de trytond
+  changes = []
+
+  has_git_dir = File.directory?(File.join(File.dirname(__FILE__), '.git'))
+  try_git = `which git`.then { $? }.success? && has_git_dir
+  try_fossil = system('fossil status', err: :close, out: :close)
+
+  if try_fossil
+    changes = %x{fossil diff}.split("\n").grep(/^[-+]/)
+  elsif try_git
+    changes = %x{git diff}.split("\n").grep(/^[-+]/)
+  else
+    warn <<WARN
+no se detecta repositorio en control de versiones, debe manualmente
+limpiar el cache si ahi cambios en el esquema de los modelos.
+
+Eliminando en el contenedor los archivo /tmp/*.dump
+WARN
+  end
+
+  refresh_trytond_cache(changes)
+end
+
+def refresh_trytond_cache(changes)
+  num = changes.grep(/fields/).length
+  hash = Digest::MD5.hexdigest(changes.flatten.join(''))
+  
+  # touch
+  File.open('.tdd_cache', 'a+').close
+  
+  File.open('.tdd_cache', 'r+') do |cache|
+    tdd_cache = cache.read()
+    
+    if num > 0 && (tdd_cache != hash)
+      compose('exec', 'app.dev', 'bash -c "rm -f /tmp/*.dump"')
+      cache.seek(0); cache.write(hash)
+    end
+  end
 end
