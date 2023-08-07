@@ -162,20 +162,19 @@ Crear llamada a un seguimiento de prospecto::
     'missed_call'
 
 Crear otra llamada al mismo seguimiento de prospecto::
-    >>> Call = Model.get('sale.call')
-    >>> call = Call()
+    >>> call2 = Call()
 
-    >>> call.description = 'Segunda llamada al mismo seguimiento'
-    >>> call.prospect_trace = prospect_trace
-    >>> call.interest = '2'
-    >>> call.call_type = 'followup_call'
-    >>> call.save()
+    >>> call2.description = 'Segunda llamada al mismo seguimiento'
+    >>> call2.prospect_trace = prospect_trace
+    >>> call2.interest = '2'
+    >>> call2.call_type = 'followup_call'
+    >>> call2.save()
 
-    >>> call.prospect_trace.prospect_name
+    >>> call2.prospect_trace.prospect_name
     'guchito S.A.S'
-    >>> call.date == date.today()
+    >>> call2.date == date.today()
     True
-    >>> call.call_result 
+    >>> call2.call_result 
     'answered_call'
 
 Verificar estado final del seguimiento de prospecto::
