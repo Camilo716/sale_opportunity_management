@@ -6,6 +6,7 @@ from trytond.model import ModelSQL, ModelView, fields
 class City(ModelSQL, ModelView):
     'Ciudad'
     __name__ = 'sale.city'
+    _rec_name = 'name'
 
     name = fields.Char('City')
     code = fields.Char('Code')

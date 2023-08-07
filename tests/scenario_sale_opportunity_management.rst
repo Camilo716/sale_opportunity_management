@@ -60,8 +60,8 @@ Crear prospecto::
 Verificar estado final de creación de prospecto::
     >>> prospect.contact_methods 
     [proteus.Model.get('prospect.contact_method')(1), proteus.Model.get('prospect.contact_method')(2)]
-    >>> prospect.city.parent.code
-    'CO-05'
+    >>> prospect.city.code
+    'CO-05001'
     >>> prospect.department.code
     'CO-05'
 
@@ -132,15 +132,15 @@ Crear seguimiento de prospecto::
     >>> prospect_trace = ProspectTrace()
 
     >>> prospect_trace.prospect = prospect
-    
     >>> ContactMethods = Model.get('prospect.contact_method')
     >>> contact, = ContactMethods.find([('contact_type', '=', 'mobile')])
     >>> prospect_trace.prospect_contact = contact
-
     >>> prospect_trace.save()
 
     >>> prospect_trace.prospect.name
     'guchito S.A.S'
+    >>> prospect_trace.prospect_city.name
+    'Medellín'
     >>> prospect_trace.prospect_contact.value
     '31223425234'
 
