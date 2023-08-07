@@ -10,7 +10,6 @@ class ProspectTrace(ModelSQL, ModelView):
     __name__ = 'sale.prospect_trace'
 
     prospect = fields.Many2One('sale.prospect', 'Prospect')
-    prospect_name = fields.Char('Name')
     prospect_contact = fields.Many2One(
         'prospect.contact_method', 'Contact method')
     prospect_city = fields.Char('City')
@@ -25,7 +24,6 @@ class ProspectTrace(ModelSQL, ModelView):
     @fields.depends('prospect')
     def on_change_prospect(self):
         if self.prospect:
-            self.prospect_name = self.prospect.name
             self.prospect_city = self.prospect.city
 
     def _get_current_interest(self, name):

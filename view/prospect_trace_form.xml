@@ -5,9 +5,6 @@ this repository contains the full copyright notices and license terms. -->
     <label name="prospect"/>
     <field name="prospect"/>
 
-    <label name="prospect_name"/>
-    <field name="prospect_name"/>
-
     <label name="prospect_contact"/>
     <field name="prospect_contact"/>
 

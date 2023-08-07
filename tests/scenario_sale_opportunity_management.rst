@@ -139,7 +139,7 @@ Crear seguimiento de prospecto::
 
     >>> prospect_trace.save()
 
-    >>> prospect_trace.prospect_name
+    >>> prospect_trace.prospect.name
     'guchito S.A.S'
     >>> prospect_trace.prospect_contact.value
     '31223425234'
@@ -154,7 +154,7 @@ Crear llamada a un seguimiento de prospecto::
     >>> call.call_type = 'first_call'
     >>> call.save()
 
-    >>> call.prospect_trace.prospect_name
+    >>> call.prospect_trace.prospect.name
     'guchito S.A.S'
     >>> call.date == date.today()
     True
@@ -170,7 +170,7 @@ Crear otra llamada al mismo seguimiento de prospecto::
     >>> call2.call_type = 'followup_call'
     >>> call2.save()
 
-    >>> call2.prospect_trace.prospect_name
+    >>> call2.prospect_trace.prospect.name
     'guchito S.A.S'
     >>> call2.date == date.today()
     True

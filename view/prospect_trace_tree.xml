@@ -3,7 +3,6 @@
 this repository contains the full copyright notices and license terms. -->
 <tree>
     <field name="prospect"/>
-    <field name="prospect_name"/>
     <field name="prospect_contact"/>
     <field name="prospect_city"/>
 </tree>
