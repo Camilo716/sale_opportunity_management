@@ -2,6 +2,7 @@ from trytond.pool import Pool
 from . import prospect
 from . import prospect_trace
 from . import call
+from . import pending_call
 from .locations import city
 from .locations import department
 
@@ -10,6 +11,7 @@ __all__ = ['register']
 
 def register():
     Pool.register(
+        pending_call.PendingCall,
         call.Call,
         department.Department,
         city.City,

@@ -7,7 +7,7 @@ Imports::
 
     >>> from proteus import Model, Wizard
     >>> from trytond.tests.tools import activate_modules
-    >>> from datetime import date
+    >>> from datetime import date, timedelta
     >>> import xml.etree.ElementTree as ET
 
 Activate modules::
@@ -80,6 +80,7 @@ Seguimiento de llamadas
 -----------------------
 **Como operador quiero poder crear un seguimiento de prospecto para luego hacer una llamada**
 **Como operador quiero registrar una llamada para luego generar reportes**
+**Como operador quiero programar una llamada para luego obtener un reporte de trabajo pendiente**
 
 ["Crear Campo para registro de la fecha de la llamada"]
 
@@ -177,9 +178,23 @@ Crear otra llamada al mismo seguimiento de prospecto::
     >>> call2.call_result 
     'answered_call'
 
+
+Programar una próxima llamada al seguimiento de prospecto::
+    >>> PendingCall = Model.get('sale.pending_call')
+    >>> pending_call = PendingCall()
+
+    >>> pending_call.prospect_trace = prospect_trace
+    >>> pending_call.date = date.today() + timedelta(days=7)
+    >>> pending_call.save()
+
+    >>> pending_call.prospect_trace.prospect.name
+    'guchito S.A.S'
+    
 Verificar estado final del seguimiento de prospecto::
-    >>> len(prospect_trace.calls) == 2
-    True
+    >>> prospect_trace.calls
+    [proteus.Model.get('sale.call')(1), proteus.Model.get('sale.call')(2)]
+    >>> prospect_trace.pending_calls
+    [proteus.Model.get('sale.pending_call')(1)]
     >>> prospect_trace.current_interest
     '2'
 

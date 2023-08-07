@@ -14,7 +14,9 @@ class ProspectTrace(ModelSQL, ModelView):
         'prospect.contact_method', 'Contact method')
     prospect_city = fields.Many2One('sale.city', 'City')
 
-    calls = fields.One2Many('sale.call', 'prospect_trace', "Calls")
+    calls = fields.One2Many('sale.call', 'prospect_trace', 'Calls')
+    pending_calls = fields.One2Many(
+        'sale.pending_call', 'prospect_trace', 'Pending calls')
 
     _interest_field_type = fields.Selection(
         Interest.get_interest_levels(), 'Current interest')
