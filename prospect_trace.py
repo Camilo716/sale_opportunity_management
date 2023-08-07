@@ -29,4 +29,5 @@ class ProspectTrace(ModelSQL, ModelView):
             self.prospect_city = self.prospect.city
 
     def _get_current_interest(self, name):
-        return self.calls[-1].interest
+        if self.calls:
+            return self.calls[-1].interest
