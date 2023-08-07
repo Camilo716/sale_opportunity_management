@@ -7,4 +7,5 @@ this repository contains the full copyright notices and license terms. -->
     <field name="prospect_city" expand="1"/>
     <field name="current_interest" expand="1"/>
     <field name="calls" expand="1"/>
+    <field name="pending_calls" expand="1"/>
 </tree>

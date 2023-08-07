@@ -19,5 +19,8 @@ this repository contains the full copyright notices and license terms. -->
         <page string="Calls" id="calls">
             <field name="calls" colspan="2"/>
         </page>
+        <page string="Schedule" id="pending_calls">
+            <field name="pending_calls" colspan="2"/>
+        </page>
     </notebook>
 </form>
