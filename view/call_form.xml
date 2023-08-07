@@ -7,6 +7,15 @@ this repository contains the full copyright notices and license terms. -->
 
     <label name="prospect_trace"/>
     <field name="prospect_trace"/>
+    
+    <label name="interest"/>
+    <field name="interest"/>
+
+    <label name="call_type"/>
+    <field name="call_type"/>
+
+    <label name="call_result"/>
+    <field name="call_result"/>
 
     <label name="description"/>
     <field name="description"/>

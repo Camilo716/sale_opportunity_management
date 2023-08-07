@@ -17,7 +17,7 @@ class ProspectTrace(ModelSQL, ModelView):
     calls = fields.One2Many('sale.call', 'prospect_trace', "Calls")
 
     _interest_field_type = fields.Selection(
-        Interest.get_interest_levels(), 'Interest')
+        Interest.get_interest_levels(), 'Current interest')
     current_interest = fields.Function(
         _interest_field_type, '_get_current_interest')
 

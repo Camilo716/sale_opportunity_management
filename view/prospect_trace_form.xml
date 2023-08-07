@@ -11,6 +11,13 @@ this repository contains the full copyright notices and license terms. -->
     <label name="prospect_city"/>
     <field name="prospect_city"/>
 
-    <label name="calls"/>
-    <field name="calls"/>
+    <label name="current_interest"/>
+    <field name="current_interest"/>
+
+    <newline/>
+    <notebook colspan="6">
+        <page string="Calls" id="calls">
+            <field name="calls" colspan="2"/>
+        </page>
+    </notebook>
 </form>
