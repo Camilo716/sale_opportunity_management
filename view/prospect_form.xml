@@ -2,7 +2,7 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <form col="6">
-    <group col="4">
+    <group col="4" id="prospect_data">
         <label name="name"/>
         <field name="name"/>
 
@@ -14,12 +14,10 @@ this repository contains the full copyright notices and license terms. -->
         <field name="city"/>
     </group>
 
+    <newline/>
     <notebook colspan="6">
-        <page string="Contact methods">
-            <newline/>
+        <page string="Contact methods" id="contact_methods">
             <field name="contact_methods" colspan="2"/>
-            <newline/>
-            <newline/>
         </page>
     </notebook>
 
