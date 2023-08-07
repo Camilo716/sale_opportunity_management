@@ -7,6 +7,7 @@ from trytond.pyson import Eval, If
 class Prospect(ModelSQL, ModelView):
     'Prospecto'
     __name__ = 'sale.prospect'
+    _rec_name = 'name'
 
     name = fields.Char('Name')
 

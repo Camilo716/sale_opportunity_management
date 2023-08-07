@@ -71,6 +71,8 @@ Verificar estado final de creación de prospecto::
 ------------------------------------
 Asignación de prospectos a operarios
 ------------------------------------
+**Como administrador, quiero poder asignar diferentes seguimientos de prospectos a diferentes operarios, para dividir el trabajo de una manera efectiva y que cada operario tenga sus propias llamadas y que no se mezcle con las de los demás**
+
 TODO
 
 

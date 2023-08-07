@@ -2,10 +2,10 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <tree>
-    <field name="date"/>
+    <field name="date" expand="1"/>
     <field name="interest" expand="1"/>
     <field name="call_type" expand="1"/>
     <field name="call_result" expand="1"/>
-    <field name="prospect_trace"/>
+    <field name="prospect_trace" expand="1"/>
     <field name="description" expand="1"/>
 </tree>

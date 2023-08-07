@@ -6,7 +6,6 @@ from .selections.interest import Interest
 
 class ProspectTrace(ModelSQL, ModelView):
     'Seguimiento de un prospecto'
-
     __name__ = 'sale.prospect_trace'
 
     prospect = fields.Many2One('sale.prospect', 'Prospect')
@@ -22,6 +21,10 @@ class ProspectTrace(ModelSQL, ModelView):
         Interest.get_interest_levels(), 'Current interest')
     current_interest = fields.Function(
         _interest_field_type, '_get_current_interest')
+
+    def get_rec_name(self, name):
+        if self.prospect:
+            return '[' + self.id + '] ' + self.prospect.name
 
     @fields.depends('prospect')
     def on_change_prospect(self):
