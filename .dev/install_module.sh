@@ -19,4 +19,9 @@ python3 setup.py develop
 trytond_modules_path=`pip3 show trytond | grep Location | sed -nr 's/Location: +//gp'`/trytond/modules
 module_name=`cat "$SRC/setup.py"  | fgrep -A 1 [trytond.modules] | sed 1d | cut -d '=' -f 1 | tr -d ' \n'`
 [ ! -d "$trytond_modules_path" ] && die "fallo al ubicar ruta de modulos de trytond"
-ln -sf "$SRC" "$trytond_modules_path/$module_name"
+
+
+# se limpia para evitar enlaces recursivos
+module_trytond_path="$trytond_modules_path/$module_name"
+rm -f "$module_trytond_path"
+ln -sf "$SRC" "$module_trytond_path"
