@@ -43,6 +43,15 @@ class ProspectTrace(ModelSQL, ModelView):
         if self.prospect:
             self.prospect_city = self.prospect.city
 
+            mobile_contact = None
+            for contact_method in self.prospect.contact_methods:
+                if contact_method.contact_type == 'mobile':
+                    mobile_contact = contact_method
+                    break
+
+            if mobile_contact:
+                self.prospect_contact = mobile_contact
+
     def get_rec_name(self, name):
         if self.prospect:
             return '[' + str(self.id) + '] ' + self.prospect.name

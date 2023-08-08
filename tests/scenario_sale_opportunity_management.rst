@@ -135,9 +135,6 @@ Crear seguimiento de prospecto::
     >>> prospect_trace = ProspectTrace()
 
     >>> prospect_trace.prospect = prospect
-    >>> ContactMethods = Model.get('prospect.contact_method')
-    >>> contact, = ContactMethods.find([('contact_type', '=', 'mobile')])
-    >>> prospect_trace.prospect_contact = contact
     >>> prospect_trace.save()
 
     >>> prospect_trace.prospect.name
@@ -146,6 +143,8 @@ Crear seguimiento de prospecto::
     'Medellín'
     >>> prospect_trace.prospect_contact.value
     '31223425234'
+    >>> prospect_trace.prospect_contact.contact_type
+    'mobile'
 
 Crear llamadas a un seguimiento de prospecto desde el seguimiento de prospecto::
     >>> call1 = prospect_trace.calls.new(description='First call', interest='0')
