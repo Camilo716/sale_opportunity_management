@@ -11,7 +11,7 @@ class ProspectTrace(ModelSQL, ModelView):
     'Seguimiento de un prospecto'
     __name__ = 'sale.prospect_trace'
 
-    prospect = fields.Many2One('sale.prospect', 'Prospect')
+    prospect = fields.Many2One('sale.prospect', 'Prospect', required=True)
     prospect_contact = fields.Many2One(
         'prospect.contact_method', 'Contact method')
     prospect_city = fields.Many2One('sale.city', 'City')
