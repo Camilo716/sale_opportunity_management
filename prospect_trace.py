@@ -17,14 +17,17 @@ class ProspectTrace(ModelSQL, ModelView):
     pending_calls = fields.One2Many(
         'sale.pending_call', 'prospect_trace', 'Pending calls')
 
-    _interest_field_type = fields.Selection(
+    current_interest = fields.Selection(
         Interest.get_interest_levels(), 'Current interest')
-    current_interest = fields.Function(
-        _interest_field_type, '_get_current_interest')
+
+    @fields.depends('calls', 'current_interest')
+    def on_change_calls(self):
+        if self.calls:
+            self.current_interest = self.calls[-1].interest
 
     def get_rec_name(self, name):
         if self.prospect:
-            return '[' + self.id + '] ' + self.prospect.name
+            return '[' + str(self.id) + '] ' + self.prospect.name
 
     @fields.depends('prospect')
     def on_change_prospect(self):

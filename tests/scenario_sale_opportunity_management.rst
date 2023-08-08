@@ -147,41 +147,28 @@ Crear seguimiento de prospecto::
     >>> prospect_trace.prospect_contact.value
     '31223425234'
 
-Crear llamada a un seguimiento de prospecto::
-    >>> Call = Model.get('sale.call')
-    >>> call = Call()
+Crear llamadas a un seguimiento de prospecto desde el seguimiento de prospecto::
+    >>> call = prospect_trace.calls.new(description='First call', interest='0', call_type='first_call')
+    >>> call = prospect_trace.calls.new(description='Second call', interest='1', call_type='followup_call')
+    >>> call = prospect_trace.calls.new(description='Third call', interest='3', call_type='followup_call')
+    >>> prospect_trace.save()
+    
 
-    >>> call.description = 'Descripción u observaciones de la llamada'
-    >>> call.prospect_trace = prospect_trace
-    >>> call.interest = '0'
-    >>> call.call_type = 'first_call'
-    >>> call.save()
-
-    >>> call.prospect_trace.prospect.name
-    'guchito S.A.S'
-    >>> call.date == date.today()
-    True
-    >>> call.call_result
+Verificar estado final del seguimiento del prospecto y sus llamadas
+    >>> prospect_trace.calls[0].call_result
     'missed_call'
-
-Crear otra llamada al mismo seguimiento de prospecto::
-    >>> call2 = Call()
-
-    >>> call2.description = 'Segunda llamada al mismo seguimiento'
-    >>> call2.prospect_trace = prospect_trace
-    >>> call2.interest = '2'
-    >>> call2.call_type = 'followup_call'
-    >>> call2.save()
-
-    >>> call2.prospect_trace.prospect.name
-    'guchito S.A.S'
-    >>> call2.date == date.today()
+    >>> prospect_trace.calls[0].date == date.today()
     True
-    >>> call2.call_result 
+
+    >>> prospect_trace.calls[1].call_result
     'answered_call'
+    
+    >>> prospect_trace.calls
+    [proteus.Model.get('sale.call')(1), proteus.Model.get('sale.call')(2), proteus.Model.get('sale.call')(3)]
+    >>> prospect_trace.current_interest
+    '3'
 
-
-Programar una próxima llamada al seguimiento de prospecto::
+Programar una próxima llamada pendiente al seguimiento de prospecto::
     >>> PendingCall = Model.get('sale.pending_call')
     >>> pending_call = PendingCall()
 
@@ -191,14 +178,8 @@ Programar una próxima llamada al seguimiento de prospecto::
 
     >>> pending_call.prospect_trace.prospect.name
     'guchito S.A.S'
-    
-Verificar estado final del seguimiento de prospecto::
-    >>> prospect_trace.calls
-    [proteus.Model.get('sale.call')(1), proteus.Model.get('sale.call')(2)]
     >>> prospect_trace.pending_calls
     [proteus.Model.get('sale.pending_call')(1)]
-    >>> prospect_trace.current_interest
-    '2'
 
 --------
 Reportes

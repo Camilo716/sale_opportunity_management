@@ -2,10 +2,11 @@ class Interest():
     @staticmethod
     def get_interest_levels():
         interest_levels = [
-            ('0', '0 - No contestó'),
-            ('1', '1 - total desinterés'),
-            ('2', '2 - Interés intermedio'),
-            ('3', '3 - Interés alto, generar venta')
+            ('', None),
+            ('0', '0 - Not answered'),
+            ('1', '1 - Complete disinterest'),
+            ('2', '2 - Middle interest'),
+            ('3', '3 - High interest')
         ]
 
         return interest_levels
