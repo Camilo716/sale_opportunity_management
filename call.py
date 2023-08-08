@@ -13,7 +13,7 @@ class Call(ModelSQL, ModelView):
     __name__ = 'sale.call'
 
     date = fields.Date('Date')
-    description = fields.Char('Description')
+    description = fields.Text('Description', strip=True)
 
     prospect_trace = fields.Many2One('sale.prospect_trace', 'Prospect trace')
 
