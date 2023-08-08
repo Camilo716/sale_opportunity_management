@@ -1,6 +1,8 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from trytond.model import ModelSQL, ModelView, fields
+
+from .selections.call_types import CallTypes
 from .selections.interest import Interest
 
 
@@ -23,7 +25,13 @@ class ProspectTrace(ModelSQL, ModelView):
     @fields.depends('calls', 'current_interest')
     def on_change_calls(self):
         if self.calls:
-            self.current_interest = self.calls[-1].interest
+            last_call = self.calls[-1]
+            self.current_interest = last_call.interest
+
+            if len(self.calls) > 1:
+                last_call.call_type = CallTypes.get_call_types()[1][0]
+            else:
+                last_call.call_type = CallTypes.get_call_types()[0][0]
 
     def get_rec_name(self, name):
         if self.prospect:

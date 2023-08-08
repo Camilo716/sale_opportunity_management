@@ -148,20 +148,23 @@ Crear seguimiento de prospecto::
     '31223425234'
 
 Crear llamadas a un seguimiento de prospecto desde el seguimiento de prospecto::
-    >>> call = prospect_trace.calls.new(description='First call', interest='0', call_type='first_call')
-    >>> call = prospect_trace.calls.new(description='Second call', interest='1', call_type='followup_call')
-    >>> call = prospect_trace.calls.new(description='Third call', interest='3', call_type='followup_call')
+    >>> call = prospect_trace.calls.new(description='First call', interest='0')
+    >>> call = prospect_trace.calls.new(description='Second call', interest='1')
+    >>> call = prospect_trace.calls.new(description='Third call', interest='3')
     >>> prospect_trace.save()
-    
 
 Verificar estado final del seguimiento del prospecto y sus llamadas
     >>> prospect_trace.calls[0].call_result
     'missed_call'
+    >>> prospect_trace.calls[0].call_type
+    'first_call'
     >>> prospect_trace.calls[0].date == date.today()
     True
 
     >>> prospect_trace.calls[1].call_result
     'answered_call'
+    >>> prospect_trace.calls[1].call_type
+    'followup_call'
     
     >>> prospect_trace.calls
     [proteus.Model.get('sale.call')(1), proteus.Model.get('sale.call')(2), proteus.Model.get('sale.call')(3)]
