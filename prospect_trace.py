@@ -43,12 +43,7 @@ class ProspectTrace(ModelSQL, ModelView):
         if self.prospect:
             self.prospect_city = self.prospect.city
 
-            mobile_contact = None
-            for contact_method in self.prospect.contact_methods:
-                if contact_method.contact_type == 'mobile':
-                    mobile_contact = contact_method
-                    break
-
+            mobile_contact = self._get_prospect_mobile_contact()
             if mobile_contact:
                 self.prospect_contact = mobile_contact
 
@@ -67,3 +62,8 @@ class ProspectTrace(ModelSQL, ModelView):
     def _get_current_interest(self, name):
         if self.calls:
             return self.calls[-1].interest
+
+    def _get_prospect_mobile_contact(self):
+        for contact_method in self.prospect.contact_methods:
+            if contact_method.contact_type == 'mobile':
+                return contact_method
