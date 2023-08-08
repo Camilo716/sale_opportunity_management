@@ -170,6 +170,8 @@ Verificar estado final del seguimiento del prospecto y sus llamadas
     [proteus.Model.get('sale.call')(1), proteus.Model.get('sale.call')(2), proteus.Model.get('sale.call')(3)]
     >>> prospect_trace.current_interest
     '3'
+    >>> prospect_trace.state 
+    'open'
 
 Programar una próxima llamada pendiente al seguimiento de prospecto::
     >>> pending_call1 = prospect_trace.pending_calls.new(date = date.today() + timedelta(days=7))
@@ -177,6 +179,10 @@ Programar una próxima llamada pendiente al seguimiento de prospecto::
 
     >>> prospect_trace.pending_calls
     [proteus.Model.get('sale.pending_call')(1)]
+
+    >>> prospect_trace.state
+    'with_pending_calls'
+
 
 --------
 Reportes

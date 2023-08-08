@@ -4,6 +4,7 @@ from trytond.model import ModelSQL, ModelView, fields
 
 from .selections.call_types import CallTypes
 from .selections.interest import Interest
+from .selections.prospect_trace_states import ProspectTraceStates
 
 
 class ProspectTrace(ModelSQL, ModelView):
@@ -22,6 +23,10 @@ class ProspectTrace(ModelSQL, ModelView):
     current_interest = fields.Selection(
         Interest.get_interest_levels(), 'Current interest')
 
+    _state_type_field = fields.Selection(
+        ProspectTraceStates.get_prospect_trace_states(), 'State')
+    state = fields.Function(_state_type_field, '_get_state')
+
     @fields.depends('calls', 'current_interest')
     def on_change_calls(self):
         if self.calls:
@@ -33,14 +38,22 @@ class ProspectTrace(ModelSQL, ModelView):
             else:
                 last_call.call_type = CallTypes.get_call_types()[0][0]
 
-    def get_rec_name(self, name):
-        if self.prospect:
-            return '[' + str(self.id) + '] ' + self.prospect.name
-
     @fields.depends('prospect')
     def on_change_prospect(self):
         if self.prospect:
             self.prospect_city = self.prospect.city
+
+    def get_rec_name(self, name):
+        if self.prospect:
+            return '[' + str(self.id) + '] ' + self.prospect.name
+
+    def _get_state(self, name):
+        has_pending_calls = len(self.pending_calls) > 0
+
+        if has_pending_calls:
+            return ProspectTraceStates.get_prospect_trace_states()[2][0]
+        else:
+            return ProspectTraceStates.get_prospect_trace_states()[1][0]
 
     def _get_current_interest(self, name):
         if self.calls:
