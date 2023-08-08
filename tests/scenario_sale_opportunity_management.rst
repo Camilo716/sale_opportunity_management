@@ -148,9 +148,9 @@ Crear seguimiento de prospecto::
     '31223425234'
 
 Crear llamadas a un seguimiento de prospecto desde el seguimiento de prospecto::
-    >>> call = prospect_trace.calls.new(description='First call', interest='0')
-    >>> call = prospect_trace.calls.new(description='Second call', interest='1')
-    >>> call = prospect_trace.calls.new(description='Third call', interest='3')
+    >>> call1 = prospect_trace.calls.new(description='First call', interest='0')
+    >>> call2 = prospect_trace.calls.new(description='Second call', interest='1')
+    >>> call3 = prospect_trace.calls.new(description='Third call', interest='3')
     >>> prospect_trace.save()
 
 Verificar estado final del seguimiento del prospecto y sus llamadas
@@ -172,15 +172,9 @@ Verificar estado final del seguimiento del prospecto y sus llamadas
     '3'
 
 Programar una próxima llamada pendiente al seguimiento de prospecto::
-    >>> PendingCall = Model.get('sale.pending_call')
-    >>> pending_call = PendingCall()
+    >>> pending_call1 = prospect_trace.pending_calls.new(date = date.today() + timedelta(days=7))
+    >>> prospect_trace.save()
 
-    >>> pending_call.prospect_trace = prospect_trace
-    >>> pending_call.date = date.today() + timedelta(days=7)
-    >>> pending_call.save()
-
-    >>> pending_call.prospect_trace.prospect.name
-    'guchito S.A.S'
     >>> prospect_trace.pending_calls
     [proteus.Model.get('sale.pending_call')(1)]
 
