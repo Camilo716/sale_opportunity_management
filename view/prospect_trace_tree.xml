@@ -2,7 +2,7 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <tree>
-    <field name="prospect"/>
+    <field name="prospect" expand="1"/>
     <field name="prospect_contact" expand="1"/>
     <field name="prospect_city" expand="1"/>
     <field name="current_interest" expand="1"/>
