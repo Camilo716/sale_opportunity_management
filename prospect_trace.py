@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from trytond.model import ModelSQL, ModelView, fields
+from trytond.pool import Pool
 
 from .selections.call_types import CallTypes
 from .selections.interest import Interest
@@ -64,6 +65,12 @@ class ProspectTrace(ModelSQL, ModelView):
             return self.calls[-1].interest
 
     def _get_prospect_mobile_contact(self):
-        for contact_method in self.prospect.contact_methods:
-            if contact_method.contact_type == 'mobile':
-                return contact_method
+        pool = Pool()
+        ContactMethod = pool.get('prospect.contact_method')
+
+        contact_mobile, = ContactMethod.search(
+            [('prospect', '=', self.prospect.id),
+            ('contact_type', '=', 'mobile')],
+            limit=1)
+
+        return contact_mobile
