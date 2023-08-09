@@ -46,6 +46,7 @@ Crear prospecto::
     
     >>> prospect.name = 'guchito S.A.S'
     >>> contact_method = prospect.contact_methods.new(contact_type='mobile', value='31223425234', name='Roberto', position='Gerente R.H') 
+    >>> contact_method = prospect.contact_methods.new(contact_type='mobile', value='12345678910', name='Pancracia', position='Asistente administrativo') 
     >>> contact_method = prospect.contact_methods.new(contact_type='mail', value='peralto@guchitos.org', name='Peralto', position='Administrador') 
 
     .. >>> Department = Model.get('sale.department')
@@ -59,14 +60,14 @@ Crear prospecto::
 
 Verificar estado final de creación de prospecto::
     >>> prospect.contact_methods 
-    [proteus.Model.get('prospect.contact_method')(1), proteus.Model.get('prospect.contact_method')(2)]
+    [proteus.Model.get('prospect.contact_method')(1), proteus.Model.get('prospect.contact_method')(2), proteus.Model.get('prospect.contact_method')(3)]
     >>> prospect.contact_methods[0].contact_type
     'mobile'
     >>> prospect.contact_methods[0].position
     'Gerente R.H'
-    >>> prospect.contact_methods[1].name
+    >>> prospect.contact_methods[2].name
     'Peralto'
-    >>> prospect.contact_methods[1].value
+    >>> prospect.contact_methods[2].value
     'peralto@guchitos.org'
 
     >>> prospect.city.code
@@ -155,6 +156,8 @@ Crear seguimiento de prospecto::
     '31223425234'
     >>> prospect_trace.prospect_contact.contact_type
     'mobile'
+    >>> prospect_trace.prospect_contact.position
+    'Gerente R.H'
 
 Crear llamadas a un seguimiento de prospecto desde el seguimiento de prospecto::
     >>> call1 = prospect_trace.calls.new(description='First call', interest='0')
