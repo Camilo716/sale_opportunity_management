@@ -39,5 +39,7 @@ class ContactMethod(ModelSQL, ModelView):
     contact_type = fields.Selection(_type, 'Contact type')
 
     value = fields.Char('Value')
+    name = fields.Char('Name')
+    position = fields.Char('Position')
 
     prospect = fields.Many2One('sale.prospect', 'Prospect')

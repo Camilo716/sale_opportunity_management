@@ -45,8 +45,8 @@ Crear prospecto::
     >>> prospect = Prospect()
     
     >>> prospect.name = 'guchito S.A.S'
-    >>> contact_method = prospect.contact_methods.new(contact_type = 'mobile', value = '31223425234') 
-    >>> contact_method = prospect.contact_methods.new(contact_type = 'mail', value = 'peralto@guchitos.org') 
+    >>> contact_method = prospect.contact_methods.new(contact_type='mobile', value='31223425234', name='Roberto', position='Gerente R.H') 
+    >>> contact_method = prospect.contact_methods.new(contact_type='mail', value='peralto@guchitos.org', name='Peralto', position='Administrador') 
 
     .. >>> Department = Model.get('sale.department')
     .. >>> cundinamarca, = Department.find([('code', '=', 'CO-25')])
@@ -60,10 +60,20 @@ Crear prospecto::
 Verificar estado final de creación de prospecto::
     >>> prospect.contact_methods 
     [proteus.Model.get('prospect.contact_method')(1), proteus.Model.get('prospect.contact_method')(2)]
+    >>> prospect.contact_methods[0].contact_type
+    'mobile'
+    >>> prospect.contact_methods[0].position
+    'Gerente R.H'
+    >>> prospect.contact_methods[1].name
+    'Peralto'
+    >>> prospect.contact_methods[1].value
+    'peralto@guchitos.org'
+
     >>> prospect.city.code
     'CO-05001'
     >>> prospect.department.code
     'CO-05'
+
 
 
 
