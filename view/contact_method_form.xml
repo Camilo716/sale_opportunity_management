@@ -10,4 +10,10 @@ this repository contains the full copyright notices and license terms. -->
 
     <label name="prospect"/>
     <field name="prospect"/>
+
+    <label name="name"/>
+    <field name="name"/>
+
+    <label name="position"/>
+    <field name="position"/>
 </form>
