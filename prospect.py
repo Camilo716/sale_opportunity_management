@@ -29,7 +29,6 @@ class Prospect(ModelSQL, ModelView):
 class ContactMethod(ModelSQL, ModelView):
     'Mecanismo de contacto'
     __name__ = 'prospect.contact_method'
-    _rec_name = 'value'
 
     _type = [
         ('phone', 'Phone'),
@@ -43,3 +42,8 @@ class ContactMethod(ModelSQL, ModelView):
     position = fields.Char('Position')
 
     prospect = fields.Many2One('sale.prospect', 'Prospect')
+
+    def get_rec_name(self, name):
+        fields_exist = self.name and self.position and self.value
+        if fields_exist:
+            return self.name + ' - ' + self.position + '  [' + self.value + ']'
