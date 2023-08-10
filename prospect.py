@@ -44,12 +44,11 @@ class ContactMethod(ModelSQL, ModelView):
     prospect = fields.Many2One('sale.prospect', 'Prospect')
 
     def get_rec_name(self, name):
+        fields = [self.name, self.job, self.value]
         contact_rec_name = ''
-        if self.name:
-            contact_rec_name += self.name
-        if self.job:
-            contact_rec_name += ' - ' + self.job
-        if self.value:
-            contact_rec_name += ' [' + self.value + ']'
+
+        for field in fields:
+            if field:
+                contact_rec_name += ' [' + str(field) + '] '
 
         return contact_rec_name
