@@ -47,7 +47,7 @@ namespace :live do
 
   desc 'monitorear salida'
   task :tail do
-    compose('logs', '-f', 'app.dev', compose: 'compose.yml')
+    compose('logs', '-f', 'live.dev', compose: 'compose.yml')
   end
 
   desc 'detener entorno'

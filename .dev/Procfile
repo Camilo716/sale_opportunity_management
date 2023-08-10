@@ -1,2 +1,2 @@
-trytond: trytond -d ${DB_NAME} --dev -v -c $SCRIPT_DIR/trytond.cfg
+trytond: while true; do trytond -d ${DB_NAME} --dev -v -c $SCRIPT_DIR/trytond.cfg; done
 monitor: python3 $SCRIPT_DIR/dev.py

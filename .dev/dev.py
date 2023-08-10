@@ -1,4 +1,5 @@
 # script para refrescar cambios de xml del modulo de tryton
+import sys
 import os
 import logging
 
@@ -18,9 +19,9 @@ def _main():
         (_, type_names, path, filename) = event
         (_, ext) = os.path.splitext(filename)
 
-        if ext in ['.py', '.xml']:
+        if ext in ['.py', '.xml', '.cfg']:
             if os.system("trytond-admin -d {} -u {}".format(DB_NAME, MODULE_NAME)) != 0:
-                raise Exception("fallo trytond-admin")
+                print("fallo trytond-admin", file=sys.stderr)
 
             logging.info("ACTUALIZADO TRYTOND POR CAMBIO DE ARCHIVO %s", filename)
 
