@@ -6,10 +6,10 @@ services:
     build:
       context: .
     environment:
-      - SRC=/app
-      - DB_CACHE=/tmp
-      - DB_NAME=trytontest
-      - TRYTOND_DATABASE_URI=postgresql://tryton:tryton@db.dev:5432/
+      SRC: /app
+      DB_CACHE: /tmp
+      DB_NAME: ":memory:"
+      TRYTOND_DATABASE_URI: sqlite://
     depends_on:
       - db.dev
     command: sleep 10h
