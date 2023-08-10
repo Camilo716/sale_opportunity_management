@@ -9,7 +9,7 @@ class Prospect(ModelSQL, ModelView):
     __name__ = 'sale.prospect'
     _rec_name = 'name'
 
-    name = fields.Char('Name')
+    name = fields.Char('Name', required=True)
 
     contact_methods = fields.One2Many(
         'prospect.contact_method',
@@ -35,13 +35,13 @@ class ContactMethod(ModelSQL, ModelView):
         ('mobile', 'Mobile'),
         ('mail', 'Mail')
     ]
-    contact_type = fields.Selection(_type, 'Contact type')
+    contact_type = fields.Selection(_type, 'Contact type', required=True)
 
-    value = fields.Char('Value')
+    value = fields.Char('Value', required=True)
     name = fields.Char('Name')
     job = fields.Char('job')
 
-    prospect = fields.Many2One('sale.prospect', 'Prospect')
+    prospect = fields.Many2One('sale.prospect', 'Prospect', required=True)
 
     def get_rec_name(self, name):
         fields = [self.name, self.job, self.value]
