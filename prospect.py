@@ -39,11 +39,17 @@ class ContactMethod(ModelSQL, ModelView):
 
     value = fields.Char('Value')
     name = fields.Char('Name')
-    position = fields.Char('Position')
+    job = fields.Char('job')
 
     prospect = fields.Many2One('sale.prospect', 'Prospect')
 
     def get_rec_name(self, name):
-        fields_exist = self.name and self.position and self.value
-        if fields_exist:
-            return self.name + ' - ' + self.position + '  [' + self.value + ']'
+        contact_rec_name = ''
+        if self.name:
+            contact_rec_name += self.name
+        if self.job:
+            contact_rec_name += ' - ' + self.job
+        if self.value:
+            contact_rec_name += ' [' + self.value + ']'
+
+        return contact_rec_name

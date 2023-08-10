@@ -14,6 +14,6 @@ this repository contains the full copyright notices and license terms. -->
     <label name="name"/>
     <field name="name"/>
 
-    <label name="position"/>
-    <field name="position"/>
+    <label name="job"/>
+    <field name="job"/>
 </form>

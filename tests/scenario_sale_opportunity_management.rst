@@ -45,9 +45,9 @@ Crear prospecto::
     >>> prospect = Prospect()
     
     >>> prospect.name = 'guchito S.A.S'
-    >>> contact_method = prospect.contact_methods.new(contact_type='mobile', value='31223425234', name='Roberto', position='Gerente R.H') 
-    >>> contact_method = prospect.contact_methods.new(contact_type='mobile', value='12345678910', name='Pancracia', position='Asistente administrativo') 
-    >>> contact_method = prospect.contact_methods.new(contact_type='mail', value='peralto@guchitos.org', name='Peralto', position='Administrador') 
+    >>> contact_method = prospect.contact_methods.new(contact_type='mobile', value='31223425234', name='Roberto', job='Gerente R.H') 
+    >>> contact_method = prospect.contact_methods.new(contact_type='mobile', value='12345678910', name='Pancracia', job='Asistente administrativo') 
+    >>> contact_method = prospect.contact_methods.new(contact_type='mail', value='peralto@guchitos.org', name='Peralto', job='Administrador') 
 
     .. >>> Department = Model.get('sale.department')
     .. >>> cundinamarca, = Department.find([('code', '=', 'CO-25')])
@@ -63,7 +63,7 @@ Verificar estado final de creación de prospecto::
     [proteus.Model.get('prospect.contact_method')(1), proteus.Model.get('prospect.contact_method')(2), proteus.Model.get('prospect.contact_method')(3)]
     >>> prospect.contact_methods[0].contact_type
     'mobile'
-    >>> prospect.contact_methods[0].position
+    >>> prospect.contact_methods[0].job
     'Gerente R.H'
     >>> prospect.contact_methods[2].name
     'Peralto'
@@ -156,7 +156,7 @@ Crear seguimiento de prospecto::
     '31223425234'
     >>> prospect_trace.prospect_contact.contact_type
     'mobile'
-    >>> prospect_trace.prospect_contact.position
+    >>> prospect_trace.prospect_contact.job
     'Gerente R.H'
 
 Crear llamadas a un seguimiento de prospecto desde el seguimiento de prospecto::
