@@ -41,12 +41,13 @@ class ProspectTrace(ModelSQL, ModelView):
 
     @fields.depends('prospect')
     def on_change_prospect(self):
-        if self.prospect:
-            self.prospect_city = self.prospect.city
+        if not self.prospect:
+            return
 
-            mobile_contact = self._get_prospect_mobile_contact()
-            if mobile_contact:
-                self.prospect_contact = mobile_contact
+        self.prospect_city = self.prospect.city
+        mobile_contact = self._get_prospect_mobile_contact()
+        if mobile_contact:
+            self.prospect_contact = mobile_contact
 
     def get_rec_name(self, name):
         if self.prospect:
