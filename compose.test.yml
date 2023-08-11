@@ -1,6 +1,4 @@
 version: '3.9'
-include:
-  - compose.base.yml
 services:
   app.dev:
     build:
@@ -10,8 +8,6 @@ services:
       DB_CACHE: /tmp
       DB_NAME: ":memory:"
       TRYTOND_DATABASE_URI: sqlite://
-    depends_on:
-      - db.dev
     command: sleep 10h
     volumes:
       - .:/app

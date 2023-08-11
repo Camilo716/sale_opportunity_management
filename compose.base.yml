@@ -1,8 +1,0 @@
-
-services:
-  db.dev:
-    image: postgres:12
-    environment:
-      - POSTGRES_USER=tryton
-      - POSTGRES_PASSWORD=tryton
-      - POSTGRES_DB=tryton
