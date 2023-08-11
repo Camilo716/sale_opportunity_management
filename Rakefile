@@ -48,7 +48,7 @@ namespace :live do
   desc 'resetear entorno'
   task :reset do
     compose('down', '-v', compose: 'compose.yml')
-    Rake::Task['up'].invoke
+    Rake::Task['live:up'].invoke
   end
 
   desc 'monitorear salida'
