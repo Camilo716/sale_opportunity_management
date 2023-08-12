@@ -195,6 +195,16 @@ Programar una próxima llamada pendiente al seguimiento de prospecto::
     >>> prospect_trace.state
     'with_pending_calls'
 
+El usuario no ingresa un tipo mobile en contact_method::
+    >>> prospect2 = Prospect()
+    >>> prospect2.name = 'Sin celulares S.A.S'
+    >>> contact_method = prospect2.contact_methods.new(contact_type='mail', value='felpucio@sincelulares.org', name='felpucio', job='Supervisor')
+    >>> prospect2.save()
+
+    >>> prospect_trace2 = ProspectTrace()
+    >>> prospect_trace2.prospect = prospect2
+
+    >>> prospect_trace2.save()
 
 --------
 Reportes

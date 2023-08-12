@@ -73,9 +73,10 @@ class ProspectTrace(ModelSQL, ModelView):
         pool = Pool()
         ContactMethod = pool.get('prospect.contact_method')
 
-        contact_mobile, = ContactMethod.search(
+        contact_mobile = ContactMethod.search(
             [('prospect', '=', self.prospect.id),
             ('contact_type', '=', 'mobile')],
             limit=1)
 
-        return contact_mobile
+        if contact_mobile:
+            return contact_mobile[0]
