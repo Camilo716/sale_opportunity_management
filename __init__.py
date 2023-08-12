@@ -15,8 +15,8 @@ def register():
         call.Call,
         department.Department,
         city.City,
-        prospect.Prospect,
         prospect.ContactMethod,
+        prospect.Prospect,
         prospect_trace.ProspectTrace,
 
         module='sale_opportunity_management', type_='model')
