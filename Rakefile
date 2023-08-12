@@ -45,6 +45,11 @@ namespace :live do
     compose('up', '--build', '-d', compose: 'compose.yml')
   end
 
+  desc 'terminal'
+  task :sh do
+    compose('exec', 'live.dev', 'bash')
+  end
+
   desc 'resetear entorno'
   task :reset do
     compose('down', '-v', compose: 'compose.yml')
