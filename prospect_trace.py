@@ -24,9 +24,8 @@ class ProspectTrace(ModelSQL, ModelView):
     current_interest = fields.Selection(
         Interest.get_interest_levels(), 'Current interest')
 
-    _state_type_field = fields.Selection(
+    state = fields.Selection(
         ProspectTraceStates.get_prospect_trace_states(), 'State')
-    state = fields.Function(_state_type_field, '_get_state')
 
     @fields.depends('calls', 'current_interest')
     def on_change_calls(self):
@@ -39,6 +38,13 @@ class ProspectTrace(ModelSQL, ModelView):
             else:
                 last_call.call_type = CallTypes.get_call_types()[0][0]
 
+    @fields.depends('pending_calls', 'state')
+    def on_change_pending_calls(self):
+        pc_states = ProspectTraceStates.get_prospect_trace_states()
+        if self.pending_calls:
+            with_pending_calls = pc_states[2][0]
+            self.state = with_pending_calls
+
     @fields.depends('prospect')
     def on_change_prospect(self):
         if not self.prospect:
@@ -46,20 +52,17 @@ class ProspectTrace(ModelSQL, ModelView):
 
         self.prospect_city = self.prospect.city
         mobile_contact = self._get_prospect_mobile_contact()
+
         if mobile_contact:
             self.prospect_contact = mobile_contact
+
+        pc_states = ProspectTraceStates.get_prospect_trace_states()
+        open = pc_states[1][0]
+        self.state = open
 
     def get_rec_name(self, name):
         if self.prospect:
             return '[' + str(self.id) + '] ' + self.prospect.name
-
-    def _get_state(self, name):
-        has_pending_calls = len(self.pending_calls) > 0
-
-        if has_pending_calls:
-            return ProspectTraceStates.get_prospect_trace_states()[2][0]
-        else:
-            return ProspectTraceStates.get_prospect_trace_states()[1][0]
 
     def _get_current_interest(self, name):
         if self.calls:
