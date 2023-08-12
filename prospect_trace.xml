@@ -3,11 +3,6 @@
 this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
-        <record model="ir.action.act_window" id="act_prospect_trace_tree">
-            <field name="name">Prospect Traces</field> 
-            <field name="res_model">sale.prospect_trace</field> 
-        </record>
-
         <record model="ir.ui.view" id="prospect_trace_view_tree">
             <field name="model">sale.prospect_trace</field> 
             <field name="type">tree</field>
@@ -18,7 +13,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type">form</field>
             <field name="name">prospect_trace_form</field>
         </record>
-
+        <record model="ir.action.act_window" id="act_prospect_trace_tree">
+            <field name="name">Prospect Traces</field> 
+            <field name="res_model">sale.prospect_trace</field> 
+        </record>
         <record model="ir.action.act_window.view" id="act_prospect_trace_tree_view1">
             <field name="sequence" eval="10"/>
             <field name="view" ref="prospect_trace_view_tree"/>
@@ -27,6 +25,27 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window.view" id="act_prospect_trace_form_view1">
             <field name="sequence" eval="20"/>
             <field name="view" ref="prospect_trace_view_form"/>
+            <field name="act_window" ref="act_prospect_trace_tree"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_prospect_trace_domain_open">
+            <field name="name">Open</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain" eval="[('state', '=', 'open')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_prospect_trace_tree"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_prospect_trace_domain_with_pending_calls">
+            <field name="name">With pending calls</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain" eval="[('state', '=', 'with_pending_calls')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_prospect_trace_tree"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_prospect_trace_domain_all">
+            <field name="name">All</field>
+            <field name="sequence" eval="9999"/>
+            <field name="domain"></field>
+            <field name="count" eval="True"/>
             <field name="act_window" ref="act_prospect_trace_tree"/>
         </record>
 
