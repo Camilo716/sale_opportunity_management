@@ -5,7 +5,6 @@ from trytond.pool import Pool
 
 from .selections.call_types import CallTypes
 from .selections.interest import Interest
-from .selections.prospect_trace_states import ProspectTraceStates
 
 
 class ProspectTrace(ModelSQL, ModelView):
@@ -24,8 +23,16 @@ class ProspectTrace(ModelSQL, ModelView):
     current_interest = fields.Selection(
         Interest.get_interest_levels(), 'Current interest')
 
-    _states_selection = ProspectTraceStates.get_prospect_trace_states()
-    state = fields.Selection(_states_selection, 'State')
+    state = fields.Selection([
+            ('unassigned', 'Unassigned'),
+            ('open', 'Open'),
+            ('with_pending_calls', 'With pending calls'),
+            ('closed', 'Closed')
+            ], 'State')
+
+    @classmethod
+    def default_state(cls):
+        return 'open'
 
     @fields.depends('calls', 'current_interest')
     def on_change_calls(self):
@@ -41,8 +48,7 @@ class ProspectTrace(ModelSQL, ModelView):
     @fields.depends('pending_calls', 'state')
     def on_change_pending_calls(self):
         if self.pending_calls:
-            with_pending_calls_state = self._states_selection[2][0]
-            self.state = with_pending_calls_state
+            self.state = 'with_pending_calls'
 
     @fields.depends('prospect')
     def on_change_prospect(self):
@@ -54,9 +60,6 @@ class ProspectTrace(ModelSQL, ModelView):
 
         if mobile_contact:
             self.prospect_contact = mobile_contact
-
-        open_state = self._states_selection[1][0]
-        self.state = open_state
 
     def get_rec_name(self, name):
         if self.prospect:
