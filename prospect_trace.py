@@ -47,7 +47,7 @@ class ProspectTrace(ModelSQL, ModelView):
 
     @fields.depends('pending_calls', 'state')
     def on_change_pending_calls(self):
-        if self.pending_calls:
+        if len(self.pending_calls) > 0:
             self.state = 'with_pending_calls'
 
     @fields.depends('prospect')
