@@ -20,10 +20,25 @@ class Prospect(ModelSQL, ModelView):
                            domain=[If(Eval('department'),
                                     ('parent', '=', Eval('department')))])
 
+    assigned_operator = fields.Many2One('res.user', "Assigned operator")
+
+    state = fields.Selection([
+        ('unassigned', 'Unsassigned'),
+        ('assigned', 'Assigned')], "State", readonly=True)
+
+    @classmethod
+    def default_state(cls):
+        return 'unassigned'
+
     @fields.depends('city', 'department')
     def on_change_city(self):
         if self.city:
             self.department = self.city.parent
+
+    @fields.depends('assigned_operator', 'state')
+    def on_change_assigned_operator(self):
+        if self.assigned_operator:
+            self.state = 'assigned'
 
 
 class ContactMethod(ModelSQL, ModelView):

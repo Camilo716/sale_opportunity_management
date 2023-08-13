@@ -74,11 +74,19 @@ Verificar estado final de creación de prospecto::
     'CO-05001'
     >>> prospect.department.code
     'CO-05'
+    >>> prospect.state
+    'unassigned'
 
+Asignar operario a un prospecto::
+    >>> User = Model.get('res.user')
+    >>> user,  = User.find([('name', '=', 'Administrator')])
+    >>> prospect.assigned_operator = user
 
-
-
-
+    >>> prospect.assigned_operator.name
+    'Administrator'
+    >>> prospect.state
+    'assigned'
+  
 ------------------------------------
 Asignación de prospectos a operarios
 ------------------------------------

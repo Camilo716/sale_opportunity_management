@@ -36,6 +36,73 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_prospects_tree"
             action="act_prospect_tree"/>
 
+	<record model="ir.action.act_window" id="act_prospect_unassigned_tree">
+            <field name="name">Unassigned</field> 
+            <field name="res_model">sale.prospect</field>
+	    <field name="domain" eval="[('state', '=', 'unassigned')]" pyson="1"/>
+        </record>
+
+        <record model="ir.ui.view" id="prospect_unassigned_view_tree">
+            <field name="model">sale.prospect</field> 
+            <field name="type">tree</field>
+            <field name="name">prospect_tree</field>
+        </record>
+        <record model="ir.ui.view" id="prospect_unassigned_view_form">
+            <field name="model">sale.prospect</field> 
+            <field name="type">form</field>
+            <field name="name">prospect_form</field>
+        </record>
+
+        <record model="ir.action.act_window.view" id="act_prospect_unassigned_tree_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="prospect_unassigned_view_tree"/>
+            <field name="act_window" ref="act_prospect_unassigned_tree"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_prospect_unassigned_form_view1">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="prospect_view_form"/>
+            <field name="act_window" ref="act_prospect_unassigned_tree"/>
+        </record>
+
+	<menuitem
+            parent="menu_prospects_tree"
+            sequence="10"
+            id="menu_prospects_unassigned_tree"
+            action="act_prospect_unassigned_tree"/>
+
+	<record model="ir.action.act_window" id="act_prospect_assigned_tree">
+            <field name="name">Assigned</field> 
+            <field name="res_model">sale.prospect</field>
+	    <field name="domain" eval="[('state', '=', 'assigned')]" pyson="1"/>
+        </record>
+
+        <record model="ir.ui.view" id="prospect_assigned_view_tree">
+            <field name="model">sale.prospect</field> 
+            <field name="type">tree</field>
+            <field name="name">prospect_tree</field>
+        </record>
+        <record model="ir.ui.view" id="prospect_assigned_view_form">
+            <field name="model">sale.prospect</field> 
+            <field name="type">form</field>
+            <field name="name">prospect_form</field>
+        </record>
+
+        <record model="ir.action.act_window.view" id="act_prospect_assigned_tree_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="prospect_assigned_view_tree"/>
+            <field name="act_window" ref="act_prospect_assigned_tree"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_prospect_assigned_form_view1">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="prospect_view_form"/>
+            <field name="act_window" ref="act_prospect_assigned_tree"/>
+        </record>
+
+	<menuitem
+            parent="menu_prospects_tree"
+            sequence="10"
+            id="menu_prospects_assigned_tree"
+            action="act_prospect_assigned_tree"/>
 
         <record model="ir.action.act_window" id="act_contact_method_tree">
             <field name="name">Contact method</field> 
