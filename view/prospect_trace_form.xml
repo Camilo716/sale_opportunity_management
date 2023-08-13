@@ -3,14 +3,12 @@
 this repository contains the full copyright notices and license terms. -->
 <form>
     <group col="6" colspan="5" id="header" yalign="0">
-        <group col="-1" colspan="2" id="prospect_data">
-                <label name="prospect"/>
-                <field name="prospect"/>
-                <label name="prospect_contact"/>
-                <field name="prospect_contact"/>
-                <label name="prospect_city"/>
-                <field name="prospect_city"/>
-        </group>
+        <label name="prospect"/>
+        <field name="prospect"/>
+        <label name="prospect_contact"/>
+        <field name="prospect_contact"/>
+        <label name="prospect_city"/>
+        <field name="prospect_city"/>
     </group>
 
     <group col="6" colspan="5" id="trace_data" yalign="0">
