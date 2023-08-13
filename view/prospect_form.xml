@@ -20,5 +20,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="contact_methods" colspan="2"/>
         </page>
     </notebook>
+    <newline/>
 
+    <group col="4" id="stated">
+	<label name="assigned_operator"/>
+	<field name="assigned_operator"/>
+	<label name="state"/>
+	<field name="state"/>
+    </group>
 </form>
