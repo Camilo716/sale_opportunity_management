@@ -39,6 +39,8 @@ class Prospect(ModelSQL, ModelView):
     def on_change_assigned_operator(self):
         if self.assigned_operator:
             self.state = 'assigned'
+        else:
+            self.state = 'unassigned'
 
 
 class ContactMethod(ModelSQL, ModelView):

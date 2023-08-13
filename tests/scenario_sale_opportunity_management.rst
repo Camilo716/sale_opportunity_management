@@ -86,7 +86,13 @@ Asignar operario a un prospecto::
     'Administrator'
     >>> prospect.state
     'assigned'
-  
+
+Remover operario asignado de un prospecto::
+    >>> prospect.assigned_operator = None
+    >>> prospect.state
+    'unassigned'
+
+
 ------------------------------------
 Asignación de prospectos a operarios
 ------------------------------------
