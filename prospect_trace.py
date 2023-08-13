@@ -45,6 +45,10 @@ class ProspectTrace(DeactivableMixin, ModelSQL, ModelView):
             else:
                 last_call.call_type = CallTypes.get_call_types()[0][0]
 
+            if len(self.pending_calls) >= 1:
+                self.pending_calls = None
+                self.state = 'open'
+
     @fields.depends('pending_calls', 'state')
     def on_change_pending_calls(self):
         if len(self.pending_calls) >= 1:

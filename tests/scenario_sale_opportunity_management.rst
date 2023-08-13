@@ -186,7 +186,7 @@ Verificar estado final del seguimiento del prospecto y sus llamadas
     'open'
 
 Programar una próxima llamada pendiente al seguimiento de prospecto::
-    >>> pending_call1 = prospect_trace.pending_calls.new(date = date.today() + timedelta(days=7))
+    >>> pending_call4 = prospect_trace.pending_calls.new(date = date.today() + timedelta(days=7))
     >>> prospect_trace.save()
 
     >>> prospect_trace.pending_calls
@@ -197,8 +197,11 @@ Programar una próxima llamada pendiente al seguimiento de prospecto::
 
 Crear una llamada agendada previamente:
     >>> call4 = prospect_trace.calls.new(description='fourth call', interest='3')
-    >>> 
 
+    >>> prospect_trace.pending_calls
+    []
+    >>> prospect_trace.state
+    'open'
 
 Cuando se asigna prospecto sin método de contacto mobile, el contacto en el seguimiento es vacío::
     >>> prospect2 = Prospect()
