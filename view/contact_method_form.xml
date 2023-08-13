@@ -4,16 +4,11 @@ this repository contains the full copyright notices and license terms. -->
 <form>
     <label name="contact_type"/>
     <field name="contact_type"/>
-
     <label name="value"/>
     <field name="value"/>
-
-    <label name="prospect"/>
-    <field name="prospect"/>
-
     <label name="name"/>
     <field name="name"/>
-
     <label name="job"/>
     <field name="job"/>
+    <field name="prospect" invisible="1"/>
 </form>
