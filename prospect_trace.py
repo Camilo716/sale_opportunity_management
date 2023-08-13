@@ -34,7 +34,7 @@ class ProspectTrace(DeactivableMixin, ModelSQL, ModelView):
     def default_state(cls):
         return 'open'
 
-    @fields.depends('calls', 'current_interest')
+    @fields.depends('calls', 'pending_calls', 'current_interest')
     def on_change_calls(self):
         if not self.calls:
             return
