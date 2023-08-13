@@ -2,31 +2,32 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <form>
-    <label name="active"/>
-    <field name="active"/>
+    <group col="6" colspan="5" id="header" yalign="0">
+        <group col="-1" colspan="2" id="prospect_data">
+                <label name="prospect"/>
+                <field name="prospect"/>
+                <label name="prospect_contact"/>
+                <field name="prospect_contact"/>
+                <label name="prospect_city"/>
+                <field name="prospect_city"/>
+        </group>
+    </group>
 
-    <label name="prospect"/>
-    <field name="prospect"/>
-
-    <label name="prospect_contact"/>
-    <field name="prospect_contact"/>
-
-    <label name="prospect_city"/>
-    <field name="prospect_city"/>
-
-    <label name="current_interest"/>
-    <field name="current_interest"/>
+    <group col="6" colspan="5" id="trace_data" yalign="0">
+        <label name="current_interest"/>
+        <field name="current_interest"/>
+        <label name="active"/>
+        <field name="active" xexpand="0" width="25"/>
+    </group>
 
     <newline/>
     <notebook colspan="6">
-        <page string="Calls" id="calls">
+        <page string="Calls - Oldest to Newest" id="calls">
             <field name="calls" colspan="2"/>
-        </page>
-        <page string="Schedule" id="pending_calls">
-            <field name="pending_calls" colspan="2"/>
         </page>
     </notebook>
 
+    <field name="pending_calls" colspan="6"/>
     <label name="state"/>
     <field name="state"/>
 </form>
