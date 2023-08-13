@@ -30,18 +30,21 @@ class ContactMethod(ModelSQL, ModelView):
     'Mecanismo de contacto'
     __name__ = 'prospect.contact_method'
 
-    _type = [
+    contact_type = fields.Selection([
         ('phone', 'Phone'),
         ('mobile', 'Mobile'),
         ('mail', 'Mail')
-    ]
-    contact_type = fields.Selection(_type, 'Contact type', required=True)
+        ], 'Contact type', required=True)
 
     value = fields.Char('Value', required=True)
     name = fields.Char('Name')
     job = fields.Char('job')
 
     prospect = fields.Many2One('sale.prospect', 'Prospect', required=True)
+
+    @classmethod
+    def default_contact_type(cls):
+        return 'mobile'
 
     def get_rec_name(self, name):
         fields = [self.name, self.job, self.value]

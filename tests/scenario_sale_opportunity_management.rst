@@ -45,7 +45,7 @@ Crear prospecto::
     >>> prospect = Prospect()
     
     >>> prospect.name = 'guchito S.A.S'
-    >>> contact_method = prospect.contact_methods.new(contact_type='mobile', value='31223425234', name='Roberto', job='Gerente R.H') 
+    >>> contact_method = prospect.contact_methods.new(value='31223425234', name='Roberto', job='Gerente R.H') 
     >>> contact_method = prospect.contact_methods.new(contact_type='mobile', value='12345678910', name='Pancracia', job='Asistente administrativo') 
     >>> contact_method = prospect.contact_methods.new(contact_type='mail', value='peralto@guchitos.org', name='Peralto', job='Administrador') 
 
