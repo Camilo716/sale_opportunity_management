@@ -42,12 +42,16 @@ class ProspectTrace(DeactivableMixin, ModelSQL, ModelView):
         last_call = self.calls[-1]
         self.current_interest = last_call.interest
 
-        if len(self.calls) > 1:
-            last_call.call_type = CallTypes.get_call_types()[1][0]
+        already_exist_a_call = len(self.calls) > 1
+        if already_exist_a_call:
+            followup_call_type = CallTypes.get_call_types()[1][0]
+            last_call.call_type = followup_call_type
         else:
-            last_call.call_type = CallTypes.get_call_types()[0][0]
+            first_call_type = CallTypes.get_call_types()[0][0]
+            last_call.call_type = first_call_type
 
-        if len(self.pending_calls) >= 1:
+        there_is_a_pending_call = len(self.pending_calls) >= 1
+        if there_is_a_pending_call:
             self.pending_calls = None
             self.state = 'open'
 
