@@ -1,13 +1,13 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from trytond.model import ModelSQL, ModelView, fields
+from trytond.model import ModelSQL, ModelView, fields, DeactivableMixin
 from trytond.pool import Pool
 
 from .selections.call_types import CallTypes
 from .selections.interest import Interest
 
 
-class ProspectTrace(ModelSQL, ModelView):
+class ProspectTrace(DeactivableMixin, ModelSQL, ModelView):
     'Seguimiento de un prospecto'
     __name__ = 'sale.prospect_trace'
 
@@ -47,7 +47,7 @@ class ProspectTrace(ModelSQL, ModelView):
 
     @fields.depends('pending_calls', 'state')
     def on_change_pending_calls(self):
-        if len(self.pending_calls) > 0:
+        if len(self.pending_calls) >= 1:
             self.state = 'with_pending_calls'
 
     @fields.depends('prospect')
