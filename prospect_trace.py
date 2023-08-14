@@ -14,7 +14,8 @@ class ProspectTrace(DeactivableMixin, ModelSQL, ModelView):
     prospect = fields.Many2One('sale.prospect', 'Prospect', required=True)
     prospect_contact = fields.Many2One(
         'prospect.contact_method', 'Contact method')
-    prospect_city = fields.Many2One('sale.city', 'City')
+    prospect_city = fields.Many2One('sale.city', 'City',
+                                    states={'readonly': True})
 
     calls = fields.One2Many('sale.call', 'prospect_trace', 'Calls')
     pending_calls = fields.One2Many(
@@ -34,7 +35,7 @@ class ProspectTrace(DeactivableMixin, ModelSQL, ModelView):
     def default_state(cls):
         return 'open'
 
-    @fields.depends('calls', 'pending_calls', 'current_interest')
+    @fields.depends('calls', 'pending_calls', 'current_interest', 'state')
     def on_change_calls(self):
         if not self.calls:
             return
@@ -60,9 +61,11 @@ class ProspectTrace(DeactivableMixin, ModelSQL, ModelView):
         if len(self.pending_calls) >= 1:
             self.state = 'with_pending_calls'
 
-    @fields.depends('prospect')
+    @fields.depends('prospect', 'prospect_city', 'prospect_contact')
     def on_change_prospect(self):
         if not self.prospect:
+            self.prospect_city = None
+            self.prospect_contact = None
             return
 
         self.prospect_city = self.prospect.city
