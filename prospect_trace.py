@@ -18,8 +18,6 @@ class ProspectTrace(DeactivableMixin, ModelSQL, ModelView):
                                     states={'readonly': True})
 
     calls = fields.One2Many('sale.call', 'prospect_trace', 'Calls')
-    # pending_calls = fields.One2Many(
-    #     'sale.pending_call', 'prospect_trace', 'Pending calls')
     pending_call = fields.Many2One('sale.pending_call', 'Pending call')
 
     current_interest = fields.Selection(
@@ -36,7 +34,6 @@ class ProspectTrace(DeactivableMixin, ModelSQL, ModelView):
     def default_state(cls):
         return 'open'
 
-    # 'pending_calls'
     @fields.depends('calls', 'pending_call', 'current_interest', 'state')
     def on_change_calls(self):
         if not self.calls:

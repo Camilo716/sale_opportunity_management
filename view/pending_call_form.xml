@@ -4,7 +4,4 @@ this repository contains the full copyright notices and license terms. -->
 <form>
     <label name="date"/>
     <field name="date"/>
-
-    <!-- <label name="prospect_trace"/>
-    <field name="prospect_trace"/> -->
 </form>
