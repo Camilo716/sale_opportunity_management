@@ -200,20 +200,21 @@ Verificar estado final del seguimiento del prospecto y sus llamadas
     'open'
 
 Programar una próxima llamada pendiente al seguimiento de prospecto::
-    >>> pending_call4 = prospect_trace.pending_calls.new(date = date.today() + timedelta(days=7))
-    >>> prospect_trace.save()
+    >>> PendingCall = Model.get('sale.pending_call')
+    >>> pending_call = PendingCall()
+    >>> pending_call.date = date(year=2023, month=8, day=8)
+    >>> prospect_trace.pending_call = pending_call
 
-    >>> prospect_trace.pending_calls
-    [proteus.Model.get('sale.pending_call')(1)]
-
+    >>> prospect_trace.pending_call.date
+    datetime.date(2023, 8, 8)
     >>> prospect_trace.state
     'with_pending_calls'
 
 Crear una llamada agendada previamente:
     >>> call4 = prospect_trace.calls.new(description='fourth call', interest='3')
 
-    >>> prospect_trace.pending_calls
-    []
+    >>> prospect_trace.pending_call
+
     >>> prospect_trace.state
     'open'
 

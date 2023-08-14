@@ -8,4 +8,4 @@ class PendingCall(ModelSQL, ModelView):
     __name__ = "sale.pending_call"
 
     date = fields.Date('Date', required=True)
-    prospect_trace = fields.Many2One('sale.prospect_trace', 'Prospect trace')
+    # prospect_trace = fields.Many2One('sale.prospect_trace', 'Prospect trace')

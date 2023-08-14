@@ -18,8 +18,9 @@ class ProspectTrace(DeactivableMixin, ModelSQL, ModelView):
                                     states={'readonly': True})
 
     calls = fields.One2Many('sale.call', 'prospect_trace', 'Calls')
-    pending_calls = fields.One2Many(
-        'sale.pending_call', 'prospect_trace', 'Pending calls')
+    # pending_calls = fields.One2Many(
+    #     'sale.pending_call', 'prospect_trace', 'Pending calls')
+    pending_call = fields.Many2One('sale.pending_call', 'Pending call')
 
     current_interest = fields.Selection(
         Interest.get_interest_levels(), 'Current interest')
@@ -35,7 +36,8 @@ class ProspectTrace(DeactivableMixin, ModelSQL, ModelView):
     def default_state(cls):
         return 'open'
 
-    @fields.depends('calls', 'pending_calls', 'current_interest', 'state')
+    # 'pending_calls'
+    @fields.depends('calls', 'pending_call', 'current_interest', 'state')
     def on_change_calls(self):
         if not self.calls:
             return
@@ -51,14 +53,13 @@ class ProspectTrace(DeactivableMixin, ModelSQL, ModelView):
             first_call_type = CallTypes.get_call_types()[0][0]
             last_call.call_type = first_call_type
 
-        there_is_a_pending_call = len(self.pending_calls) >= 1
-        if there_is_a_pending_call:
-            self.pending_calls = None
+        if self.pending_call:
+            self.pending_call = None
             self.state = 'open'
 
-    @fields.depends('pending_calls', 'state')
-    def on_change_pending_calls(self):
-        if len(self.pending_calls) >= 1:
+    @fields.depends('pending_call', 'state')
+    def on_change_pending_call(self):
+        if self.pending_call:
             self.state = 'with_pending_calls'
 
     @fields.depends('prospect', 'prospect_city', 'prospect_contact')
