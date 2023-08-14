@@ -25,7 +25,8 @@ this repository contains the full copyright notices and license terms. -->
         </page>
     </notebook>
 
-    <field name="pending_call" colspan="6"/>
+    <label name="pending_call"/>
+    <field name="pending_call"/>
     <label name="state"/>
     <field name="state"/>
 </form>

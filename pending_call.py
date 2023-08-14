@@ -8,3 +8,7 @@ class PendingCall(ModelSQL, ModelView):
     __name__ = "sale.pending_call"
 
     date = fields.Date('Date', required=True)
+
+    def get_rec_name(self, name):
+        if self.date:
+            return str(self.date)
