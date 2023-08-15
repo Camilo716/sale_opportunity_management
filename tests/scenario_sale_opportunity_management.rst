@@ -49,10 +49,6 @@ Crear prospecto::
     >>> contact_method = prospect.contact_methods.new(contact_type='mobile', value='12345678910', name='Pancracia', job='Asistente administrativo') 
     >>> contact_method = prospect.contact_methods.new(contact_type='mail', value='peralto@guchitos.org', name='Peralto', job='Administrador') 
 
-    .. >>> Department = Model.get('sale.department')
-    .. >>> cundinamarca, = Department.find([('code', '=', 'CO-25')])
-    .. >>> prospect.department = cundinamarca
-
     >>> City = Model.get('sale.city')
     >>> medellin, = City.find([('code', '=', 'CO-05001')])
     >>> prospect.city = medellin
