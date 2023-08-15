@@ -23,7 +23,8 @@
 
 1. iniciar entorno `rake live:up`
 2. conectar cliente tryton a `localhost:8000` usuario: `admin` y clave: `admin`
-  1. si desea ver la salida de trytond usar `rake live:tail`
+  1. o bien usar cliente web via `http://localhost:8000`
+  2. si desea ver la salida de trytond usar `rake live:tail`
 3. detener entorno `rake live:down`
 
 ### consideraciones
