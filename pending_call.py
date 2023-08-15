@@ -7,7 +7,7 @@ class PendingCall(ModelSQL, ModelView):
     'Llamada pendiente a un prospecto'
     __name__ = "sale.pending_call"
 
-    date = fields.Date('Date', required=True)
+    date = fields.DateTime('Date', required=True)
 
     def get_rec_name(self, name):
         if self.date:

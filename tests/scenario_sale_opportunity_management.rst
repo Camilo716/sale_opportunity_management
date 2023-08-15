@@ -7,7 +7,7 @@ Imports::
 
     >>> from proteus import Model, Wizard
     >>> from trytond.tests.tools import activate_modules
-    >>> from datetime import date, timedelta
+    >>> from datetime import date, timedelta, datetime
     >>> import xml.etree.ElementTree as ET
 
 Activate modules::
@@ -202,11 +202,11 @@ Verificar estado final del seguimiento del prospecto y sus llamadas
 Programar una próxima llamada pendiente al seguimiento de prospecto::
     >>> PendingCall = Model.get('sale.pending_call')
     >>> pending_call = PendingCall()
-    >>> pending_call.date = date(year=2023, month=8, day=8)
+    >>> pending_call.date = datetime(2023, 8, 14, 15, 30, 30)
     >>> prospect_trace.pending_call = pending_call
 
     >>> prospect_trace.pending_call.date
-    datetime.date(2023, 8, 8)
+    datetime.datetime(2023, 8, 14, 15, 30, 30)
     >>> prospect_trace.state
     'with_pending_calls'
 
