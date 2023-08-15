@@ -11,24 +11,28 @@ class ProspectTrace(DeactivableMixin, ModelSQL, ModelView):
     'Seguimiento de un prospecto'
     __name__ = 'sale.prospect_trace'
 
+    _states = {'readonly': True}
+
     prospect = fields.Many2One('sale.prospect', 'Prospect', required=True)
     prospect_contact = fields.Many2One(
         'prospect.contact_method', 'Contact method')
     prospect_city = fields.Many2One('sale.city', 'City',
-                                    states={'readonly': True})
+                                    states=_states)
 
     calls = fields.One2Many('sale.call', 'prospect_trace', 'Calls')
     pending_call = fields.Many2One('sale.pending_call', 'Pending call')
 
     current_interest = fields.Selection(
-        Interest.get_interest_levels(), 'Current interest')
+        Interest.get_interest_levels(), 'Current interest',
+        states=_states)
 
     state = fields.Selection([
             ('unassigned', 'Unassigned'),
             ('open', 'Open'),
             ('with_pending_calls', 'With pending calls'),
             ('closed', 'Closed')
-            ], 'State')
+            ], 'State',
+            states=_states)
 
     @classmethod
     def default_state(cls):
