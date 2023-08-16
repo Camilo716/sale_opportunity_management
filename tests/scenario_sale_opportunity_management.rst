@@ -42,50 +42,71 @@ El administrador deberá poder registrar los contactos de diferentes prospectos,
 
 Crear prospecto::
     >>> Prospect = Model.get('sale.prospect')
-    >>> prospect = Prospect()
+    >>> prospect1 = Prospect()
     
-    >>> prospect.name = 'guchito S.A.S'
-    >>> contact_method = prospect.contact_methods.new(value='31223425234', name='Roberto', job='Gerente R.H') 
-    >>> contact_method = prospect.contact_methods.new(contact_type='mobile', value='12345678910', name='Pancracia', job='Asistente administrativo') 
-    >>> contact_method = prospect.contact_methods.new(contact_type='mail', value='peralto@guchitos.org', name='Peralto', job='Administrador') 
+    >>> prospect1.name = 'guchito S.A.S'
+    >>> contact_method = prospect1.contact_methods.new(value='31223425234', name='Roberto', job='Gerente R.H') 
+    >>> contact_method = prospect1.contact_methods.new(contact_type='mobile', value='12345678910', name='Pancracia', job='Asistente administrativo') 
+    >>> contact_method = prospect1.contact_methods.new(contact_type='mail', value='peralto@guchitos.org', name='Peralto', job='Administrador') 
 
     >>> City = Model.get('sale.city')
     >>> medellin, = City.find([('code', '=', 'CO-05001')])
-    >>> prospect.city = medellin
-    >>> prospect.save()
+    >>> prospect1.city = medellin
+    >>> prospect1.save()
 
 Verificar estado final de creación de prospecto::
-    >>> prospect.contact_methods 
+    >>> prospect1.contact_methods 
     [proteus.Model.get('prospect.contact_method')(1), proteus.Model.get('prospect.contact_method')(2), proteus.Model.get('prospect.contact_method')(3)]
-    >>> prospect.contact_methods[0].contact_type
+    >>> prospect1.contact_methods[0].contact_type
     'mobile'
-    >>> prospect.contact_methods[0].job
+    >>> prospect1.contact_methods[0].job
     'Gerente R.H'
-    >>> prospect.contact_methods[2].name
+    >>> prospect1.contact_methods[2].name
     'Peralto'
-    >>> prospect.contact_methods[2].value
+    >>> prospect1.contact_methods[2].value
     'peralto@guchitos.org'
 
-    >>> prospect.city.code
+    >>> prospect1.city.code
     'CO-05001'
-    >>> prospect.department.code
+    >>> prospect1.department.code
     'CO-05'
-    >>> prospect.state
+    >>> prospect1.state
     'unassigned'
+
+Crear segundo prospecto::
+    >>> prospect2 = Prospect()
+    
+    >>> prospect2.name = 'Modernitus S.A.S'
+    >>> contact_method = prospect2.contact_methods.new(value='3122390987', name='Pepe', job='Jefe de ventas') 
+
+    >>> City = Model.get('sale.city')
+    >>> bogota, = City.find([('code', '=', 'CO-11001')])
+    >>> prospect2.city = bogota
+    >>> prospect2.save()
 
 Asignar operario a un prospecto::
     >>> User = Model.get('res.user')
     >>> user,  = User.find([('name', '=', 'Administrator')])
-    >>> prospect.assigned_operator = user
 
-    >>> prospect.assigned_operator.name
+    .. >>> prospect1.assigned_operator = user
+
+    >>> assign = Wizard('sale.prospect.assign', [prospect1, prospect2])
+    >>> assign.form.prospects_chunk = 2
+    >>> assign.form.operator = user
+    >>> assign.execute('assign')
+
+    >>> prospect1.assigned_operator.name
     'Administrator'
-    >>> prospect.state
+    >>> prospect1.state
+    'assigned'
+    >>> prospect2.assigned_operator.name
+    'Administrator'
+    >>> prospect2.state
     'assigned'
 
 Remover operario asignado de un prospecto::
-    >>> prospect.assigned_operator = None
-    >>> prospect.state
+    >>> prospect1.assigned_operator = None
+    >>> prospect1.state
     'unassigned'
 
 
@@ -155,7 +176,7 @@ Crear seguimiento de prospecto::
     >>> ProspectTrace = Model.get('sale.prospect_trace')
     >>> prospect_trace = ProspectTrace()
 
-    >>> prospect_trace.prospect = prospect
+    >>> prospect_trace.prospect = prospect1
     >>> prospect_trace.save()
 
     >>> prospect_trace.prospect.name
@@ -215,10 +236,10 @@ Crear una llamada agendada previamente:
     'open'
 
 Cuando se asigna prospecto sin método de contacto mobile, el contacto en el seguimiento es vacío::
-    >>> prospect2 = Prospect()
-    >>> prospect2.name = 'Sin celulares S.A.S'
-    >>> contact_method = prospect2.contact_methods.new(contact_type='mail', value='felpucio@sincelulares.org', name='felpucio', job='Supervisor')
-    >>> prospect2.save()
+    >>> prospect3 = Prospect()
+    >>> prospect3.name = 'Sin celulares S.A.S'
+    >>> contact_method = prospect3.contact_methods.new(contact_type='mail', value='felpucio@sincelulares.org', name='felpucio', job='Supervisor')
+    >>> prospect3.save()
 
     >>> prospect_trace2 = ProspectTrace()
     >>> prospect_trace2.prospect = prospect2

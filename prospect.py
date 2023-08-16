@@ -1,7 +1,9 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+from trytond.wizard import Wizard, StateView, Button, StateTransition
 from trytond.model import ModelSQL, ModelView, fields
 from trytond.pyson import Eval, If
+from trytond.pool import Pool
 
 
 class Prospect(ModelSQL, ModelView):
@@ -41,6 +43,7 @@ class Prospect(ModelSQL, ModelView):
             self.state = 'assigned'
         else:
             self.state = 'unassigned'
+        pass
 
 
 class ContactMethod(ModelSQL, ModelView):
@@ -72,3 +75,39 @@ class ContactMethod(ModelSQL, ModelView):
                 contact_rec_name += ' [' + str(field) + '] '
 
         return contact_rec_name
+
+
+class AssignOperatorStart(ModelView):
+    'Inicio de asignación de operador'
+    __name__ = 'sale.prospect.assign.start'
+
+    prospects_chunk = fields.Integer('Prospects chunk')
+    operator = fields.Many2One('res.user', 'Operator')
+
+
+class AssignOperator(Wizard):
+    'Asignar operador a prospecto'
+    __name__ = 'sale.prospect.assign'
+
+    start = StateView(
+        'sale.prospect.assign.start',
+        'sale_opportunity_management.assign_start_view_form', [
+            Button("Cancel", 'end', 'tryton-cancel'),
+            Button("Assign", 'assign', 'tryton-ok', default=True)])
+
+    assign = StateTransition()
+
+    def transition_assign(self):
+        pool = Pool()
+        Prospect = pool.get('sale.prospect')
+
+        prospects = Prospect.search(
+            [('state', '=', 'unassigned')],
+            limit=self.start.prospects_chunk)
+
+        for prospect in prospects:
+            prospect.assigned_operator = self.start.operator
+            prospect.state = 'assigned'
+            prospect.save()
+
+        return 'end'
