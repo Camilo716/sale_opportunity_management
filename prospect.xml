@@ -120,10 +120,20 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_window" ref="act_contact_method_tree"/>
         </record>
 
+        <record model="ir.action.wizard" id="assign_operator_wizard">
+            <field name="name">Assign Operator</field>
+            <field name="wiz_name">sale.prospect.assign</field>
+            <field name="model">sale.prospect</field>
+	    </record>
         <record model="ir.ui.view" id="assign_start_view_form">
             <field name="model">sale.prospect.assign.start</field>
             <field name="type">form</field>
             <field name="name">assign_start_form</field>
         </record>        
+        <record model="ir.action.keyword" id="assign_operator_wizard_keyword">
+            <field name="keyword">form_action</field>
+            <field name="model">sale.prospect, -1</field>
+            <field name="action" ref="assign_operator_wizard"/>
+        </record>
     </data>
 </tryton>
