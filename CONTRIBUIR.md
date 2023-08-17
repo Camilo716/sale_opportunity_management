@@ -18,6 +18,7 @@
 1. iniciar entorno `rake init`
 2. iterar con `rake tdd`
 3. detener el entorno `rake down`
+4. limpiar cache `git clean -xdf`
 
 ### entorno vivo de desarrollo
 
