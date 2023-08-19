@@ -64,10 +64,10 @@ this repository contains the full copyright notices and license terms. -->
                 id="menu_prospects_unassigned_tree"
                 action="act_prospect_unassigned_tree"/>
 
-	    <record model="ir.action.act_window" id="act_prospect_assigned_tree">
+	<record model="ir.action.act_window" id="act_prospect_assigned_tree">
             <field name="name">Assigned</field> 
             <field name="res_model">sale.prospect</field>
-	        <field name="domain" eval="[('state', '=', 'assigned')]" pyson="1"/>
+	    <field name="domain" eval="[('state', '=', 'assigned')]" pyson="1"/>
         </record>
         <record model="ir.ui.view" id="prospect_assigned_view_tree">
             <field name="model">sale.prospect</field> 
@@ -123,8 +123,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.wizard" id="assign_operator_wizard">
             <field name="name">Assign Operator</field>
             <field name="wiz_name">sale.prospect.assign</field>
-            <field name="model">sale.prospect</field>
-	    </record>
+    	</record>
         <record model="ir.ui.view" id="assign_start_view_form">
             <field name="model">sale.prospect.assign.start</field>
             <field name="type">form</field>
@@ -135,5 +134,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="model">sale.prospect, -1</field>
             <field name="action" ref="assign_operator_wizard"/>
         </record>
-    </data>
+ 
+        <menuitem
+                parent="menu_prospects_tree"
+                sequence="40"
+                id="menu_prospects_assigned_wizard"
+                action="assign_operator_wizard"/>
+   </data>
 </tryton>
