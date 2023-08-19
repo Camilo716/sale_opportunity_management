@@ -88,8 +88,6 @@ Asignar operario a un prospecto::
     >>> User = Model.get('res.user')
     >>> user,  = User.find([('name', '=', 'Administrator')])
 
-    .. >>> prospect1.assigned_operator = user
-
     >>> assign = Wizard('sale.prospect.assign', [prospect1, prospect2])
     >>> assign.form.prospects_chunk = 2
     >>> assign.form.operator = user
@@ -103,12 +101,6 @@ Asignar operario a un prospecto::
     'Administrator'
     >>> prospect2.state
     'assigned'
-
-Remover operario asignado de un prospecto::
-    >>> prospect1.assigned_operator = None
-    >>> prospect1.state
-    'unassigned'
-
 
 ------------------------------------
 Asignación de prospectos a operarios
@@ -219,14 +211,9 @@ Verificar estado final del seguimiento del prospecto y sus llamadas
 Programar una próxima llamada pendiente al seguimiento de prospecto::
     >>> PendingCall = Model.get('sale.pending_call')
     
-    .. >>> pending_call = PendingCall()
-
     >>> schedule = Wizard('sale.prospect_trace.schedule', [prospect_trace])
     >>> schedule.form.date_time = datetime(2023, 8, 14, 15, 30, 30)
     >>> schedule.execute('schedule')
-
-    .. >>> pending_call.date = datetime(2023, 8, 14, 15, 30, 30)
-    .. >>> prospect_trace.pending_call = pending_call
 
     >>> prospect_trace.pending_call.date
     datetime.datetime(2023, 8, 14, 15, 30, 30)

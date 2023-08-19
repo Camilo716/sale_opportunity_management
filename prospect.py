@@ -37,14 +37,6 @@ class Prospect(ModelSQL, ModelView):
         if self.city:
             self.department = self.city.parent
 
-    @fields.depends('assigned_operator', 'state')
-    def on_change_assigned_operator(self):
-        if self.assigned_operator:
-            self.state = 'assigned'
-        else:
-            self.state = 'unassigned'
-        pass
-
 
 class ContactMethod(ModelSQL, ModelView):
     'Mecanismo de contacto'
