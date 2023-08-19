@@ -20,7 +20,7 @@ steps:
       - python3 -m unittest
 
   notify-success:
-    image: plugins/matrix
+    image: gitea.onecluster.org/alnus/plugins/matrix:latest
     settings:
       home_server: https://matrix.org
       roomid: "!oxZmsJwfvciTuLYIwg:matrix.org"
