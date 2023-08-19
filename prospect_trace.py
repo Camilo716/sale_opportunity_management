@@ -3,6 +3,7 @@
 from trytond.wizard import Wizard, StateView, Button, StateTransition
 from trytond.model import ModelSQL, ModelView, fields, DeactivableMixin
 from trytond.pool import Pool
+from trytond.pyson import Eval
 
 from .selections.call_types import CallTypes
 from .selections.interest import Interest
@@ -36,8 +37,23 @@ class ProspectTrace(DeactivableMixin, ModelSQL, ModelView):
             states=_states)
 
     @classmethod
+    def __setup__(cls):
+        super(ProspectTrace, cls).__setup__()
+        cls._buttons.update({
+            'wizard_schedule': {
+                'invisible': Eval('state') == 'open',
+                }
+        })
+
+    @classmethod
     def default_state(cls):
         return 'open'
+
+    @classmethod
+    @ModelView.button_action(
+        'sale_opportunity_management.schedule_call_wizard')
+    def wizard_schedule():
+        pass
 
     @fields.depends('calls', 'pending_call', 'current_interest', 'state')
     def on_change_calls(self):

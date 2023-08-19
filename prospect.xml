@@ -134,7 +134,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="model">sale.prospect, -1</field>
             <field name="action" ref="assign_operator_wizard"/>
         </record>
- 
         <menuitem
                 parent="menu_prospects_tree"
                 sequence="40"

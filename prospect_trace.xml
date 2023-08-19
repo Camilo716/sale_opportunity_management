@@ -54,12 +54,19 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_prospect_trace_tree"
             action="act_prospect_trace_tree"/>
 
-        <!-- <record model="ir.action.wizard" id="schedule_call_wizard"> -->
-
+        <record model="ir.action.wizard" id="schedule_call_wizard">
+            <field name="name">Schedule call</field>
+            <field name="wiz_name">sale.prospect_trace.schedule</field>
+        </record>
         <record model="ir.ui.view" id="schedule_start_view_form">
             <field name="model">sale.prospect_trace.schedule.start</field>
             <field name="type">form</field>
             <field name="name">schedule_start_form</field>
+        </record>
+        <record model="ir.model.button" id="schedule_call_wizard_button">
+            <field name="name">wizard_schedule</field>
+            <field name="string">Schedule call</field>
+            <field name="model" search="[('model', '=', 'sale.prospect_trace')]"/>
         </record>
     </data>
 </tryton>
