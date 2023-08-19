@@ -22,7 +22,8 @@ class Prospect(ModelSQL, ModelView):
                            domain=[If(Eval('department'),
                                     ('parent', '=', Eval('department')))])
 
-    assigned_operator = fields.Many2One('res.user', "Assigned operator")
+    assigned_operator = fields.Many2One(
+        'res.user', "Assigned operator", readonly=True)
 
     state = fields.Selection([
         ('unassigned', 'Unsassigned'),
