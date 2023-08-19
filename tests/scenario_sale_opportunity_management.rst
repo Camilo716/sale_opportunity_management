@@ -218,9 +218,15 @@ Verificar estado final del seguimiento del prospecto y sus llamadas
 
 Programar una próxima llamada pendiente al seguimiento de prospecto::
     >>> PendingCall = Model.get('sale.pending_call')
-    >>> pending_call = PendingCall()
-    >>> pending_call.date = datetime(2023, 8, 14, 15, 30, 30)
-    >>> prospect_trace.pending_call = pending_call
+    
+    .. >>> pending_call = PendingCall()
+
+    >>> schedule = Wizard('sale.prospect_trace.schedule', [prospect_trace])
+    >>> schedule.form.date_time = datetime(2023, 8, 14, 15, 30, 30)
+    >>> schedule.execute('schedule')
+
+    .. >>> pending_call.date = datetime(2023, 8, 14, 15, 30, 30)
+    .. >>> prospect_trace.pending_call = pending_call
 
     >>> prospect_trace.pending_call.date
     datetime.datetime(2023, 8, 14, 15, 30, 30)

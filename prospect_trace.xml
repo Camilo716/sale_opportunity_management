@@ -48,11 +48,18 @@ this repository contains the full copyright notices and license terms. -->
             <field name="count" eval="True"/>
             <field name="act_window" ref="act_prospect_trace_tree"/>
         </record>
-
         <menuitem
             parent="menu_calls"
             sequence="20"
             id="menu_prospect_trace_tree"
             action="act_prospect_trace_tree"/>
+
+        <!-- <record model="ir.action.wizard" id="schedule_call_wizard"> -->
+
+        <record model="ir.ui.view" id="schedule_start_view_form">
+            <field name="model">sale.prospect_trace.schedule.start</field>
+            <field name="type">form</field>
+            <field name="name">schedule_start_form</field>
+        </record>
     </data>
 </tryton>

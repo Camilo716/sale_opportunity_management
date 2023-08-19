@@ -1,5 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+from trytond.wizard import Wizard, StateView, Button, StateTransition
 from trytond.model import ModelSQL, ModelView, fields, DeactivableMixin
 from trytond.pool import Pool
 
@@ -58,11 +59,6 @@ class ProspectTrace(DeactivableMixin, ModelSQL, ModelView):
             self.pending_call = None
             self.state = 'open'
 
-    @fields.depends('pending_call', 'state')
-    def on_change_pending_call(self):
-        if self.pending_call:
-            self.state = 'with_pending_calls'
-
     @fields.depends('prospect', 'prospect_city', 'prospect_contact')
     def on_change_prospect(self):
         if not self.prospect:
@@ -95,3 +91,37 @@ class ProspectTrace(DeactivableMixin, ModelSQL, ModelView):
 
         if contact_mobile:
             return contact_mobile[0]
+
+
+class ScheduleCallStart(ModelView):
+    'Inicio agendar llamada a seguimiento de prospecto'
+    __name__ = 'sale.prospect_trace.schedule.start'
+
+    date_time = fields.DateTime('Date time')
+
+
+class ScheduleCall(Wizard):
+    'Agendar llamada a seguimiento de prospecto'
+    __name__ = 'sale.prospect_trace.schedule'
+
+    start = StateView(
+        'sale.prospect_trace.schedule.start',
+        'sale_opportunity_management.schedule_start_view_form', [
+            Button("Cancel", 'end', 'tryton-cancel'),
+            Button("Schedule", 'schedule', 'tryton-ok', default=True)])
+
+    schedule = StateTransition()
+
+    def transition_schedule(self):
+        pool = Pool()
+        PendingCall = pool.get('sale.pending_call')
+        pending_call = PendingCall()
+        pending_call.date = self.start.date_time
+        pending_call.save()
+
+        prospect_trace = self.record
+        prospect_trace.pending_call = pending_call
+        prospect_trace.state = 'with_pending_calls'
+        prospect_trace.save()
+
+        return 'end'

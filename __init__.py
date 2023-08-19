@@ -19,8 +19,10 @@ def register():
         prospect.Prospect,
         prospect_trace.ProspectTrace,
         prospect.AssignOperatorStart,
+        prospect_trace.ScheduleCallStart,
         module='sale_opportunity_management', type_='model')
     Pool.register(
+        prospect_trace.ScheduleCall,
         prospect.AssignOperator,
         module='sale_opportunity_management', type_='wizard')
     Pool.register(
