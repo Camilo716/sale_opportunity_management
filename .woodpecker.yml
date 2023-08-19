@@ -1,7 +1,7 @@
 # 
 # variables que puedo usar? https://woodpecker-ci.org/docs/0.15/usage/environment#built-in-environment-variables
 
-pipeline:
+steps:
   style:
     image: python:3.9
     commands:
@@ -20,7 +20,7 @@ pipeline:
       - python3 -m unittest
 
   notify-success:
-    image: plugins/matrix
+    image: gitea.onecluster.org/alnus/plugins/matrix:latest
     settings:
       home_server: https://matrix.org
       roomid: "!oxZmsJwfvciTuLYIwg:matrix.org"
