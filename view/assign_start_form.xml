@@ -1,13 +1,16 @@
 <?xml version="1.0"?>
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
-<form>
-    <label name="prospects_chunk"/>
-    <field name="prospects_chunk"/>
-    <newline/>
+<form col="6">
     <label name="operator"/>
     <field name="operator"/>
-    
-    <label name="prospects"/>
-    <field name="prospects"/>
+    <label name="prospects_chunk"/>
+    <field name="prospects_chunk"/>
+    <notebook colspan="6">
+	    <page string="Prospects" id="prospects_to_assign" col="6">
+	   	 <group col="2" id="prospects">
+		    <field name="prospects"/>
+	    	</group>
+	    </page>
+    </notebook>
 </form>
