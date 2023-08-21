@@ -22,7 +22,8 @@ class ProspectTrace(DeactivableMixin, ModelSQL, ModelView):
                                     states=_states)
 
     calls = fields.One2Many('sale.call', 'prospect_trace', 'Calls')
-    pending_call = fields.Many2One('sale.pending_call', 'Pending call')
+    pending_call = fields.Many2One(
+        'sale.pending_call', 'Pending call', states=_states)
 
     current_interest = fields.Selection(
         Interest.get_interest_levels(), 'Current interest',
