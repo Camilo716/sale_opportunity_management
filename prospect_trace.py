@@ -41,7 +41,7 @@ class ProspectTrace(DeactivableMixin, ModelSQL, ModelView):
         super(ProspectTrace, cls).__setup__()
         cls._buttons.update({
             'wizard_schedule': {
-                'invisible': Eval('state') == 'open',
+                'invisible': Eval('state') == 'with_pending_calls',
                 }
         })
 
@@ -52,7 +52,7 @@ class ProspectTrace(DeactivableMixin, ModelSQL, ModelView):
     @classmethod
     @ModelView.button_action(
         'sale_opportunity_management.schedule_call_wizard')
-    def wizard_schedule():
+    def wizard_schedule(cls, prospect_traces):
         pass
 
     @fields.depends('calls', 'pending_call', 'current_interest', 'state')

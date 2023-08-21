@@ -25,6 +25,9 @@ this repository contains the full copyright notices and license terms. -->
         </page>
     </notebook>
 
+    <group col="-1" colspan="6" id="buttons">
+	    <button name="wizard_schedule" icon="tryton-calendar"/>
+    </group> 
     <label name="pending_call"/>
     <field name="pending_call"/>
     <label name="state"/>
