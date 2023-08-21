@@ -30,11 +30,3 @@ class Call(ModelSQL, ModelView):
     @classmethod
     def default_date(cls):
         return date.today()
-
-    @fields.depends('interest', 'call_result')
-    def on_change_interest(self):
-        if self.interest:
-            if self.interest == '0':
-                self.call_result = 'missed_call'
-            else:
-                self.call_result = 'answered_call'

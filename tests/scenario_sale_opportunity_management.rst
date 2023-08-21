@@ -185,10 +185,22 @@ Crear seguimiento de prospecto::
     'Gerente R.H'
 
 Crear llamadas a un seguimiento de prospecto desde el seguimiento de prospecto::
-    >>> call1 = prospect_trace.calls.new(description='First call', interest='0')
-    >>> call2 = prospect_trace.calls.new(description='Second call', interest='1')
-    >>> call3 = prospect_trace.calls.new(description='Third call', interest='3')
-    >>> prospect_trace.save()
+    >>> make_call = Wizard('sale.prospect_trace.make_call', [prospect_trace])
+    >>> make_call.form.description = 'First call to the prospect'
+    >>> make_call.form.interest = '0'
+    >>> make_call.execute('make_call')
+
+    >>> make_call = Wizard('sale.prospect_trace.make_call', [prospect_trace])
+    >>> make_call.form.description = 'Second call to the prospect'
+    >>> make_call.form.interest = '1'
+    >>> make_call.execute('make_call')
+
+    >>> make_call = Wizard('sale.prospect_trace.make_call', [prospect_trace])
+    >>> make_call.form.description = 'Third call to the prospect'
+    >>> make_call.form.interest = '3'
+    >>> make_call.execute('make_call')
+
+    .. >>> prospect_trace.save()
 
 Verificar estado final del seguimiento del prospecto y sus llamadas
     >>> prospect_trace.calls[0].call_result
@@ -223,7 +235,10 @@ Programar una próxima llamada pendiente al seguimiento de prospecto::
     'with_pending_calls'
 
 Crear una llamada agendada previamente:
-    >>> call4 = prospect_trace.calls.new(description='fourth call', interest='3')
+    >>> make_call = Wizard('sale.prospect_trace.make_call', [prospect_trace])
+    >>> make_call.form.description = 'Fourth call to the prospect'
+    >>> make_call.form.interest = '3'
+    >>> make_call.execute('make_call')
 
     >>> prospect_trace.pending_call
 

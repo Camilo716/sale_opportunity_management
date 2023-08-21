@@ -56,26 +56,6 @@ class ProspectTrace(DeactivableMixin, ModelSQL, ModelView):
     def wizard_schedule(cls, prospect_traces):
         pass
 
-    @fields.depends('calls', 'pending_call', 'current_interest', 'state')
-    def on_change_calls(self):
-        if not self.calls:
-            return
-
-        last_call = self.calls[-1]
-        self.current_interest = last_call.interest
-
-        already_exist_a_call = len(self.calls) > 1
-        if already_exist_a_call:
-            followup_call_type = CallTypes.get_call_types()[1][0]
-            last_call.call_type = followup_call_type
-        else:
-            first_call_type = CallTypes.get_call_types()[0][0]
-            last_call.call_type = first_call_type
-
-        if self.pending_call:
-            self.pending_call = None
-            self.state = 'open'
-
     @fields.depends('prospect', 'prospect_city', 'prospect_contact')
     def on_change_prospect(self):
         if not self.prospect:
@@ -139,6 +119,60 @@ class ScheduleCall(Wizard):
         prospect_trace = self.record
         prospect_trace.pending_call = pending_call
         prospect_trace.state = 'with_pending_calls'
+        prospect_trace.save()
+
+        return 'end'
+
+
+class MakeCallStart(ModelView):
+    'Inicio de creación de llamada a seguimiento de prospecto'
+    __name__ = 'sale.prospect_trace.make_call.start'
+
+    description = fields.Text('Description')
+    interest = fields.Selection(
+        Interest.get_interest_levels(), 'Interest', required=True)
+
+
+class MakeCall(Wizard):
+    'Crear llamada a un seguimiento de prospecto'
+    __name__ = 'sale.prospect_trace.make_call'
+
+    start = StateView(
+        'sale.prospect_trace.make_call.start',
+        'sale_opportunity_management.make_call_start_view_form', [
+            Button("Cancel", 'end', 'tryton-cancel'),
+            Button("Make call", 'make_call', 'tryton-ok', default=True)])
+
+    make_call = StateTransition()
+
+    def transition_make_call(self):
+        prospect_trace = self.record
+
+        pool = Pool()
+        Call = pool.get('sale.call')
+        call = Call()
+        call.description = self.start.description
+        call.interest = self.start.interest
+        call.prospect_trace = self.record
+
+        if call.interest == '0':
+            call.call_result = 'missed_call'
+        else:
+            call.call_result = 'answered_call'
+        already_exist_a_call = len(prospect_trace.calls) >= 1
+        if already_exist_a_call:
+            followup_call_type = CallTypes.get_call_types()[1][0]
+            call.call_type = followup_call_type
+        else:
+            first_call_type = CallTypes.get_call_types()[0][0]
+            call.call_type = first_call_type
+        call.save()
+
+        prospect_trace.current_interest = call.interest
+        if prospect_trace.pending_call:
+            prospect_trace.pending_call = None
+            prospect_trace.state = 'open'
+        prospect_trace.calls += (call,)
         prospect_trace.save()
 
         return 'end'

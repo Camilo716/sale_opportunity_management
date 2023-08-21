@@ -68,5 +68,16 @@ this repository contains the full copyright notices and license terms. -->
             <field name="string">Schedule call</field>
             <field name="model" search="[('model', '=', 'sale.prospect_trace')]"/>
         </record>
+
+        <record model="ir.action.wizard" id="make_call_wizard">
+            <field name="name">Make call</field>
+            <field name="wiz_name">sale.prospect_trace.make_call</field>
+        </record>
+        <record model="ir.ui.view" id="make_call_start_view_form">
+            <field name="model">sale.prospect_trace.make_call.start</field>
+            <field name="type">form</field>
+            <field name="name">make_call_start_form</field>
+        </record>
+
     </data>
 </tryton>
