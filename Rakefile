@@ -12,8 +12,8 @@ end
 desc 'poblar entorno'
 task :init => [:up] do
   pecker = YAML.load_file(WOODPECKER_YML)
-  ['tests', 'style'].each do |pipeline|
-    pecker.dig('pipeline', pipeline, 'commands').grep(/install/).each do |cmd|
+  ['tests', 'style'].each do |steps|
+    pecker.dig('steps', steps, 'commands').grep(/install/).each do |cmd|
       compose('exec', 'app.dev', cmd)
     end
   end
