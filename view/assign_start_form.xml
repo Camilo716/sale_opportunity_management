@@ -7,4 +7,7 @@ this repository contains the full copyright notices and license terms. -->
     <newline/>
     <label name="operator"/>
     <field name="operator"/>
+    
+    <label name="prospects"/>
+    <field name="prospects"/>
 </form>

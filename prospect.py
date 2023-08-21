@@ -75,7 +75,19 @@ class AssignOperatorStart(ModelView):
     __name__ = 'sale.prospect.assign.start'
 
     prospects_chunk = fields.Integer('Prospects chunk')
-    operator = fields.Many2One('res.user', 'Operator')
+    operator = fields.Many2One('res.user', 'Operator', required=True)
+    prospects = fields.One2Many(
+        'sale.prospect', None, 'Prospects')
+
+    @fields.depends('prospects_chunk', 'prospects')
+    def on_change_prospects_chunk(self):
+        pool = Pool()
+        Prospect = pool.get('sale.prospect')
+
+        self.prospects = []
+        self.prospects = Prospect.search(
+            [('state', '=', 'unassigned')],
+            limit=self.prospects_chunk)
 
 
 class AssignOperator(Wizard):
@@ -91,14 +103,7 @@ class AssignOperator(Wizard):
     assign = StateTransition()
 
     def transition_assign(self):
-        pool = Pool()
-        Prospect = pool.get('sale.prospect')
-
-        prospects = Prospect.search(
-            [('state', '=', 'unassigned')],
-            limit=self.start.prospects_chunk)
-
-        for prospect in prospects:
+        for prospect in self.start.prospects:
             prospect.assigned_operator = self.start.operator
             prospect.state = 'assigned'
             prospect.save()
