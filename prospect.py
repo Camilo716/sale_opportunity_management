@@ -74,20 +74,25 @@ class AssignOperatorStart(ModelView):
     'Inicio de asignación de operador'
     __name__ = 'sale.prospect.assign.start'
 
-    prospects_chunk = fields.Integer('Prospects chunk')
+    prospects_chunk = fields.Integer('Prospects chunk', required=True)
     operator = fields.Many2One('res.user', 'Operator', required=True)
     prospects = fields.One2Many(
         'sale.prospect', None, 'Prospects')
+
+    @classmethod
+    def default_prospects_chunk(cls):
+        return 0
 
     @fields.depends('prospects_chunk', 'prospects')
     def on_change_prospects_chunk(self):
         pool = Pool()
         Prospect = pool.get('sale.prospect')
 
-        self.prospects = []
-        self.prospects = Prospect.search(
-            [('state', '=', 'unassigned')],
-            limit=self.prospects_chunk)
+        if self.prospects_chunk >= 1:
+            self.prospects = []
+            self.prospects = Prospect.search(
+                [('state', '=', 'unassigned')],
+                limit=self.prospects_chunk)
 
 
 class AssignOperator(Wizard):
