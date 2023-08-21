@@ -21,7 +21,8 @@ class ProspectTrace(DeactivableMixin, ModelSQL, ModelView):
     prospect_city = fields.Many2One('sale.city', 'City',
                                     states=_states)
 
-    calls = fields.One2Many('sale.call', 'prospect_trace', 'Calls')
+    calls = fields.One2Many(
+        'sale.call', 'prospect_trace', 'Calls', states=_states)
     pending_call = fields.Many2One(
         'sale.pending_call', 'Pending call', states=_states)
 
@@ -43,7 +44,8 @@ class ProspectTrace(DeactivableMixin, ModelSQL, ModelView):
         cls._buttons.update({
             'wizard_schedule': {
                 'invisible': Eval('state') == 'with_pending_calls',
-                }
+                },
+            'wizard_make_call': {}
         })
 
     @classmethod
@@ -54,6 +56,12 @@ class ProspectTrace(DeactivableMixin, ModelSQL, ModelView):
     @ModelView.button_action(
         'sale_opportunity_management.schedule_call_wizard')
     def wizard_schedule(cls, prospect_traces):
+        pass
+
+    @classmethod
+    @ModelView.button_action(
+        'sale_opportunity_management.make_call_wizard')
+    def wizard_make_call(cls, prospect_traces):
         pass
 
     @fields.depends('prospect', 'prospect_city', 'prospect_contact')
