@@ -200,8 +200,6 @@ Crear llamadas a un seguimiento de prospecto desde el seguimiento de prospecto::
     >>> make_call.form.interest = '3'
     >>> make_call.execute('make_call')
 
-    .. >>> prospect_trace.save()
-
 Verificar estado final del seguimiento del prospecto y sus llamadas
     >>> prospect_trace.calls[0].call_result
     'missed_call'
@@ -222,9 +220,7 @@ Verificar estado final del seguimiento del prospecto y sus llamadas
     >>> prospect_trace.state 
     'open'
 
-Programar una próxima llamada pendiente al seguimiento de prospecto::
-    >>> PendingCall = Model.get('sale.pending_call')
-    
+Programar una próxima llamada pendiente al seguimiento de prospecto::    
     >>> schedule = Wizard('sale.prospect_trace.schedule', [prospect_trace])
     >>> schedule.form.date_time = datetime(2023, 8, 14, 15, 30, 30)
     >>> schedule.execute('schedule')
@@ -255,6 +251,8 @@ Cuando se asigna prospecto sin método de contacto mobile, el contacto en el seg
     >>> prospect_trace2.prospect = prospect2
 
     >>> prospect_trace2.save()
+
+
 
 --------
 Reportes

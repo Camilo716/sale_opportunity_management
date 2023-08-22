@@ -9,9 +9,8 @@ from .selections.call_results import CallResults
 
 class Call(ModelSQL, ModelView):
     'Llamada'
-
     __name__ = 'sale.call'
-
+    _order_name = 'date'
     _states = {'readonly': True}
 
     date = fields.Date('Date', states=_states)
@@ -26,6 +25,14 @@ class Call(ModelSQL, ModelView):
     call_result = fields.Selection(
         CallResults.get_call_results(),
         'Call result', states=_states)
+
+    @classmethod
+    def __setup__(cls):
+        super(Call, cls).__setup__()
+
+        cls._order = [
+            ('date', 'DESC NULLS FIRST')
+        ]
 
     @classmethod
     def default_date(cls):
