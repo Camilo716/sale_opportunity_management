@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.icon" id="party_icon">
+            <field name="name">tryton-party</field>
+            <field name="path">icons/tryton-party.svg</field>
+        </record>
+        <record model="ir.ui.icon" id="person_icon">
+            <field name="name">tryton-person</field>
+            <field name="path">icons/tryton-person.svg</field>
+        </record>
+        <record model="ir.ui.icon" id="unnasigned_icon">
+            <field name="name">tryton-person-negative</field>
+            <field name="path">icons/tryton-person-negative.svg</field>
+        </record>
+        <record model="ir.ui.icon" id="asigned_icon">
+            <field name="name">tryton-person-positive</field>
+            <field name="path">icons/tryton-person-positive.svg</field>
+        </record>
+        <record model="ir.ui.icon" id="tel_icon">
+            <field name="name">tryton-tel</field>
+            <field name="path">icons/tryton-tel.svg</field>
+        </record>
+        <record model="ir.ui.icon" id="target_icon">
+            <field name="name">tryton-target</field>
+            <field name="path">icons/tryton-target.svg</field>
+        </record>
+    </data>
+</tryton>

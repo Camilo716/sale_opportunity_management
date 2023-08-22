@@ -31,6 +31,7 @@ this repository contains the full copyright notices and license terms. -->
             parent="menu_calls"
             sequence="10"
             id="menu_prospects_tree"
+            icon="tryton-party"
             action="act_prospect_tree"/>
 
 	    <record model="ir.action.act_window" id="act_prospect_unassigned_tree">
@@ -62,6 +63,7 @@ this repository contains the full copyright notices and license terms. -->
                 parent="menu_prospects_tree"
                 sequence="10"
                 id="menu_prospects_unassigned_tree"
+                icon="tryton-person-negative"
                 action="act_prospect_unassigned_tree"/>
 
 	<record model="ir.action.act_window" id="act_prospect_assigned_tree">
@@ -93,6 +95,7 @@ this repository contains the full copyright notices and license terms. -->
                 parent="menu_prospects_tree"
                 sequence="10"
                 id="menu_prospects_assigned_tree"
+                icon="tryton-person-positive"
                 action="act_prospect_assigned_tree"/>
 
         <record model="ir.action.act_window" id="act_contact_method_tree">
