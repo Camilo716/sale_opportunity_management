@@ -5,5 +5,6 @@ this repository contains the full copyright notices and license terms. -->
     <field name="name" expand="1"/>
     <field name="department" expand="1"/>
     <field name="city" expand="1"/>
+    <field name="assigned_operator" expand="1"/>
     <field name="contact_methods" expand="1"/>
 </tree>
