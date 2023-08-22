@@ -17,7 +17,8 @@ class ProspectTrace(DeactivableMixin, ModelSQL, ModelView):
 
     prospect = fields.Many2One('sale.prospect', 'Prospect', required=True)
     prospect_contact = fields.Many2One(
-        'prospect.contact_method', 'Contact method')
+        'prospect.contact_method', 'Contact method',
+        domain=[('prospect', '=', Eval('prospect'))])
     prospect_city = fields.Many2One('sale.city', 'City',
                                     states=_states)
 
