@@ -30,10 +30,15 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_window" ref="act_call_tree"/>
         </record>
 
+        <record model="ir.ui.icon" id="call_icon">
+            <field name="name">tryton-phone</field>
+            <field name="path">icons/tryton-phone.svg</field>
+        </record>
         <menuitem
             name="Calls"
             sequence="10"
-            id="menu_calls"/>
+            id="menu_calls"
+            icon="tryton-phone"/>
         <menuitem
             parent="menu_calls"
             sequence="30"

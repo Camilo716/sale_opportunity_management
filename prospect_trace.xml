@@ -83,5 +83,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="string">Make call</field>
             <field name="model" search="[('model', '=', 'sale.prospect_trace')]"/>
         </record>
+
+        <record model="ir.ui.icon" id="call_icon2">
+            <field name="name">tryton-tel</field>
+            <field name="path">icons/tryton-tel.svg</field>
+        </record>
     </data>
 </tryton>
