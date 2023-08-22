@@ -84,7 +84,13 @@ Crear segundo prospecto::
     >>> prospect2.city = bogota
     >>> prospect2.save()
 
-Asignar operario a un prospecto::
+
+------------------------------------
+Asignación de prospectos a operarios
+------------------------------------
+**Como administrador, quiero poder asignar diferentes seguimientos de prospectos a diferentes operarios, para dividir el trabajo de una manera efectiva y que cada operario tenga sus propias llamadas y que no se mezcle con las de los demás**
+
+Asignar prospectos a un operario::
     >>> User = Model.get('res.user')
     >>> user,  = User.find([('name', '=', 'Administrator')])
 
@@ -104,20 +110,14 @@ Asignar operario a un prospecto::
     >>> prospect2.state
     'assigned'
 
-------------------------------------
-Asignación de prospectos a operarios
-------------------------------------
-**Como administrador, quiero poder asignar diferentes seguimientos de prospectos a diferentes operarios, para dividir el trabajo de una manera efectiva y que cada operario tenga sus propias llamadas y que no se mezcle con las de los demás**
-
-TODO
-
-
 
 -----------------------
 Seguimiento de llamadas
 -----------------------
 **Como operador quiero poder crear un seguimiento de prospecto para luego hacer una llamada**
+
 **Como operador quiero registrar una llamada para luego generar reportes**
+
 **Como operador quiero programar una llamada para luego obtener un reporte de trabajo pendiente**
 
 ["Crear Campo para registro de la fecha de la llamada"]
@@ -260,8 +260,11 @@ Cuando se asigna prospecto sin método de contacto mobile, el contacto en el seg
 Reportes
 --------
 ["Crear un reporte en el que evidencie por operario y consolidado"]
+
 ["Cantidad de llamadas realizadas en un período de tiempo"]
+
 ["Crear un reporte para verificar cantidad de llamadas por realizar"]
+
 ["Crear reporte para identificación de clientes potenciales (Cliente que en la llamada fueron marcados con un nivel alto)"]
 
 
@@ -271,7 +274,7 @@ Reportes
     * Observaciones
     * Operario
 
-* Reporte de seguimientos a prospectos (Análisis de prospectos):
+* Reporte de seguimiento a prospecto (Análisis de prospecto):
     * Interés durante distintas etapas del seguimiento
 
 
