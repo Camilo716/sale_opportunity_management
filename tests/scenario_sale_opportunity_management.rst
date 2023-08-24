@@ -47,11 +47,11 @@ Crear prospecto::
     >>> prospect1.name = 'guchito S.A.S'
     >>> contact_method = prospect1.contact_methods.new(value='31223425234', name='Roberto', job='Gerente R.H') 
     >>> contact_method = prospect1.contact_methods.new(contact_type='mobile', value='12345678910', name='Pancracia', job='Asistente administrativo') 
-    >>> contact_method = prospect1.contact_methods.new(contact_type='mail', value='peralto@guchitos.org', name='Peralto', job='Administrador') 
-
+    >>> contact_method = prospect1.contact_methods.new(contact_type='mail', value='peralto@guchitos.org', name='Peralto', job='Administrador')  
     >>> City = Model.get('sale.city')
     >>> medellin, = City.find([('code', '=', 'CO-05001')])
     >>> prospect1.city = medellin
+    >>> prospect1.business_unit = 'brigade'
     >>> prospect1.save()
 
 Verificar estado final de creación de prospecto::
@@ -70,6 +70,8 @@ Verificar estado final de creación de prospecto::
     'CO-05001'
     >>> prospect1.department.code
     'CO-05'
+    >>> prospect1.business_unit
+    'brigade'
     >>> prospect1.state
     'unassigned'
 
@@ -82,8 +84,16 @@ Crear segundo prospecto::
     >>> City = Model.get('sale.city')
     >>> bogota, = City.find([('code', '=', 'CO-11001')])
     >>> prospect2.city = bogota
+    >>> prospect2.business_unit = 'brigade'
     >>> prospect2.save()
 
+Crear tercer prospecto::
+    >>> prospect3 = Prospect()
+    
+    >>> prospect3.name = 'Vision S.A.S'
+    >>> contact_method = prospect3.contact_methods.new(value='3122324287', name='Alfredo', job='Administrador') 
+    >>> prospect3.business_unit = 'optics'
+    >>> prospect3.save()
 
 ------------------------------------
 Asignación de prospectos a operarios
@@ -94,7 +104,7 @@ Asignar prospectos a un operario::
     >>> User = Model.get('res.user')
     >>> user,  = User.find([('name', '=', 'Administrator')])
 
-    >>> assign = Wizard('sale.prospect.assign', [prospect1, prospect2])
+    >>> assign = Wizard('sale.prospect.assign', [prospect1, prospect2, prospect3])
     >>> assign.form.prospects_chunk = 2
     >>> assign.form.operator = user
     >>> assign.form.prospects
@@ -242,10 +252,11 @@ Crear una llamada agendada previamente:
     'open'
 
 Cuando se asigna prospecto sin método de contacto mobile, el contacto en el seguimiento es vacío::
-    >>> prospect3 = Prospect()
-    >>> prospect3.name = 'Sin celulares S.A.S'
-    >>> contact_method = prospect3.contact_methods.new(contact_type='mail', value='felpucio@sincelulares.org', name='felpucio', job='Supervisor')
-    >>> prospect3.save()
+    >>> prospect4 = Prospect()
+    >>> prospect4.name = 'Sin celulares S.A.S'
+    >>> contact_method = prospect4.contact_methods.new(contact_type='mail', value='felpucio@sincelulares.org', name='felpucio', job='Supervisor')
+    >>> prospect4.business_unit = 'equipment'
+    >>> prospect4.save()
 
     >>> prospect_trace2 = ProspectTrace()
     >>> prospect_trace2.prospect = prospect2

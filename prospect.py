@@ -13,6 +13,13 @@ class Prospect(ModelSQL, ModelView):
 
     name = fields.Char('Name', required=True)
 
+    business_unit = fields.Selection(
+        [('brigade', 'Brigade'),
+         ('optics', 'Optics'),
+         ('equipment', 'Equipment')],
+        'Business unit'
+    )
+
     contact_methods = fields.One2Many(
         'prospect.contact_method',
         'prospect', 'Contact methods', required=True)

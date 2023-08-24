@@ -6,6 +6,9 @@ this repository contains the full copyright notices and license terms. -->
         <label name="name"/>
         <field name="name"/>
 
+        <label name="business_unit"/>
+        <field name="business_unit"/>
+
         <newline/>  
         <label name="department"/>
         <field name="department"/>
