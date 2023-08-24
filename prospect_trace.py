@@ -171,6 +171,7 @@ class MakeCall(Wizard):
         call.description = self.start.description
         call.interest = self.start.interest
         call.prospect_trace = self.record
+        call.call_business_unit = self.record.prospect_business_unit
 
         if call.interest == '0':
             call.call_result = 'missed_call'

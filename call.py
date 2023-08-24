@@ -26,6 +26,12 @@ class Call(ModelSQL, ModelView):
     call_result = fields.Selection(
         CallResults.get_call_results(),
         'Call result', states=_states)
+    call_business_unit = fields.Selection(
+        [('brigade', 'Brigade'),
+         ('optics', 'Optics'),
+         ('equipment', 'Equipment')],
+        'Business unit'
+    )
 
     @classmethod
     def __setup__(cls):

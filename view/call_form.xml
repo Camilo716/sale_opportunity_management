@@ -18,4 +18,6 @@ this repository contains the full copyright notices and license terms. -->
 
     <label name="call_result"/>
     <field name="call_result"/>
+    <label name="call_business_unit"/>
+    <field name="call_business_unit"/>
 </form>

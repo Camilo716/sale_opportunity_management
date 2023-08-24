@@ -219,6 +219,8 @@ Verificar estado final del seguimiento del prospecto y sus llamadas
     'first_call'
     >>> prospect_trace.calls[0].date == date.today()
     True
+    >>> prospect_trace.calls[0].call_business_unit
+    'brigade'
 
     >>> prospect_trace.calls[1].call_result
     'answered_call'
