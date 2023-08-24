@@ -25,6 +25,12 @@ class RequiredValuesTestCase(ModuleTestCase):
         self.assertTrue(Prospect.name.required)
 
     @with_transaction()
+    def test_bussiness_unit_en_Prospect_es_obligatorio(self):
+        pool = Pool()
+        Prospect = pool.get('sale.prospect')
+        self.assertTrue(Prospect.business_unit.required)
+
+    @with_transaction()
     def test_value_en_ContactMethod_es_obligatorio(self):
         pool = Pool()
         ContactMethod = pool.get('prospect.contact_method')

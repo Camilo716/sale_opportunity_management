@@ -5,6 +5,8 @@ this repository contains the full copyright notices and license terms. -->
     <group col="6" colspan="5" id="header" yalign="0">
         <label name="prospect"/>
         <field name="prospect"/>
+        <label name="prospect_business_unit"/>
+        <field name="prospect_business_unit"/>
         <label name="prospect_contact"/>
         <field name="prospect_contact"/>
         <label name="prospect_city"/>

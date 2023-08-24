@@ -185,6 +185,8 @@ Crear seguimiento de prospecto::
 
     >>> prospect_trace.prospect.name
     'guchito S.A.S'
+    >>> prospect_trace.prospect_business_unit
+    'brigade'
     >>> prospect_trace.prospect_city.name
     'Medellín'
     >>> prospect_trace.prospect_contact.value
@@ -194,7 +196,7 @@ Crear seguimiento de prospecto::
     >>> prospect_trace.prospect_contact.job
     'Gerente R.H'
 
-Crear llamadas a un seguimiento de prospecto desde el seguimiento de prospecto::
+Crear llamadas a un seguimiento de prospecto::
     >>> make_call = Wizard('sale.prospect_trace.make_call', [prospect_trace])
     >>> make_call.form.description = 'First call to the prospect'
     >>> make_call.form.interest = '0'
@@ -259,9 +261,10 @@ Cuando se asigna prospecto sin método de contacto mobile, el contacto en el seg
     >>> prospect4.save()
 
     >>> prospect_trace2 = ProspectTrace()
-    >>> prospect_trace2.prospect = prospect2
-
+    >>> prospect_trace2.prospect = prospect4
     >>> prospect_trace2.save()
+
+    >>> prospect_trace2.prospect_contact
 
 
 

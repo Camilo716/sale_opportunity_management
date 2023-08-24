@@ -16,6 +16,13 @@ class ProspectTrace(DeactivableMixin, ModelSQL, ModelView):
     _states = {'readonly': True}
 
     prospect = fields.Many2One('sale.prospect', 'Prospect', required=True)
+
+    prospect_business_unit = fields.Selection(
+        [('brigade', 'Brigade'),
+         ('optics', 'Optics'),
+         ('equipment', 'Equipment')],
+        'Business unit', states=_states
+    )
     prospect_contact = fields.Many2One(
         'prospect.contact_method', 'Contact method',
         domain=[('prospect', '=', Eval('prospect'))])
@@ -70,11 +77,12 @@ class ProspectTrace(DeactivableMixin, ModelSQL, ModelView):
         if not self.prospect:
             self.prospect_city = None
             self.prospect_contact = None
+            self.prospect_business_unit = None
             return
 
         self.prospect_city = self.prospect.city
+        self.prospect_business_unit = self.prospect.business_unit
         mobile_contact = self._get_prospect_mobile_contact()
-
         if mobile_contact:
             self.prospect_contact = mobile_contact
 

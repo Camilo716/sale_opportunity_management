@@ -17,7 +17,7 @@ class Prospect(ModelSQL, ModelView):
         [('brigade', 'Brigade'),
          ('optics', 'Optics'),
          ('equipment', 'Equipment')],
-        'Business unit'
+        'Business unit', required=True
     )
 
     contact_methods = fields.One2Many(
