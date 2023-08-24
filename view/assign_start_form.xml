@@ -4,8 +4,11 @@ this repository contains the full copyright notices and license terms. -->
 <form col="6">
     <label name="operator"/>
     <field name="operator"/>
+    <label name="business_unit"/>
+    <field name="business_unit"/>
     <label name="prospects_chunk"/>
     <field name="prospects_chunk"/>
+
     <notebook colspan="6">
 	    <page string="Prospects" id="prospects_to_assign" col="6">
 	   	 <group col="2" id="prospects">

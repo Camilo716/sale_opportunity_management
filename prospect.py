@@ -81,16 +81,27 @@ class AssignOperatorStart(ModelView):
     'Inicio de asignación de operador'
     __name__ = 'sale.prospect.assign.start'
 
-    prospects_chunk = fields.Integer('Prospects chunk', required=True)
+    prospects_chunk = fields.Integer(
+        'Prospects chunk', required=True,
+        states={
+            'readonly': ~Eval('business_unit', False)})
+
     operator = fields.Many2One('res.user', 'Operator', required=True)
     prospects = fields.One2Many(
         'sale.prospect', None, 'Prospects')
+
+    business_unit = fields.Selection(
+        [('brigade', 'Brigade'),
+         ('optics', 'Optics'),
+         ('equipment', 'Equipment')],
+        'Business unit'
+    )
 
     @classmethod
     def default_prospects_chunk(cls):
         return 0
 
-    @fields.depends('prospects_chunk', 'prospects')
+    @fields.depends('prospects_chunk', 'prospects', 'business_unit')
     def on_change_prospects_chunk(self):
         pool = Pool()
         Prospect = pool.get('sale.prospect')
@@ -98,7 +109,8 @@ class AssignOperatorStart(ModelView):
         if self.prospects_chunk >= 1:
             self.prospects = []
             self.prospects = Prospect.search(
-                [('state', '=', 'unassigned')],
+                [('state', '=', 'unassigned'),
+                 ('business_unit', '=', self.business_unit)],
                 limit=self.prospects_chunk)
 
 

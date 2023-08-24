@@ -105,7 +105,8 @@ Asignar prospectos a un operario::
     >>> user,  = User.find([('name', '=', 'Administrator')])
 
     >>> assign = Wizard('sale.prospect.assign', [prospect1, prospect2, prospect3])
-    >>> assign.form.prospects_chunk = 2
+    >>> assign.form.business_unit = 'brigade'
+    >>> assign.form.prospects_chunk = 3
     >>> assign.form.operator = user
     >>> assign.form.prospects
     [proteus.Model.get('sale.prospect')(1), proteus.Model.get('sale.prospect')(2)]
