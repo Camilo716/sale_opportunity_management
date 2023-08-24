@@ -248,7 +248,7 @@ Programar una próxima llamada pendiente al seguimiento de prospecto::
 Crear una llamada agendada previamente:
     >>> make_call = Wizard('sale.prospect_trace.make_call', [prospect_trace])
     >>> make_call.form.description = 'Fourth call to the prospect'
-    >>> make_call.form.interest = '3'
+    >>> make_call.form.interest = '4'
     >>> make_call.execute('make_call')
 
     >>> prospect_trace.pending_call
