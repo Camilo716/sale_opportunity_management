@@ -21,6 +21,7 @@ class Call(ModelSQL, ModelView):
 
     interest = fields.Selection(
         Interest.get_interest_levels(), 'Interest', required=True)
+
     call_type = fields.Selection(
         CallTypes.get_call_types(), 'Call type', states=_states)
     call_result = fields.Selection(
@@ -32,6 +33,8 @@ class Call(ModelSQL, ModelView):
          ('equipment', 'Equipment')],
         'Business unit'
     )
+    call_assigned_operator = fields.Many2One(
+        'res.user', "Assigned operator", states=_states)
 
     @classmethod
     def __setup__(cls):

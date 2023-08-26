@@ -190,6 +190,8 @@ Crear seguimiento de prospecto::
     'brigade'
     >>> prospect_trace.prospect_city.name
     'Medellín'
+    >>> prospect_trace.prospect_assigned_operator.name
+    'Administrator'
     >>> prospect_trace.prospect_contacts
     [proteus.Model.get('prospect.contact_method')(1), proteus.Model.get('prospect.contact_method')(2), proteus.Model.get('prospect.contact_method')(3)]
 
@@ -219,7 +221,8 @@ Verificar estado final del seguimiento del prospecto y sus llamadas
     True
     >>> prospect_trace.calls[0].call_business_unit
     'brigade'
-
+    >>> prospect_trace.calls[0].call_assigned_operator.name
+    'Administrator'
     >>> prospect_trace.calls[1].call_result
     'answered_call'
     >>> prospect_trace.calls[1].call_type

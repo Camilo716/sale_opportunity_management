@@ -9,4 +9,5 @@ this repository contains the full copyright notices and license terms. -->
     <field name="prospect_trace" expand="1"/>
     <field name="description" expand="1"/>
     <field name="call_business_unit" expand="1"/>
+    <field name="call_assigned_operator" expand="1"/>
 </tree>

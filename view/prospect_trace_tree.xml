@@ -8,4 +8,5 @@ this repository contains the full copyright notices and license terms. -->
     <field name="current_interest" expand="1"/>
     <field name="calls" expand="1"/>
     <field name="pending_call" expand="1"/>
+    <field name="prospect_assigned_operator" expand="1"/>
 </tree>

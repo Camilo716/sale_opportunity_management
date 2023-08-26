@@ -22,13 +22,14 @@ class ProspectTrace(DeactivableMixin, ModelSQL, ModelView):
          ('equipment', 'Equipment')],
         'Business unit', states=_states
     )
-
     prospect_contacts = fields.One2Many(
         'prospect.contact_method', 'prospect_trace', 'Prospect contacts',
         states=_states)
-
     prospect_city = fields.Many2One('sale.city', 'City',
                                     states=_states)
+
+    prospect_assigned_operator = fields.Many2One(
+        'res.user', "Assigned operator", states=_states)
 
     calls = fields.One2Many(
         'sale.call', 'prospect_trace', 'Calls', states=_states)
@@ -82,6 +83,7 @@ class ProspectTrace(DeactivableMixin, ModelSQL, ModelView):
 
         self.prospect_city = self.prospect.city
         self.prospect_business_unit = self.prospect.business_unit
+        self.prospect_assigned_operator = self.prospect.assigned_operator
         self.prospect_contacts = tuple(self._get_prospect_contacts())
 
     def get_rec_name(self, name):
@@ -167,6 +169,7 @@ class MakeCall(Wizard):
         call.interest = self.start.interest
         call.prospect_trace = self.record
         call.call_business_unit = self.record.prospect_business_unit
+        call.call_assigned_operator = self.record.prospect_assigned_operator
 
         if call.interest == '0':
             call.call_result = 'missed_call'
