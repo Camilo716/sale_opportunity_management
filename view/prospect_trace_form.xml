@@ -7,8 +7,6 @@ this repository contains the full copyright notices and license terms. -->
         <field name="prospect"/>
         <label name="prospect_business_unit"/>
         <field name="prospect_business_unit"/>
-        <!-- <label name="prospect_contact"/>
-        <field name="prospect_contact"/> -->
         <label name="prospect_city"/>
         <field name="prospect_city"/>
     </group>
@@ -16,26 +14,26 @@ this repository contains the full copyright notices and license terms. -->
     <group col="6" colspan="5" id="trace_data" yalign="0">
         <label name="current_interest"/>
         <field name="current_interest"/>
-        <label name="pending_call"/>
-        <field name="pending_call"/>
         <label name="active"/>
         <field name="active" xexpand="0" width="25"/>
     </group>
 
-    <field name="prospect_contacts" colspan="6"/>
-
     <newline/>
-    <group col="-1" colspan="6" id="buttons">
-	    <button name="wizard_make_call" icon="tryton-tel"/>
-	    <button name="wizard_schedule" icon="tryton-calendar"/>
-    </group> 
     <notebook colspan="6">
         <page string="Calls - Oldest to Newest" id="calls">
             <field name="calls" colspan="2"/>
         </page>
     </notebook>
+    <group col="-1" colspan="6" id="buttons">
+	    <button name="wizard_make_call" icon="tryton-tel"/>
+	    <button name="wizard_schedule" icon="tryton-calendar"/>
+    </group> 
+    <newline/>
 
+    <field name="prospect_contacts" colspan="6"/>
 
+    <label name="pending_call"/>
+    <field name="pending_call"/>
     <label name="state"/>
     <field name="state"/>
 </form>

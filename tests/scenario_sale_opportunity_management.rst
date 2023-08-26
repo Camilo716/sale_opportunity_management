@@ -192,12 +192,7 @@ Crear seguimiento de prospecto::
     'Medellín'
     >>> prospect_trace.prospect_contacts
     [proteus.Model.get('prospect.contact_method')(1), proteus.Model.get('prospect.contact_method')(2), proteus.Model.get('prospect.contact_method')(3)]
-    >>> prospect_trace.prospect_contact.value
-    '31223425234'
-    >>> prospect_trace.prospect_contact.contact_type
-    'mobile'
-    >>> prospect_trace.prospect_contact.job
-    'Gerente R.H'
+
 
 Crear llamadas a un seguimiento de prospecto::
     >>> make_call = Wizard('sale.prospect_trace.make_call', [prospect_trace])
@@ -258,18 +253,6 @@ Crear una llamada agendada previamente:
     >>> prospect_trace.state
     'open'
 
-Cuando se asigna prospecto sin método de contacto mobile, el contacto en el seguimiento es vacío::
-    >>> prospect4 = Prospect()
-    >>> prospect4.name = 'Sin celulares S.A.S'
-    >>> contact_method = prospect4.contact_methods.new(contact_type='mail', value='felpucio@sincelulares.org', name='felpucio', job='Supervisor')
-    >>> prospect4.business_unit = 'equipment'
-    >>> prospect4.save()
-
-    >>> prospect_trace2 = ProspectTrace()
-    >>> prospect_trace2.prospect = prospect4
-    >>> prospect_trace2.save()
-
-    >>> prospect_trace2.prospect_contact
 
 
 
