@@ -16,13 +16,17 @@ class ProspectTrace(DeactivableMixin, ModelSQL, ModelView):
     _states = {'readonly': True}
 
     prospect = fields.Many2One('sale.prospect', 'Prospect', required=True)
-
     prospect_business_unit = fields.Selection(
         [('brigade', 'Brigade'),
          ('optics', 'Optics'),
          ('equipment', 'Equipment')],
         'Business unit', states=_states
     )
+
+    prospect_contacts = fields.One2Many(
+        'prospect.contact_method', 'prospect_trace', 'Prospect contacts',
+        states=_states)
+
     prospect_contact = fields.Many2One(
         'prospect.contact_method', 'Contact method',
         domain=[('prospect', '=', Eval('prospect'))])
@@ -72,7 +76,8 @@ class ProspectTrace(DeactivableMixin, ModelSQL, ModelView):
     def wizard_make_call(cls, prospect_traces):
         pass
 
-    @fields.depends('prospect', 'prospect_city', 'prospect_contact')
+    @fields.depends(
+        'prospect', 'prospect_city', 'prospect_contact', 'prospect_contacts')
     def on_change_prospect(self):
         if not self.prospect:
             self.prospect_city = None
@@ -82,6 +87,8 @@ class ProspectTrace(DeactivableMixin, ModelSQL, ModelView):
 
         self.prospect_city = self.prospect.city
         self.prospect_business_unit = self.prospect.business_unit
+        self.prospect_contacts = tuple(self._get_prospect_contacts())
+
         mobile_contact = self._get_prospect_mobile_contact()
         if mobile_contact:
             self.prospect_contact = mobile_contact
@@ -105,6 +112,15 @@ class ProspectTrace(DeactivableMixin, ModelSQL, ModelView):
 
         if contact_mobile:
             return contact_mobile[0]
+
+    def _get_prospect_contacts(self):
+        pool = Pool()
+        ContactMethod = pool.get('prospect.contact_method')
+
+        contacts = ContactMethod.search(
+            [('prospect', '=', self.prospect.id)]
+        )
+        return contacts
 
 
 class ScheduleCallStart(ModelView):

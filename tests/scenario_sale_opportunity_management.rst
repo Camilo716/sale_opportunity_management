@@ -190,6 +190,8 @@ Crear seguimiento de prospecto::
     'brigade'
     >>> prospect_trace.prospect_city.name
     'Medellín'
+    >>> prospect_trace.prospect_contacts
+    [proteus.Model.get('prospect.contact_method')(1), proteus.Model.get('prospect.contact_method')(2), proteus.Model.get('prospect.contact_method')(3)]
     >>> prospect_trace.prospect_contact.value
     '31223425234'
     >>> prospect_trace.prospect_contact.contact_type

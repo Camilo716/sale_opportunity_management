@@ -61,6 +61,8 @@ class ContactMethod(ModelSQL, ModelView):
     job = fields.Char('job')
 
     prospect = fields.Many2One('sale.prospect', 'Prospect', required=True)
+    prospect_trace = fields.Many2One(
+        'sale.prospect_trace', 'Prospect Trace', required=False)
 
     @classmethod
     def default_contact_type(cls):
