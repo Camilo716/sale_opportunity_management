@@ -15,7 +15,8 @@ class ProspectTrace(DeactivableMixin, ModelSQL, ModelView):
 
     _states = {'readonly': True}
 
-    prospect = fields.Many2One('sale.prospect', 'Prospect', required=True)
+    prospect = fields.Many2One(
+        'sale.prospect', 'Prospect', required=True, states=_states)
     prospect_business_unit = fields.Selection(
         [('brigade', 'Brigade'),
          ('optics', 'Optics'),

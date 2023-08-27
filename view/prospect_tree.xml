@@ -7,5 +7,5 @@ this repository contains the full copyright notices and license terms. -->
     <field name="department" expand="1"/>
     <field name="city" expand="1"/>
     <field name="assigned_operator" expand="1"/>
-    <field name="contact_methods" expand="1"/>
+    <button name="start_trace"/>
 </tree>
