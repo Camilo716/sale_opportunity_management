@@ -173,8 +173,10 @@ class ReassignProspectByOperatorStart(ModelView):
     'Inicio de reasignación de prospecto por operario'
     __name__ = 'sale.prospect.reassign_by_operator.start'
 
-    current_operator = fields.Many2One('res.user', "Current operator")
-    new_operator = fields.Many2One('res.user', "New operator")
+    current_operator = fields.Many2One(
+        'res.user', "Current operator", required=True)
+    new_operator = fields.Many2One(
+        'res.user', "New operator", required=True)
     prospects = fields.One2Many(
         'sale.prospect', None, 'Prospects', readonly=True)
 

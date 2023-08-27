@@ -159,10 +159,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type">form</field>
             <field name="name">reassign_by_operator_form</field>
         </record>  
-        <record model="ir.action.keyword" id="reassign_by_operator_wizard_keyword">
-            <field name="keyword">form_action</field>
-            <field name="model">sale.prospect, -1</field>
-            <field name="action" ref="reassign_by_operator_wizard"/>
-        </record>
+        <menuitem
+            parent="menu_prospects_tree"
+            sequence="50"
+            id="menu_reassign_by_operator_wizard"
+            action="reassign_by_operator_wizard"/>
    </data>
 </tryton>
