@@ -122,7 +122,7 @@ class AssignOperatorStart(ModelView):
 
     operator = fields.Many2One('res.user', 'Operator', required=True)
     prospects = fields.One2Many(
-        'sale.prospect', None, 'Prospects')
+        'sale.prospect', None, 'Prospects', readonly=True)
 
     business_unit = fields.Selection(
         [('brigade', 'Brigade'),
@@ -166,4 +166,46 @@ class AssignOperator(Wizard):
             prospect.state = 'assigned'
             prospect.save()
 
+        return 'end'
+
+
+class ReassignProspectByOperatorStart(ModelView):
+    'Inicio de reasignación de prospecto por operario'
+    __name__ = 'sale.prospect.reassign_by_operator.start'
+
+    current_operator = fields.Many2One('res.user', "Current operator")
+    new_operator = fields.Many2One('res.user', "New operator")
+    prospects = fields.One2Many(
+        'sale.prospect', None, 'Prospects', readonly=True)
+
+    @fields.depends('current_operator', 'prospects')
+    def on_change_current_operator(self):
+        pool = Pool()
+        Prospect = pool.get('sale.prospect')
+
+        self.prospects = []
+        self.prospects = Prospect.search(
+            [('state', '=', 'assigned'),
+             ('assigned_operator', '=', self.current_operator)])
+
+
+class ReassignProspectByOperator(Wizard):
+    'Reasignar todos los prospectos de un operario, a otro operario'
+    __name__ = 'sale.prospect.reassign_by_operator'
+
+    start = StateView(
+        'sale.prospect.reassign_by_operator.start',
+        'sale_opportunity_management.reassign_by_operator_start_view_form',
+        [Button("Cancel", 'end', 'tryton-cancel'),
+         Button(
+             "Reassign", 'reassign_by_operator', 'tryton-ok', default=True)])
+
+    reassign_by_operator = StateTransition()
+
+    def transition_reassign_by_operator(self):
+        for prospect in self.start.prospects:
+            prospect.assigned_operator = self.start.new_operator
+            prospect.save()
+
+        raise Exception(self.start.prospects[1].assigned_operator.name)
         return 'end'

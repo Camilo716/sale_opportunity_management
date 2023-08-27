@@ -210,7 +210,7 @@ Crear llamadas a un seguimiento de prospecto::
     >>> make_call.form.interest = '3'
     >>> make_call.execute('make_call')
 
-Verificar estado final del seguimiento del prospecto y sus llamadas
+Verificar estado final del seguimiento del prospecto y sus llamadas::
     >>> prospect_trace.calls[0].call_result
     'missed_call'
     >>> prospect_trace.calls[0].call_type
@@ -243,7 +243,7 @@ Programar una próxima llamada pendiente al seguimiento de prospecto::
     >>> prospect_trace.state
     'with_pending_calls'
 
-Crear una llamada agendada previamente:
+Crear una llamada agendada previamente::
     >>> make_call = Wizard('sale.prospect_trace.make_call', [prospect_trace])
     >>> make_call.form.description = 'Fourth call to the prospect'
     >>> make_call.form.interest = '4'
@@ -255,7 +255,29 @@ Crear una llamada agendada previamente:
     'open'
 
 
+Reasignar prospectos por operador::
+    >>> operator2 = User();
+    >>> operator2.name = 'Operatus'
+    >>> operator2.login = 'login'
+    >>> operator2.save()
 
+    >>> reassign_by_operator = Wizard('sale.prospect.reassign_by_operator', [])
+    >>> reassign_by_operator.form.current_operator = user
+    >>> reassign_by_operator.form.prospects
+    [proteus.Model.get('sale.prospect')(1), proteus.Model.get('sale.prospect')(2)]
+    >>> reassign_by_operator.form.new_operator = operator2
+    >>> reassign_by_operator.execute('reassign_by_operator')
+
+    >>> prospect1.assigned_operator.name
+    'Operatus'
+    >>> prospect2.assigned_operator.name
+    'Operatus'
+    >>> prospect_trace.prospect_assigned_operator.name
+    'Operatus'
+
+    .. Las llamadas deben conservar el operador que las hizo
+    >>> prospect_trace.calls[0].assigned_operator
+    'Administrator'
 
 --------
 Reportes
