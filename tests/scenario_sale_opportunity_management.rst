@@ -283,6 +283,22 @@ Reasignar prospectos por operador::
     >>> prospect_trace.calls[0].call_assigned_operator.name
     'Administrator'
 
+Reasignar prospectos por prospecto::
+    >>> reassign_by_prospect = Wizard('sale.prospect.reassign_by_prospect', [])
+    >>> reassign_by_prospect.form.prospect = prospect1
+    >>> reassign_by_prospect.form.new_operator = user
+    >>> reassign_by_prospect.execute('reassign_by_prospect')
+    
+
+    >>> prospect1.reload()
+    >>> prospect1.assigned_operator.name
+    'Administrator'
+    >>> prospect_trace.reload()
+    >>> prospect_trace.prospect_assigned_operator.name
+    'Administrator'
+    >>> prospect_trace.calls[0].call_assigned_operator.name
+    'Administrator'
+
 --------
 Reportes
 --------

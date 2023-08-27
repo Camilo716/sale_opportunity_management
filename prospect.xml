@@ -164,5 +164,11 @@ this repository contains the full copyright notices and license terms. -->
             sequence="50"
             id="menu_reassign_by_operator_wizard"
             action="reassign_by_operator_wizard"/>
+
+        <record model="ir.ui.view" id="reassign_by_prospect_start_view_form">
+            <field name="model">sale.prospect.reassign_by_prospect.start</field>
+            <field name="type">form</field>
+            <field name="name">reassign_by_prospect_form</field>
+        </record>  
    </data>
 </tryton>

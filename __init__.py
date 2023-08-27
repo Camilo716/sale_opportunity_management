@@ -22,12 +22,14 @@ def register():
         prospect_trace.ScheduleCallStart,
         prospect_trace.MakeCallStart,
         prospect.ReassignProspectByOperatorStart,
+        prospect.ReassignProspectByProspectStart,
         module='sale_opportunity_management', type_='model')
     Pool.register(
         prospect_trace.ScheduleCall,
         prospect.AssignOperator,
         prospect_trace.MakeCall,
         prospect.ReassignProspectByOperator,
+        prospect.ReasignProspectByProspect,
         module='sale_opportunity_management', type_='wizard')
     Pool.register(
         module='sale_opportunity_management', type_='report')
