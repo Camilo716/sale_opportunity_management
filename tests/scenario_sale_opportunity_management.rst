@@ -180,10 +180,7 @@ Seguimiento de prospecto 2
 Crear seguimiento de prospecto::
     >>> ProspectTrace = Model.get('sale.prospect_trace')
     >>> prospect1.click('start_trace')
-
-    >>> prospect_trace = ProspectTrace()
-    >>> prospect_trace.prospect = prospect1
-    >>> prospect_trace.save()
+    >>> prospect_trace, = ProspectTrace.find([('prospect', '=', prospect1)])
 
     >>> prospect_trace.prospect.name
     'guchito S.A.S'
