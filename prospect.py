@@ -203,9 +203,19 @@ class ReassignProspectByOperator(Wizard):
     reassign_by_operator = StateTransition()
 
     def transition_reassign_by_operator(self):
+        pool = Pool()
+        ProspectTrace = pool.get('sale.prospect_trace')
+
         for prospect in self.start.prospects:
             prospect.assigned_operator = self.start.new_operator
+
+            if prospect.prospect_trace:
+                prospect_trace, = ProspectTrace.search(
+                    [('prospect', '=', prospect)])
+                prospect_trace.prospect_assigned_operator =\
+                    self.start.new_operator
+                prospect_trace.save()
+
             prospect.save()
 
-        raise Exception(self.start.prospects[1].assigned_operator.name)
         return 'end'

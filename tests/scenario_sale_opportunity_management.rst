@@ -270,13 +270,17 @@ Reasignar prospectos por operador::
 
     >>> prospect1.assigned_operator.name
     'Operatus'
+
+    >>> prospect2.reload()
     >>> prospect2.assigned_operator.name
     'Operatus'
+
+    >>> prospect_trace.reload()
     >>> prospect_trace.prospect_assigned_operator.name
     'Operatus'
 
     .. Las llamadas deben conservar el operador que las hizo
-    >>> prospect_trace.calls[0].assigned_operator
+    >>> prospect_trace.calls[0].call_assigned_operator.name
     'Administrator'
 
 --------
