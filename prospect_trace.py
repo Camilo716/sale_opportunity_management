@@ -75,34 +75,9 @@ class ProspectTrace(DeactivableMixin, ModelSQL, ModelView):
     def wizard_make_call(cls, prospect_traces):
         pass
 
-    @fields.depends('prospect', 'prospect_city', 'prospect_contacts')
-    def on_change_prospect(self):
-        if not self.prospect:
-            self.prospect_city = None
-            self.prospect_business_unit = None
-            return
-
-        self.prospect_city = self.prospect.city
-        self.prospect_business_unit = self.prospect.business_unit
-        self.prospect_assigned_operator = self.prospect.assigned_operator
-        self.prospect_contacts = tuple(self._get_prospect_contacts())
-
     def get_rec_name(self, name):
         if self.prospect:
             return '[' + str(self.id) + '] ' + self.prospect.name
-
-    def _get_current_interest(self, name):
-        if self.calls:
-            return self.calls[-1].interest
-
-    def _get_prospect_contacts(self):
-        pool = Pool()
-        ContactMethod = pool.get('prospect.contact_method')
-
-        contacts = ContactMethod.search(
-            [('prospect', '=', self.prospect.id)]
-        )
-        return contacts
 
 
 class ScheduleCallStart(ModelView):
