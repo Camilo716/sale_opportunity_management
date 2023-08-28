@@ -198,17 +198,27 @@ Crear llamadas a un seguimiento de prospecto::
     >>> make_call = Wizard('sale.prospect_trace.make_call', [prospect_trace])
     >>> make_call.form.description = 'First call to the prospect'
     >>> make_call.form.interest = '0'
+    >>> make_call.form.schedule_call = 'no'
     >>> make_call.execute('make_call')
+    >>> make_call.state
+    'end'
 
     >>> make_call = Wizard('sale.prospect_trace.make_call', [prospect_trace])
     >>> make_call.form.description = 'Second call to the prospect'
     >>> make_call.form.interest = '1'
+    >>> make_call.form.schedule_call = 'no'
     >>> make_call.execute('make_call')
+    >>> make_call.state
+    'end'
 
     >>> make_call = Wizard('sale.prospect_trace.make_call', [prospect_trace])
     >>> make_call.form.description = 'Third call to the prospect'
     >>> make_call.form.interest = '3'
+    >>> make_call.form.schedule_call = 'yes'
     >>> make_call.execute('make_call')
+    >>> make_call.form.datetime = datetime(2023, 8, 14, 15, 30, 30)
+    >>> make_call.execute('schedule_call')
+
 
 Verificar estado final del seguimiento del prospecto y sus llamadas::
     >>> prospect_trace.calls[0].call_result
@@ -228,14 +238,16 @@ Verificar estado final del seguimiento del prospecto y sus llamadas::
     
     >>> prospect_trace.calls
     [proteus.Model.get('sale.call')(1), proteus.Model.get('sale.call')(2), proteus.Model.get('sale.call')(3)]
+    >>> prospect_trace.pending_call.date
+    datetime.datetime(2023, 8, 14, 15, 30, 30)
     >>> prospect_trace.current_interest
     '3'
     >>> prospect_trace.state 
-    'open'
+    'with_pending_calls'
 
 Programar una próxima llamada pendiente al seguimiento de prospecto::    
     >>> schedule = Wizard('sale.prospect_trace.schedule', [prospect_trace])
-    >>> schedule.form.date_time = datetime(2023, 8, 14, 15, 30, 30)
+    >>> schedule.form.date_time = datetime(2`023, 8, 14, 15, 30, 30)
     >>> schedule.execute('schedule')
 
     >>> prospect_trace.pending_call.date

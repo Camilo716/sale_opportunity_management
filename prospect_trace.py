@@ -121,6 +121,15 @@ class MakeCallStart(ModelView):
     description = fields.Text('Description')
     interest = fields.Selection(
         Interest.get_interest_levels(), 'Interest', required=True)
+    schedule_call = fields.Selection(
+        [('yes', 'Yes'),
+         ('no', 'No')], 'Schedule call?', required=True)
+
+
+class MakeCallAsk(ModelView):
+    'Posible agendación de llamada luego de hacer llamada actual'
+    __name__ = 'sale.prospect_trace.make_call.ask'
+    datetime = fields.DateTime('Date time')
 
 
 class MakeCall(Wizard):
@@ -132,8 +141,15 @@ class MakeCall(Wizard):
         'sale_opportunity_management.make_call_start_view_form', [
             Button("Cancel", 'end', 'tryton-cancel'),
             Button("Make call", 'make_call', 'tryton-ok', default=True)])
-
     make_call = StateTransition()
+
+    ask = StateView(
+        'sale.prospect_trace.make_call.ask',
+        'sale_opportunity_management.make_call_ask_view_form', [
+            Button("Cancel", 'end', 'tryton-cancel'),
+            Button(
+                "Schedule call", 'schedule_call', 'tryton-ok', default=True)])
+    schedule_call = StateTransition()
 
     def transition_make_call(self):
         prospect_trace = self.record
@@ -165,6 +181,23 @@ class MakeCall(Wizard):
             prospect_trace.pending_call = None
             prospect_trace.state = 'open'
         prospect_trace.calls += (call,)
+        prospect_trace.save()
+
+        if self.start.schedule_call == 'yes':
+            return 'ask'
+
+        return 'end'
+
+    def transition_schedule_call(self):
+        pool = Pool()
+        PendingCall = pool.get('sale.pending_call')
+        pending_call = PendingCall()
+        pending_call.date = self.ask.datetime
+        pending_call.save()
+
+        prospect_trace = self.record
+        prospect_trace.pending_call = pending_call
+        prospect_trace.state = 'with_pending_calls'
         prospect_trace.save()
 
         return 'end'

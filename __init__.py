@@ -21,6 +21,7 @@ def register():
         prospect.AssignOperatorStart,
         prospect_trace.ScheduleCallStart,
         prospect_trace.MakeCallStart,
+        prospect_trace.MakeCallAsk,
         prospect.ReassignProspectByOperatorStart,
         prospect.ReassignProspectByProspectStart,
         module='sale_opportunity_management', type_='model')

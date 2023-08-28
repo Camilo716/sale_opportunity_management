@@ -3,8 +3,10 @@
 this repository contains the full copyright notices and license terms. -->
 <form>
     <label name="description"/>
-    <field name="description"/>
+    <field name="description" colspan="6"/>
     <newline/>
     <label name="interest"/>
     <field name="interest"/>
+    <label name="schedule_call"/>
+    <field name="schedule_call"/>
 </form>
