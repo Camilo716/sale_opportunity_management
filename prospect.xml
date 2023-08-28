@@ -151,7 +151,7 @@ this repository contains the full copyright notices and license terms. -->
 
 
         <record model="ir.action.wizard" id="reassign_by_operator_wizard">
-            <field name="name">Reassign Operator</field>
+            <field name="name">Reassign by operator</field>
             <field name="wiz_name">sale.prospect.reassign_by_operator</field>
     	</record>
         <record model="ir.ui.view" id="reassign_by_operator_start_view_form">
@@ -160,15 +160,30 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">reassign_by_operator_form</field>
         </record>  
         <menuitem
+            name="Reassign"
             parent="menu_prospects_tree"
             sequence="50"
+            id="menu_reassign"
+            icon='tryton-refresh'/>
+        <menuitem
+            parent="menu_reassign"
+            sequence="10"
             id="menu_reassign_by_operator_wizard"
             action="reassign_by_operator_wizard"/>
 
+        <record model="ir.action.wizard" id="reassign_by_prospect_wizard">
+            <field name="name">Reassign by prospect</field>
+            <field name="wiz_name">sale.prospect.reassign_by_prospect</field>
+    	</record>
         <record model="ir.ui.view" id="reassign_by_prospect_start_view_form">
             <field name="model">sale.prospect.reassign_by_prospect.start</field>
             <field name="type">form</field>
             <field name="name">reassign_by_prospect_form</field>
         </record>  
+         <menuitem
+            parent="menu_reassign"
+            sequence="20"
+            id="menu_reassign_by_prospect_wizard"
+            action="reassign_by_prospect_wizard"/>
    </data>
 </tryton>
