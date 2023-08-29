@@ -17,7 +17,7 @@ class Call(ModelSQL, ModelView):
     description = fields.Text('Description', strip=True)
 
     prospect_trace = fields.Many2One(
-        'sale.prospect_trace', 'Prospect trace', required=True)
+        'sale.prospect_trace', 'Prospect trace', required=True, states=_states)
 
     interest = fields.Selection(
         Interest.get_interest_levels(), 'Interest', required=True)
