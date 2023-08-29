@@ -247,7 +247,7 @@ Verificar estado final del seguimiento del prospecto y sus llamadas::
 
 Programar una próxima llamada pendiente al seguimiento de prospecto::    
     >>> schedule = Wizard('sale.prospect_trace.schedule', [prospect_trace])
-    >>> schedule.form.date_time = datetime(2`023, 8, 14, 15, 30, 30)
+    >>> schedule.form.date_time = datetime(2023, 8, 14, 15, 30, 30)
     >>> schedule.execute('schedule')
 
     >>> prospect_trace.pending_call.date

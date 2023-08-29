@@ -100,17 +100,7 @@ class ScheduleCall(Wizard):
     schedule = StateTransition()
 
     def transition_schedule(self):
-        pool = Pool()
-        PendingCall = pool.get('sale.pending_call')
-        pending_call = PendingCall()
-        pending_call.date = self.start.date_time
-        pending_call.save()
-
-        prospect_trace = self.record
-        prospect_trace.pending_call = pending_call
-        prospect_trace.state = 'with_pending_calls'
-        prospect_trace.save()
-
+        MakeCall.create_schedule_call(self.start.date_time, self.record)
         return 'end'
 
 
@@ -189,15 +179,17 @@ class MakeCall(Wizard):
         return 'end'
 
     def transition_schedule_call(self):
+        self.create_schedule_call(self.ask.datetime, self.record)
+        return 'end'
+
+    @classmethod
+    def create_schedule_call(cls, datetime, prospect_trace):
         pool = Pool()
         PendingCall = pool.get('sale.pending_call')
         pending_call = PendingCall()
-        pending_call.date = self.ask.datetime
+        pending_call.date = datetime
         pending_call.save()
 
-        prospect_trace = self.record
         prospect_trace.pending_call = pending_call
         prospect_trace.state = 'with_pending_calls'
         prospect_trace.save()
-
-        return 'end'
