@@ -33,8 +33,8 @@ class Call(ModelSQL, ModelView):
          ('equipment', 'Equipment')],
         'Business unit', states=_states
     )
-    call_assigned_operator = fields.Many2One(
-        'res.user', "Assigned operator", states=_states)
+    operator_who_called = fields.Many2One(
+        'res.user', "Operator who called", states=_states)
 
     @classmethod
     def __setup__(cls):

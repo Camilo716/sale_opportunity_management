@@ -228,7 +228,7 @@ Verificar estado final del seguimiento del prospecto y sus llamadas::
     True
     >>> prospect_trace.calls[0].call_business_unit
     'brigade'
-    >>> prospect_trace.calls[0].call_assigned_operator.name
+    >>> prospect_trace.calls[0].operator_who_called.name
     'Administrator'
     >>> prospect_trace.calls[1].call_result
     'answered_call'
@@ -292,7 +292,7 @@ Reasignar prospectos por operador::
     'Operatus'
 
     .. Las llamadas deben conservar el operador que las hizo
-    >>> prospect_trace.calls[0].call_assigned_operator.name
+    >>> prospect_trace.calls[0].operator_who_called.name
     'Administrator'
 
 Reasignar prospectos por prospecto::
@@ -308,7 +308,7 @@ Reasignar prospectos por prospecto::
     >>> prospect_trace.reload()
     >>> prospect_trace.prospect_assigned_operator.name
     'Administrator'
-    >>> prospect_trace.calls[0].call_assigned_operator.name
+    >>> prospect_trace.calls[0].operator_who_called.name
     'Administrator'
 
 --------
