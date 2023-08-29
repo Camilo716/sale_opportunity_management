@@ -143,13 +143,6 @@ this repository contains the full copyright notices and license terms. -->
                 id="menu_prospects_assigned_wizard"
                 action="assign_operator_wizard"/>
 
-        <!-- <record model="ir.model.button" id="start_trace_button">
-            <field name="name">start_trace</field>
-            <field name="string">Start trace</field>
-            <field name="model" search="[('model', '=', 'sale.prospect')]"/>
-        </record> -->
-
-
         <record model="ir.action.wizard" id="reassign_by_operator_wizard">
             <field name="name">Reassign by operator</field>
             <field name="wiz_name">sale.prospect.reassign_by_operator</field>
