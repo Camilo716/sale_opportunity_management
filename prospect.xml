@@ -27,6 +27,20 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="prospect_view_form"/>
             <field name="act_window" ref="act_prospect_tree"/>
         </record>
+        <record model="ir.action.act_window.domain" id="act_prospect_domain_unassigned">
+            <field name="name">Unassigned</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain" eval="[('state', '=', 'unassigned')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_prospect_tree"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_prospect_domain_assigned">
+            <field name="name">Assigned</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain" eval="[('state', '=', 'assigned')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_prospect_tree"/>
+        </record>
         <menuitem
             parent="menu_calls"
             sequence="10"
@@ -34,7 +48,10 @@ this repository contains the full copyright notices and license terms. -->
             icon="tryton-party"
             action="act_prospect_tree"/>
 
-	    <record model="ir.action.act_window" id="act_prospect_unassigned_tree">
+
+
+
+	    <!-- <record model="ir.action.act_window" id="act_prospect_unassigned_tree">
             <field name="name">Unassigned</field> 
             <field name="res_model">sale.prospect</field>
 	        <field name="domain" eval="[('state', '=', 'unassigned')]" pyson="1"/>
@@ -96,7 +113,7 @@ this repository contains the full copyright notices and license terms. -->
                 sequence="10"
                 id="menu_prospects_assigned_tree"
                 icon="tryton-person-positive"
-                action="act_prospect_assigned_tree"/>
+                action="act_prospect_assigned_tree"/> -->
 
         <record model="ir.action.act_window" id="act_contact_method_tree">
             <field name="name">Contact method</field> 
