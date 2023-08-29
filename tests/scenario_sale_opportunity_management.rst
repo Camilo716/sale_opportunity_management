@@ -177,9 +177,8 @@ Seguimiento de prospecto 2
     * Seguimiento de prospecto al que pertence
 
 
-Crear seguimiento de prospecto::
+Verificar creación de seguimiento de prospecto::
     >>> ProspectTrace = Model.get('sale.prospect_trace')
-    >>> prospect1.click('start_trace')
     >>> prospect_trace, = ProspectTrace.find([('prospect', '=', prospect1)])
 
     >>> prospect_trace.prospect.name
@@ -280,6 +279,7 @@ Reasignar prospectos por operador::
     >>> reassign_by_operator.form.new_operator = operator2
     >>> reassign_by_operator.execute('reassign_by_operator')
 
+    >>> prospect1.reload()
     >>> prospect1.assigned_operator.name
     'Operatus'
 

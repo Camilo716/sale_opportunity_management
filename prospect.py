@@ -39,36 +39,6 @@ class Prospect(ModelSQL, ModelView):
     prospect_trace = fields.Many2One('sale.prospect_trace', 'Prospect trace')
 
     @classmethod
-    def __setup__(cls):
-        super(Prospect, cls).__setup__()
-        cls._buttons.update({
-            'start_trace': {
-                'invisible': Eval('state') == 'unassigned'
-            }
-        })
-
-    @classmethod
-    @ModelView.button
-    def start_trace(cls, prospects):
-        pool = Pool()
-        ProspectTrace = pool.get('sale.prospect_trace')
-        for prospect in prospects:
-            if prospect.prospect_trace:
-                return
-
-            prospect_trace = ProspectTrace(
-                prospect=prospect,
-                prospect_city=prospect.city,
-                prospect_business_unit=prospect.business_unit,
-                prospect_assigned_operator=prospect.assigned_operator,
-                prospect_contacts=prospect.contact_methods
-            )
-            prospect_trace.save()
-
-            prospect.prospect_trace = prospect_trace
-            prospect.save()
-
-    @classmethod
     def default_state(cls):
         return 'unassigned'
 
@@ -161,9 +131,24 @@ class AssignOperator(Wizard):
     assign = StateTransition()
 
     def transition_assign(self):
+        pool = Pool()
+        ProspectTrace = pool.get('sale.prospect_trace')
+
         for prospect in self.start.prospects:
             prospect.assigned_operator = self.start.operator
             prospect.state = 'assigned'
+            prospect.save()
+
+            prospect_trace = ProspectTrace(
+                prospect=prospect,
+                prospect_city=prospect.city,
+                prospect_business_unit=prospect.business_unit,
+                prospect_assigned_operator=prospect.assigned_operator,
+                prospect_contacts=prospect.contact_methods
+            )
+            prospect_trace.save()
+
+            prospect.prospect_trace = prospect_trace
             prospect.save()
 
         return 'end'
