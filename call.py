@@ -31,7 +31,7 @@ class Call(ModelSQL, ModelView):
         [('brigade', 'Brigade'),
          ('optics', 'Optics'),
          ('equipment', 'Equipment')],
-        'Business unit'
+        'Business unit', states=_states
     )
     call_assigned_operator = fields.Many2One(
         'res.user', "Assigned operator", states=_states)
