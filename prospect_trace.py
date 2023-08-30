@@ -1,7 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from trytond.wizard import Wizard, StateView, Button, StateTransition
-from trytond.model import ModelSQL, ModelView, fields, DeactivableMixin
+from trytond.model import ModelSQL, ModelView, fields
 from trytond.pool import Pool
 from trytond.pyson import Eval
 
@@ -11,7 +11,7 @@ from .selections.interest import Interest
 from datetime import datetime
 
 
-class ProspectTrace(DeactivableMixin, ModelSQL, ModelView):
+class ProspectTrace(ModelSQL, ModelView):
     'Seguimiento de un prospecto'
     __name__ = 'sale.prospect_trace'
 
