@@ -57,8 +57,11 @@ class ProspectTrace(DeactivableMixin, ModelSQL, ModelView):
         cls._buttons.update({
             'wizard_schedule': {
                 'invisible': Eval('state') == 'with_pending_calls',
-                },
-            'wizard_make_call': {}
+            },
+            'wizard_make_call': {},
+            'close_trace': {
+                'invisible': Eval('state') == 'closed'
+            }
         })
 
     @classmethod
@@ -76,6 +79,13 @@ class ProspectTrace(DeactivableMixin, ModelSQL, ModelView):
         'sale_opportunity_management.make_call_wizard')
     def wizard_make_call(cls, prospect_traces):
         pass
+
+    @classmethod
+    @ModelView.button
+    def close_trace(cls, prospect_traces):
+        for prospect_trace in prospect_traces:
+            prospect_trace.state = 'closed'
+            prospect_trace.save()
 
     def get_rec_name(self, name):
         if self.prospect:
