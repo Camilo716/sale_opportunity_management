@@ -1,0 +1,35 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "model:ir.ui.menu,name:menu_calls"
+msgid "Calls"
+msgstr "Llamadas"
+
+msgctxt "model:ir.ui.menu,name:menu_calls_tree"
+msgid "Calls"
+msgstr "Llamadas"
+
+msgctxt "model:ir.ui.menu,name:menu_prospect_trace_tree"
+msgid "Prospect Traces"
+msgstr "Seguimiento de Prospectos"
+
+msgctxt "model:ir.ui.menu,name:menu_prospects_tree"
+msgid "Prospects"
+msgstr "Prospectos"
+
+msgctxt "model:ir.ui.menu,name:menu_prospects_assigned_wizard"
+msgid "Assign Operator"
+msgstr "Asignar Operador"
+
+msgctxt "model:ir.ui.menu,name:menu_reassign"
+msgid "Reassign"
+msgstr "Reasignar"
+
+msgctxt "model:ir.ui.menu,name:menu_reassign_by_operator_wizard"
+msgid "Reassign by operator"
+msgstr "Reasignar por operador"
+
+msgctxt "model:ir.ui.menu,name:menu_reassign_by_prospect_wizard"
+msgid "Reassign by prospect"
+msgstr "Reasignar por prospecto"
