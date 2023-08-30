@@ -8,6 +8,8 @@ from trytond.pyson import Eval
 from .selections.call_types import CallTypes
 from .selections.interest import Interest
 
+from datetime import datetime
+
 
 class ProspectTrace(DeactivableMixin, ModelSQL, ModelView):
     'Seguimiento de un prospecto'
@@ -84,7 +86,15 @@ class ScheduleCallStart(ModelView):
     'Inicio agendar llamada a seguimiento de prospecto'
     __name__ = 'sale.prospect_trace.schedule.start'
 
-    date_time = fields.DateTime('Date time')
+    currency_date = fields.DateTime('Currency Date', readonly=True)
+    date_time = fields.DateTime('Date time', domain=[
+        ('date_time', '>=', Eval('currency_date'))])
+
+    @classmethod
+    def default_currency_date(cls):
+        date = datetime.now()
+
+        return date
 
 
 class ScheduleCall(Wizard):
@@ -119,7 +129,16 @@ class MakeCallStart(ModelView):
 class MakeCallAsk(ModelView):
     'Posible agendación de llamada luego de hacer llamada actual'
     __name__ = 'sale.prospect_trace.make_call.ask'
-    datetime = fields.DateTime('Date time')
+
+    currency_date = fields.DateTime('Currency Date', readonly=True)
+    datetime = fields.DateTime('Date time', domain=[
+        ('datetime', '>=', Eval('currency_date'))])
+
+    @classmethod
+    def default_currency_date(cls):
+        date = datetime.now()
+
+        return date
 
 
 class MakeCall(Wizard):
@@ -175,7 +194,6 @@ class MakeCall(Wizard):
 
         if self.start.schedule_call == 'yes':
             return 'ask'
-
         return 'end'
 
     def transition_schedule_call(self):
