@@ -36,7 +36,7 @@ this repository contains the full copyright notices and license terms. -->
     <field name="state"/>
 
     <group col="-1" colspan="6" id="footer_buttons">
-        <button name="close_trace" icon="tryton-close"/>
-        <button name="reopen_trace" icon="tryton-star"/>
+        <button name="close_trace" icon="tryton-archive"/>
+        <button name="reopen_trace" icon="tryton-unarchive"/>
     </group> 
 </form>
