@@ -64,8 +64,9 @@ class ProspectTrace(ModelSQL, ModelView):
                 'depends': ['state']
             },
             'reopen_trace': {
-                'invisible': Eval('state') == 'open'
-                or Eval('state') == 'with_pending_calls',
+                'invisible': (Eval('state') == 'open')
+                | (Eval('state') == 'with_pending_calls'),
+
                 'depends': ['state']
             }
         })
