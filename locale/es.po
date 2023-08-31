@@ -2,6 +2,43 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "field:sale.prospect_trace,prospect:"
+msgid "Prospect"
+msgstr "Prospecto"
+
+msgctxt "field:sale.prospect_trace,prospect_business_unit:"
+msgid "Business unit"
+msgstr "Unidad de negocio"
+
+msgctxt "field:sale.prospect_trace,prospect_contacts:"
+msgid "Prospect contacts"
+msgstr "Métodos de contacto"
+
+msgctxt "field:sale.prospect_trace,prospect_city:"
+msgid "City"
+msgstr "Ciudad"
+
+msgctxt "field:sale.prospect_trace,prospect_assigned_operator:"
+msgid "Assigned operator"
+msgstr "Operario asignado"
+
+msgctxt "field:sale.prospect_trace,calls:"
+msgid "Calls"
+msgstr "Llamadas"
+
+msgctxt "field:sale.prospect_trace,pending_call:"
+msgid "Pending call"
+msgstr "LLamada pendiente"
+
+msgctxt "field:sale.prospect_trace,current_interest:"
+msgid "Current interest"
+msgstr "Interés actual"
+
+msgctxt "field:sale.prospect_trace,state:"
+msgid "State"
+msgstr "Estado"
+
+
 msgctxt "model:ir.ui.menu,name:menu_calls"
 msgid "Calls"
 msgstr "Llamadas"
@@ -50,3 +87,4 @@ msgstr "Cerrar seguimiento"
 msgctxt "model:ir.model.button,string:reopen_trace_button"
 msgid "Reopen trace"
 msgstr "Reabrir seguimiento"
+
