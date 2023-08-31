@@ -130,10 +130,6 @@ msgctxt "field:prospect.contact_method,prospect_trace:"
 msgid "Prospect Trace"
 msgstr "Seguimiento de prospecto"
 
-msgctxt "class:prospect.contact_method"
-msgid "Contact Method"
-msgstr "Método de contacto"
-
 msgctxt "field:sale.prospect.assign.start,prospects_chunk:"
 msgid "Prospects chunk"
 msgstr "Cantidad de prospectos"
