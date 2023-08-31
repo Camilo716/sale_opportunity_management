@@ -33,3 +33,20 @@ msgstr "Reasignar por operador"
 msgctxt "model:ir.ui.menu,name:menu_reassign_by_prospect_wizard"
 msgid "Reassign by prospect"
 msgstr "Reasignar por prospecto"
+
+
+msgctxt "model:ir.model.button,string:schedule_call_wizard_button"
+msgid "Schedule call"
+msgstr "Agendar llamada"
+
+msgctxt "model:ir.model.button,string:make_call_wizard_button"
+msgid "Make call"
+msgstr "Hacer llamada"
+
+msgctxt "model:ir.model.button,string:close_trace_button"
+msgid "Close trace"
+msgstr "Cerrar seguimiento"
+
+msgctxt "model:ir.model.button,string:reopen_trace_button"
+msgid "Reopen trace"
+msgstr "Reabrir seguimiento"
