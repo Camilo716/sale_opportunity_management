@@ -70,7 +70,133 @@ msgctxt "field:sale.prospect,prospect_trace:"
 msgid "Prospect trace"
 msgstr "Seguimiento de prospecto"
 
+msgctxt "field:sale.call,date:"
+msgid "Date"
+msgstr "Fecha"
 
+msgctxt "field:sale.call,description:"
+msgid "Description"
+msgstr "Descripción"
+
+msgctxt "field:sale.call,prospect_trace:"
+msgid "Prospect trace"
+msgstr "Seguimiento de prospecto"
+
+msgctxt "field:sale.call,interest:"
+msgid "Interest"
+msgstr "Interés"
+
+msgctxt "field:sale.call,call_type:"
+msgid "Call type"
+msgstr "Tipo de llamada"
+
+msgctxt "field:sale.call,call_result:"
+msgid "Call result"
+msgstr "Resultado de llamada"
+
+msgctxt "field:sale.call,call_business_unit:"
+msgid "Business unit"
+msgstr "Unidad de negocio"
+
+msgctxt "field:sale.call,operator_who_called:"
+msgid "Operator who called"
+msgstr "Llamado por"
+
+msgctxt "field:sale.pending_call,date:"
+msgid "Date"
+msgstr "Fecha"
+
+msgctxt "field:prospect.contact_method,contact_type:"
+msgid "Contact type"
+msgstr "Tipo de contacto"
+
+msgctxt "field:prospect.contact_method,value:"
+msgid "Value"
+msgstr "Valor"
+
+msgctxt "field:prospect.contact_method,name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:prospect.contact_method,job:"
+msgid "Job"
+msgstr "Cargo"
+
+msgctxt "field:prospect.contact_method,prospect:"
+msgid "Prospect"
+msgstr "Prospecto"
+
+msgctxt "field:prospect.contact_method,prospect_trace:"
+msgid "Prospect Trace"
+msgstr "Seguimiento de prospecto"
+
+msgctxt "class:prospect.contact_method"
+msgid "Contact Method"
+msgstr "Método de contacto"
+
+msgctxt "field:sale.prospect.assign.start,prospects_chunk:"
+msgid "Prospects chunk"
+msgstr "Cantidad de prospectos"
+
+msgctxt "field:sale.prospect.assign.start,operator:"
+msgid "Operator"
+msgstr "Operador"
+
+msgctxt "field:sale.prospect.assign.start,prospects:"
+msgid "Prospects"
+msgstr "Prospectos"
+
+msgctxt "field:sale.prospect.assign.start,business_unit:"
+msgid "Business unit"
+msgstr "Unidad de negocio"
+
+msgctxt "field:sale.prospect.reassign_by_operator.start,current_operator:"
+msgid "Current operator"
+msgstr "Operador actual"
+
+msgctxt "field:sale.prospect.reassign_by_operator.start,new_operator:"
+msgid "New operator"
+msgstr "Nuevo operador"
+
+msgctxt "field:sale.prospect.reassign_by_operator.start,prospects:"
+msgid "Prospects"
+msgstr "Prospectos"
+
+msgctxt "field:sale.prospect.reassign_by_prospect.start,prospect:"
+msgid "Prospect"
+msgstr "Prospecto"
+
+msgctxt "field:sale.prospect.reassign_by_prospect.start,new_operator:"
+msgid "New operator"
+msgstr "Nuevo operador"
+
+msgctxt "field:sale.prospect_trace.schedule.start,currency_date:"
+msgid "Currency Date"
+msgstr "Fecha actual"
+
+msgctxt "field:sale.prospect_trace.schedule.start,date_time:"
+msgid "Date time"
+msgstr "Fecha y hora"
+
+msgctxt "field:sale.prospect_trace.make_call.start,description:"
+msgid "Description"
+msgstr "Descripción"
+
+msgctxt "field:sale.prospect_trace.make_call.start,interest:"
+msgid "Interest"
+msgstr "Interés"
+
+msgctxt "field:sale.prospect_trace.make_call.start,schedule_call:"
+msgid "Schedule call?"
+msgstr "¿Agendar llamada?"
+
+msgctxt "field:sale.prospect_trace.make_call.ask,currency_date:"
+msgid "Currency Date"
+msgstr "Fecha actual"
+
+msgctxt "field:sale.prospect_trace.make_call.ask,datetime:"
+msgid "Date time"
+msgstr "Fecha y hora"
 
 msgctxt "model:ir.ui.menu,name:menu_calls"
 msgid "Calls"
