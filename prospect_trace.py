@@ -60,7 +60,13 @@ class ProspectTrace(ModelSQL, ModelView):
             },
             'wizard_make_call': {},
             'close_trace': {
-                'invisible': Eval('state') == 'closed'
+                'invisible': Eval('state') == 'closed',
+                'depends': ['state']
+            },
+            'reopen_trace': {
+                'invisible': Eval('state') == 'open'
+                or Eval('state') == 'with_pending_calls',
+                'depends': ['state']
             }
         })
 
@@ -85,6 +91,13 @@ class ProspectTrace(ModelSQL, ModelView):
     def close_trace(cls, prospect_traces):
         for prospect_trace in prospect_traces:
             prospect_trace.state = 'closed'
+            prospect_trace.save()
+
+    @classmethod
+    @ModelView.button
+    def reopen_trace(cls, prospect_traces):
+        for prospect_trace in prospect_traces:
+            prospect_trace.state = 'open'
             prospect_trace.save()
 
     def get_rec_name(self, name):

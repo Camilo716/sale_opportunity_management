@@ -275,6 +275,11 @@ Hacer llamada y cerrar venta (Seguimiento de prospecto)::
     >>> prospect_trace.state
     'closed'
 
+Reabrir seguimiento a prospecto una vez cerrado::
+    >>> prospect_trace.click('reopen_trace')
+    >>> prospect_trace.state
+    'open'
+
 Reasignar prospectos por operador::
     >>> operator2 = User();
     >>> operator2.name = 'Operatus'

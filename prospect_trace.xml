@@ -102,5 +102,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="string">Close trace</field>
             <field name="model" search="[('model', '=', 'sale.prospect_trace')]"/>
         </record>
+
+        <record model="ir.model.button" id="reopen_trace_button">
+            <field name="name">reopen_trace</field>
+            <field name="string">Reopen trace</field>
+            <field name="model" search="[('model', '=', 'sale.prospect_trace')]"/>
+        </record>
     </data>
 </tryton>
