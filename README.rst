@@ -1,1 +1,1 @@
-doc/index.rst
+./tests/scenario_sale_opportunity_management.rst
