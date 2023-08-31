@@ -38,6 +38,39 @@ msgctxt "field:sale.prospect_trace,state:"
 msgid "State"
 msgstr "Estado"
 
+msgctxt "field:sale.prospect,name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:sale.prospect,business_unit:"
+msgid "Business unit"
+msgstr "Unidad de negocio"
+
+msgctxt "field:sale.prospect,contact_methods:"
+msgid "Contact methods"
+msgstr "Métodos de contacto"
+
+msgctxt "field:sale.prospect,department:"
+msgid "Department"
+msgstr "Departamento"
+
+msgctxt "field:sale.prospect,city:"
+msgid "City"
+msgstr "Ciudad"
+
+msgctxt "field:sale.prospect,assigned_operator:"
+msgid "Assigned operator"
+msgstr "Operario asignado"
+
+msgctxt "field:sale.prospect,state:"
+msgid "State"
+msgstr "Estado"
+
+msgctxt "field:sale.prospect,prospect_trace:"
+msgid "Prospect trace"
+msgstr "Seguimiento de prospecto"
+
+
 
 msgctxt "model:ir.ui.menu,name:menu_calls"
 msgid "Calls"
