@@ -60,7 +60,7 @@ class ContactMethod(ModelSQL, ModelView):
 
     value = fields.Char('Value', required=True)
     name = fields.Char('Name')
-    job = fields.Char('job')
+    job = fields.Char('Job')
 
     prospect = fields.Many2One('sale.prospect', 'Prospect', required=True)
     prospect_trace = fields.Many2One(

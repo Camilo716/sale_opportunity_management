@@ -194,6 +194,167 @@ msgctxt "field:sale.prospect_trace.make_call.ask,datetime:"
 msgid "Date time"
 msgstr "Fecha y hora"
 
+
+msgctxt "selection:sale.prospect,business_unit:"
+msgid "Brigade"
+msgstr "Brigada"
+
+msgctxt "selection:sale.prospect,business_unit:"
+msgid "Optics"
+msgstr "Óptica"
+
+msgctxt "selection:sale.prospect,business_unit:"
+msgid "Equipment"
+msgstr "Equipos"
+
+msgctxt "selection:sale.prospect,state:"
+msgid "Unsassigned"
+msgstr "Sin asignar"
+
+msgctxt "selection:sale.prospect,state:"
+msgid "Assigned"
+msgstr "Asignado"
+
+msgctxt "selection:prospect.contact_method,contact_type:"
+msgid "Phone"
+msgstr "Teléfono fijo"
+
+msgctxt "selection:prospect.contact_method,contact_type:"
+msgid "Mobile"
+msgstr "Celular"
+
+msgctxt "selection:prospect.contact_method,contact_type:"
+msgid "Mail"
+msgstr "Correo electrónico"
+
+msgctxt "selection:sale.prospect.assign.start,business_unit:"
+msgid "Brigade"
+msgstr "Brigada"
+
+msgctxt "selection:sale.prospect.assign.start,business_unit:"
+msgid "Optics"
+msgstr "Óptica"
+
+msgctxt "selection:sale.prospect.assign.start,business_unit:"
+msgid "Equipment"
+msgstr "Equipos"
+
+msgctxt "selection:sale.prospect_trace,prospect_business_unit:"
+msgid "Brigade"
+msgstr "Brigada"
+
+msgctxt "selection:sale.prospect_trace,prospect_business_unit:"
+msgid "Optics"
+msgstr "Óptica"
+
+msgctxt "selection:sale.prospect_trace,prospect_business_unit:"
+msgid "Equipment"
+msgstr "Equipos"
+
+msgctxt "selection:sale.prospect_trace,current_interest:"
+msgid "0 - Not answered"
+msgstr "0 - No contestó"
+
+msgctxt "selection:sale.prospect_trace,current_interest:"
+msgid "1 - Complete disinterest"
+msgstr "1 - Completo desinterés"
+
+msgctxt "selection:sale.prospect_trace,current_interest:"
+msgid "2 - Middle interest"
+msgstr "2 - Interés intermedio"
+
+msgctxt "selection:sale.prospect_trace,current_interest:"
+msgid "3 - High interest"
+msgstr "3 - Interés alto"
+
+msgctxt "selection:sale.prospect_trace,current_interest:"
+msgid "4 - Closed sale"
+msgstr "4 - Venta cerrada"
+
+msgctxt "selection:sale.prospect_trace,state:"
+msgid "Open"
+msgstr "Abierto"
+
+msgctxt "selection:sale.prospect_trace,state:"
+msgid "With pending calls"
+msgstr "Con llamada pendiente"
+
+msgctxt "selection:sale.prospect_trace,state:"
+msgid "Closed"
+msgstr "Cerrado"
+
+msgctxt "selection:sale.prospect_trace.make_call.start,schedule_call:"
+msgid "Yes"
+msgstr "Si"
+
+msgctxt "selection:sale.prospect_trace.make_call.start,interest:"
+msgid "0 - Not answered"
+msgstr "0 - No contestó"
+
+msgctxt "selection:sale.prospect_trace.make_call.start,interest:"
+msgid "1 - Complete disinterest"
+msgstr "1 - Completo desinterés"
+
+msgctxt "selection:sale.prospect_trace.make_call.start,interest:"
+msgid "2 - Middle interest"
+msgstr "2 - Interés intermedio"
+
+msgctxt "selection:sale.prospect_trace.make_call.start,interest:"
+msgid "3 - High interest"
+msgstr "3 - Interés alto"
+
+msgctxt "selection:sale.prospect_trace.make_call.start,interest:"
+msgid "4 - Closed sale"
+msgstr "4 - Venta cerrada"
+
+msgctxt "selection:sale.call,interest:"
+msgid "0 - Not answered"
+msgstr "0 - No contestó"
+
+msgctxt "selection:sale.call,interest:"
+msgid "1 - Complete disinterest"
+msgstr "1 - Completo desinterés"
+
+msgctxt "selection:sale.call,interest:"
+msgid "2 - Middle interest"
+msgstr "2 - Interés intermedio"
+
+msgctxt "selection:sale.call,interest:"
+msgid "3 - High interest"
+msgstr "3 - Interés alto"
+
+msgctxt "selection:sale.call,interest:"
+msgid "4 - Closed sale"
+msgstr "4 - Venta cerrada"
+
+msgctxt "selection:sale.call,call_type:"
+msgid "First call"
+msgstr "Primera llamada"
+
+msgctxt "selection:sale.call,call_type:"
+msgid "Follow up call"
+msgstr "LLamada de seguimiento"
+
+msgctxt "selection:sale.call,call_result:"
+msgid "Missed call"
+msgstr "Llamda perdida"
+
+msgctxt "selection:sale.call,call_result:"
+msgid "Answered call"
+msgstr "LLamada contestada"
+
+msgctxt "selection:sale.call,call_business_unit:"
+msgid "Brigade"
+msgstr "Brigada"
+
+msgctxt "selection:sale.call,call_business_unit:"
+msgid "Optics"
+msgstr "Óptica"
+
+msgctxt "selection:sale.call,call_business_unit:"
+msgid "Equipment"
+msgstr "Equipos"
+
 msgctxt "model:ir.ui.menu,name:menu_calls"
 msgid "Calls"
 msgstr "Llamadas"
