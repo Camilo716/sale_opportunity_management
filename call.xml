@@ -43,6 +43,7 @@ this repository contains the full copyright notices and license terms. -->
             parent="menu_calls"
             sequence="30"
             id="menu_calls_tree"
-            action="act_call_tree"/>
+            action="act_call_tree"
+            icon="tryton-graph"/>
     </data>
 </tryton>
