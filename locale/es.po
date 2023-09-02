@@ -88,11 +88,11 @@ msgstr "Interés"
 
 msgctxt "field:sale.call,call_type:"
 msgid "Call type"
-msgstr "Tipo de llamada"
+msgstr "Tipo"
 
 msgctxt "field:sale.call,call_result:"
 msgid "Call result"
-msgstr "Resultado de llamada"
+msgstr "Resultado"
 
 msgctxt "field:sale.call,call_business_unit:"
 msgid "Business unit"
@@ -404,3 +404,51 @@ msgctxt "model:ir.model.button,string:reopen_trace_button"
 msgid "Reopen trace"
 msgstr "Reabrir seguimiento"
 
+
+msgctxt "wizard_button:sale.prospect_trace.make_call,start,end:"
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgctxt "wizard_button:sale.prospect_trace.make_call,start,make_call:"
+msgid "Make call"
+msgstr "Hacer llamada"
+
+msgctxt "wizard_button:sale.prospect_trace.make_call,ask,end:"
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgctxt "wizard_button:sale.prospect_trace.make_call,ask,schedule_call:"
+msgid "Schedule call"
+msgstr "Agendar"
+
+msgctxt "wizard_button:sale.prospect_trace.schedule,start,end:"
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgctxt "wizard_button:sale.prospect_trace.schedule,start,schedule:"
+msgid "Schedule"
+msgstr "Agendar"
+
+msgctxt "wizard_button:sale.prospect.assign,start,end:"
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgctxt "wizard_button:sale.prospect.assign,start,assign:"
+msgid "Assign"
+msgstr "Asignar"
+
+msgctxt "wizard_button:sale.prospect.reassign_by_operator,start,end:"
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgctxt "wizard_button:sale.prospect.reassign_by_operator,start,reassign_by_operator:"
+msgid "Reassign"
+msgstr "Reasignar"
+
+msgctxt "wizard_button:sale.prospect.reassign_by_prospect,start,end:"
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgctxt "wizard_button:sale.prospect.reassign_by_prospect,start,reassign_by_prospect:"
+msgid "Reassign"
+msgstr "Reasignar"
