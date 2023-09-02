@@ -18,10 +18,6 @@ this repository contains the full copyright notices and license terms. -->
 
     <field name="calls" colspan="6"/>
     <newline/>
-    <notebook colspan="6">
-        <page string="Calls - Oldest to Newest" id="calls">
-        </page>
-    </notebook>
     <group col="-1" colspan="6" id="buttons">
 	    <button name="wizard_make_call" icon="tryton-tel"/>
 	    <button name="wizard_schedule" icon="tryton-calendar"/>
