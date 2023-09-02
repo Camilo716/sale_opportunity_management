@@ -16,10 +16,10 @@ this repository contains the full copyright notices and license terms. -->
         <field name="current_interest"/>
     </group>
 
+    <field name="calls" colspan="6"/>
     <newline/>
     <notebook colspan="6">
         <page string="Calls - Oldest to Newest" id="calls">
-            <field name="calls" colspan="2"/>
         </page>
     </notebook>
     <group col="-1" colspan="6" id="buttons">
