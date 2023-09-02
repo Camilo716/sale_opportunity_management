@@ -452,3 +452,31 @@ msgstr "Cancelar"
 msgctxt "wizard_button:sale.prospect.reassign_by_prospect,start,reassign_by_prospect:"
 msgid "Reassign"
 msgstr "Reasignar"
+
+msgctxt "model:ir.action.act_window.domain,name:act_prospect_trace_domain_open"
+msgid "Open"
+msgstr "Abierto"
+
+msgctxt "model:ir.action.act_window.domain,name:act_prospect_trace_domain_with_pending_calls"
+msgid "With pending calls"
+msgstr "Con llamada pendiente"
+
+msgctxt "model:ir.action.act_window.domain,name:act_prospect_trace_domain_with_pending_calls"
+msgid "With pending calls"
+msgstr "Con llamada pendiente"
+
+msgctxt "model:ir.action.act_window.domain,name:act_prospect_trace_domain_closed"
+msgid "Closed"
+msgstr "Cerrado"
+
+msgctxt "model:ir.action.act_window.domain,name:act_prospect_trace_domain_all"
+msgid "All"
+msgstr "Todo"
+
+msgctxt "model:ir.action.act_window.domain,name:act_prospect_domain_unassigned"
+msgid "Unassigned"
+msgstr "Sin asignar"
+
+msgctxt "model:ir.action.act_window.domain,name:act_prospect_domain_assigned"
+msgid "Assigned"
+msgstr "Asignado"
