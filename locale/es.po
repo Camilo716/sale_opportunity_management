@@ -480,3 +480,24 @@ msgstr "Sin asignar"
 msgctxt "model:ir.action.act_window.domain,name:act_prospect_domain_assigned"
 msgid "Assigned"
 msgstr "Asignado"
+
+msgctxt "model:ir.action,name:schedule_call_wizard"
+msgid "Schedule call"
+msgstr "Agendar llamada"
+
+msgctxt "model:ir.action,name:make_call_wizard"
+msgid "Make call"
+msgstr "Hacer llamada"
+
+msgctxt "model:ir.action,name:assign_operator_wizard"
+msgid "Assign Operator"
+msgstr "Asignar operador"
+
+msgctxt "model:ir.action,name:reassign_by_operator_wizard"
+msgid "Reassign by operator"
+msgstr "Reasignar por operador"
+
+msgctxt "model:ir.action,name:reassign_by_prospect_wizard"
+msgid "Reassign by prospect"
+msgstr "Reasignar por prospecto"
+
