@@ -3,18 +3,18 @@
 this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
-	<record model="res.group" id="group_prospect">
-	    <field name="name">Prospects</field>
-	</record>
-	<record model="res.group" id="group_prospect_admin">
+	    <record model="res.group" id="group_prospect">
+	        <field name="name">Prospects</field>
+	    </record>
+	    <record model="res.group" id="group_prospect_admin">
             <field name="name">Prospect Administrator</field>
             <field name="parent" ref="group_prospect"/>
-	</record>
-	<record model="res.user-res.group" id="user_admin_group_prospect">
+	    </record>
+	    <record model="res.user-res.group" id="user_admin_group_prospect">
             <field name="user" ref="res.user_admin"/>
             <field name="group" ref="group_prospect"/>
         </record>
-	<record model="res.user-res.group" id="user_admin_group_prospect_admin">
+	    <record model="res.user-res.group" id="user_admin_group_prospect_admin">
             <field name="user" ref="res.user_admin"/>
             <field name="group" ref="group_prospect_admin"/>
         </record>
@@ -64,73 +64,10 @@ this repository contains the full copyright notices and license terms. -->
             icon="tryton-party"
             action="act_prospect_tree"/>
 
-	<record model="ir.ui.menu-res.group" id="menu_prospects_group_prospect">
+	    <record model="ir.ui.menu-res.group" id="menu_prospects_group_prospect">
             <field name="menu" ref="menu_prospects_tree"/>
             <field name="group" ref="group_prospect"/>
         </record>
-	    <!-- <record model="ir.action.act_window" id="act_prospect_unassigned_tree">
-            <field name="name">Unassigned</field> 
-            <field name="res_model">sale.prospect</field>
-	        <field name="domain" eval="[('state', '=', 'unassigned')]" pyson="1"/>
-        </record>
-        <record model="ir.ui.view" id="prospect_unassigned_view_tree">
-            <field name="model">sale.prospect</field> 
-            <field name="type">tree</field>
-            <field name="name">prospect_tree</field>
-        </record>
-        <record model="ir.ui.view" id="prospect_unassigned_view_form">
-            <field name="model">sale.prospect</field> 
-            <field name="type">form</field>
-            <field name="name">prospect_form</field>
-        </record>
-        <record model="ir.action.act_window.view" id="act_prospect_unassigned_tree_view1">
-            <field name="sequence" eval="10"/>
-            <field name="view" ref="prospect_unassigned_view_tree"/>
-            <field name="act_window" ref="act_prospect_unassigned_tree"/>
-        </record>
-        <record model="ir.action.act_window.view" id="act_prospect_unassigned_form_view1">
-            <field name="sequence" eval="20"/>
-            <field name="view" ref="prospect_view_form"/>
-            <field name="act_window" ref="act_prospect_unassigned_tree"/>
-        </record>
-        <menuitem
-                parent="menu_prospects_tree"
-                sequence="10"
-                id="menu_prospects_unassigned_tree"
-                icon="tryton-person-negative"
-                action="act_prospect_unassigned_tree"/>
-
-	<record model="ir.action.act_window" id="act_prospect_assigned_tree">
-            <field name="name">Assigned</field> 
-            <field name="res_model">sale.prospect</field>
-	    <field name="domain" eval="[('state', '=', 'assigned')]" pyson="1"/>
-        </record>
-        <record model="ir.ui.view" id="prospect_assigned_view_tree">
-            <field name="model">sale.prospect</field> 
-            <field name="type">tree</field>
-            <field name="name">prospect_tree</field>
-        </record>
-        <record model="ir.ui.view" id="prospect_assigned_view_form">
-            <field name="model">sale.prospect</field> 
-            <field name="type">form</field>
-            <field name="name">prospect_form</field>
-        </record>
-        <record model="ir.action.act_window.view" id="act_prospect_assigned_tree_view1">
-            <field name="sequence" eval="10"/>
-            <field name="view" ref="prospect_assigned_view_tree"/>
-            <field name="act_window" ref="act_prospect_assigned_tree"/>
-        </record>
-        <record model="ir.action.act_window.view" id="act_prospect_assigned_form_view1">
-            <field name="sequence" eval="20"/>
-            <field name="view" ref="prospect_view_form"/>
-            <field name="act_window" ref="act_prospect_assigned_tree"/>
-        </record>
-        <menuitem
-                parent="menu_prospects_tree"
-                sequence="10"
-                id="menu_prospects_assigned_tree"
-                icon="tryton-person-positive"
-                action="act_prospect_assigned_tree"/> -->
 
         <record model="ir.action.act_window" id="act_contact_method_tree">
             <field name="name">Contact method</field> 
@@ -177,7 +114,7 @@ this repository contains the full copyright notices and license terms. -->
                 id="menu_prospects_assigned_wizard"
                 action="assign_operator_wizard"/>
 
-	<record model="ir.ui.menu-res.group" id="menu_prospect_assigned_group_prospect">
+	    <record model="ir.ui.menu-res.group" id="menu_prospect_assigned_group_prospect">
             <field name="menu" ref="menu_prospects_assigned_wizard"/>
             <field name="group" ref="group_prospect_admin"/>
         </record>
@@ -198,7 +135,7 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_reassign"
             icon='tryton-refresh'/>
 
-	<record model="ir.ui.menu-res.group" id="menu_prospect_reassigned_group_prospect">
+	    <record model="ir.ui.menu-res.group" id="menu_prospect_reassigned_group_prospect">
             <field name="menu" ref="menu_reassign"/>
             <field name="group" ref="group_prospect_admin"/>
         </record>
@@ -224,7 +161,7 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_reassign_by_prospect_wizard"
             action="reassign_by_prospect_wizard"/>
 
-	 <record model="ir.model.access" id="access_sale">
+	    <record model="ir.model.access" id="access_sale">
             <field name="model" search="[('model', '=', 'sale.prospect')]"/>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="False"/>
@@ -232,7 +169,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="False"/>
          </record>
 	 
-	<record model="ir.model.access" id="access_sale_prospect">
+	    <record model="ir.model.access" id="access_sale_prospect">
             <field name="model" search="[('model', '=', 'sale.prospect')]"/>
             <field name="group" ref="group_prospect"/>
             <field name="perm_read" eval="True"/>
