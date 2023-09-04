@@ -32,7 +32,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_prospect_trace_tree">
             <field name="name">Prospect Traces</field>
 	    <field name="domain"
-                   eval="[('prospect_assigned_operator', '=', Eval('_user'))]"
+                   eval="[If(Eval('context', {}).get('user_admin', None), (), ('prospect_assigned_operator', '=', Eval('_user')))]"
                    pyson="1"/>
             <field name="res_model">sale.prospect_trace</field> 
         </record>

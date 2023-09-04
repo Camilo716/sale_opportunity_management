@@ -325,6 +325,15 @@ Reasignar prospectos por prospecto::
     >>> prospect_trace.calls[0].operator_who_called.name
     'Administrator'
 
+Crear un usuario de rol administrador::
+    >>> User = Model.get('res.user')
+    >>> admin = User(name="Administrator", login="administrator", user_admin=True)
+    >>> admin.save()
+    >>> admin.user_admin == True
+    True
+    
+  
+
 
 --------
 Reportes

@@ -6,7 +6,6 @@ from trytond.pool import Pool
 from trytond.pyson import Eval
 from .selections.call_types import CallTypes
 from .selections.interest import Interest
-
 from datetime import datetime
 
 

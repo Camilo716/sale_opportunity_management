@@ -3,6 +3,7 @@ from . import prospect
 from . import prospect_trace
 from . import call
 from . import pending_call
+from . import user
 from .locations import city
 from .locations import department
 
@@ -11,6 +12,7 @@ __all__ = ['register']
 
 def register():
     Pool.register(
+        user.User,
         pending_call.PendingCall,
         call.Call,
         department.Department,
