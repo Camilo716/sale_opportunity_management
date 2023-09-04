@@ -67,5 +67,21 @@ this repository contains the full copyright notices and license terms. -->
             <field name="group" ref="group_call"/>
         </record>
 
+	<record model="ir.model.access" id="access_calls">
+            <field name="model" search="[('model', '=', 'sale.call')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+         </record>
+	 
+	<record model="ir.model.access" id="access_calls_calls">
+            <field name="model" search="[('model', '=', 'sale.call')]"/>
+            <field name="group" ref="group_call"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
     </data>
 </tryton>

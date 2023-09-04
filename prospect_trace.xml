@@ -30,7 +30,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">prospect_trace_form</field>
         </record>
         <record model="ir.action.act_window" id="act_prospect_trace_tree">
-            <field name="name">Prospect Traces</field> 
+            <field name="name">Prospect Traces</field>
+	    <field name="domain"
+                   eval="[('prospect_assigned_operator', '=', Eval('_user'))]"
+                   pyson="1"/>
             <field name="res_model">sale.prospect_trace</field> 
         </record>
         <record model="ir.action.act_window.view" id="act_prospect_trace_tree_view1">
@@ -77,6 +80,28 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_prospect_trace_tree"
             icon="tryton-target"
             action="act_prospect_trace_tree"/>
+
+	<record model="ir.ui.menu-res.group" id="menu_prospect_trace_group_prospect_trace">
+            <field name="menu" ref="menu_prospect_trace_tree"/>
+            <field name="group" ref="group_prospect_trace"/>
+        </record>
+
+	<record model="ir.model.access" id="access_prospect_trace">
+            <field name="model" search="[('model', '=', 'sale.prospect_trace')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+         </record>
+	 
+	<record model="ir.model.access" id="access_prospect_trace_trace">
+            <field name="model" search="[('model', '=', 'sale.prospect_trace')]"/>
+            <field name="group" ref="group_prospect_trace"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
 
         <record model="ir.action.wizard" id="schedule_call_wizard">
             <field name="name">Schedule call</field>

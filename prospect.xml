@@ -177,6 +177,11 @@ this repository contains the full copyright notices and license terms. -->
                 id="menu_prospects_assigned_wizard"
                 action="assign_operator_wizard"/>
 
+	<record model="ir.ui.menu-res.group" id="menu_prospect_assigned_group_prospect">
+            <field name="menu" ref="menu_prospects_assigned_wizard"/>
+            <field name="group" ref="group_prospect_admin"/>
+        </record>
+
         <record model="ir.action.wizard" id="reassign_by_operator_wizard">
             <field name="name">Reassign by operator</field>
             <field name="wiz_name">sale.prospect.reassign_by_operator</field>
@@ -192,6 +197,12 @@ this repository contains the full copyright notices and license terms. -->
             sequence="50"
             id="menu_reassign"
             icon='tryton-refresh'/>
+
+	<record model="ir.ui.menu-res.group" id="menu_prospect_reassigned_group_prospect">
+            <field name="menu" ref="menu_reassign"/>
+            <field name="group" ref="group_prospect_admin"/>
+        </record>
+
         <menuitem
             parent="menu_reassign"
             sequence="10"
