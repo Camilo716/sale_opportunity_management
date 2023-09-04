@@ -3,11 +3,27 @@
 this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
+	<record model="res.group" id="group_call">
+	    <field name="name">Calls</field>
+	</record>
+	<record model="res.group" id="group_call_admin">
+            <field name="name">Calls Administrator</field>
+            <field name="parent" ref="group_call"/>
+	</record>
+	<record model="res.user-res.group" id="user_admin_group_call">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_call"/>
+        </record>
+	<record model="res.user-res.group" id="user_admin_group_call_admin">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_call_admin"/>
+        </record>
+
         <record model="ir.action.act_window" id="act_call_tree">
             <field name="name">Calls</field> 
             <field name="res_model">sale.call</field> 
         </record>
-
+	
         <record model="ir.ui.view" id="call_view_tree">
             <field name="model">sale.call</field> 
             <field name="type">tree</field>
@@ -45,5 +61,11 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_calls_tree"
             action="act_call_tree"
             icon="tryton-graph"/>
+	
+	<record model="ir.ui.menu-res.group" id="menu_call_group_call">
+            <field name="menu" ref="menu_calls_tree"/>
+            <field name="group" ref="group_call"/>
+        </record>
+
     </data>
 </tryton>

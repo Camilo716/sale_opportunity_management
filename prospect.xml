@@ -3,6 +3,22 @@
 this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
+	<record model="res.group" id="group_prospect">
+	    <field name="name">Prospects</field>
+	</record>
+	<record model="res.group" id="group_prospect_admin">
+            <field name="name">Prospect Administrator</field>
+            <field name="parent" ref="group_prospect"/>
+	</record>
+	<record model="res.user-res.group" id="user_admin_group_prospect">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_prospect"/>
+        </record>
+	<record model="res.user-res.group" id="user_admin_group_prospect_admin">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_prospect_admin"/>
+        </record>
+
         <record model="ir.action.act_window" id="act_prospect_tree">
             <field name="name">Prospects</field> 
             <field name="res_model">sale.prospect</field> 
@@ -48,9 +64,10 @@ this repository contains the full copyright notices and license terms. -->
             icon="tryton-party"
             action="act_prospect_tree"/>
 
-
-
-
+	<record model="ir.ui.menu-res.group" id="menu_prospects_group_prospect">
+            <field name="menu" ref="menu_prospects_tree"/>
+            <field name="group" ref="group_prospect"/>
+        </record>
 	    <!-- <record model="ir.action.act_window" id="act_prospect_unassigned_tree">
             <field name="name">Unassigned</field> 
             <field name="res_model">sale.prospect</field>
@@ -195,5 +212,14 @@ this repository contains the full copyright notices and license terms. -->
             sequence="20"
             id="menu_reassign_by_prospect_wizard"
             action="reassign_by_prospect_wizard"/>
+
+	 <record model="ir.model.access" id="access_sale_prospect">
+            <field name="model" search="[('model', '=', 'sale.prospect')]"/>
+            <field name="group" ref="group_prospect"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
    </data>
 </tryton>
