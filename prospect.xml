@@ -213,7 +213,15 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_reassign_by_prospect_wizard"
             action="reassign_by_prospect_wizard"/>
 
-	 <record model="ir.model.access" id="access_sale_prospect">
+	 <record model="ir.model.access" id="access_sale">
+            <field name="model" search="[('model', '=', 'sale.prospect')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+         </record>
+	 
+	<record model="ir.model.access" id="access_sale_prospect">
             <field name="model" search="[('model', '=', 'sale.prospect')]"/>
             <field name="group" ref="group_prospect"/>
             <field name="perm_read" eval="True"/>

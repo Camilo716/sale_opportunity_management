@@ -3,6 +3,22 @@
 this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
+	<record model="res.group" id="group_prospect_trace">
+	    <field name="name">Prospect Traces</field>
+	</record>
+	<record model="res.group" id="group_prospect_trace_admin">
+            <field name="name">Traces Administrator</field>
+            <field name="parent" ref="group_prospect_trace"/>
+	</record>
+	<record model="res.user-res.group" id="user_admin_group_prospect_trace">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_prospect_trace"/>
+        </record>
+	<record model="res.user-res.group" id="user_admin_group_prospect_traces_admin">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_prospect_trace_admin"/>
+        </record>
+
         <record model="ir.ui.view" id="prospect_trace_view_tree">
             <field name="model">sale.prospect_trace</field> 
             <field name="type">tree</field>
