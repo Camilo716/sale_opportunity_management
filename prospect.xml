@@ -178,4 +178,5 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="True"/>
         </record>
    </data>
+
 </tryton>
