@@ -98,7 +98,9 @@ class AssignOperatorStart(ModelView):
         [('brigade', 'Brigade'),
          ('optics', 'Optics'),
          ('equipment', 'Equipment')],
-        'Business unit'
+        'Business unit',
+        states={
+            'readonly': Eval('prospects_chunk', False)}
     )
 
     @classmethod
