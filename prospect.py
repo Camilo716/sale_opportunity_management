@@ -214,7 +214,10 @@ class ReassignProspectByProspectStart(ModelView):
     'Inicio de reasignación de un prospecto en específico'
     __name__ = 'sale.prospect.reassign_by_prospect.start'
 
-    prospect = fields.Many2One('sale.prospect', 'Prospect', required=True)
+    prospect = fields.Many2One(
+        'sale.prospect', 'Prospect', required=True,
+        domain=[('assigned_operator', '!=', None)])
+
     new_operator = fields.Many2One('res.user', "New operator", required=True)
 
 
