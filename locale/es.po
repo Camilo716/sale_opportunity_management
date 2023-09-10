@@ -337,7 +337,7 @@ msgstr "LLamada de seguimiento"
 
 msgctxt "selection:sale.call,call_result:"
 msgid "Missed call"
-msgstr "Llamda perdida"
+msgstr "Llamada perdida"
 
 msgctxt "selection:sale.call,call_result:"
 msgid "Answered call"
