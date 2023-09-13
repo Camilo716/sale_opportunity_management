@@ -6,6 +6,30 @@ msgctxt "field:res.user,user_admin:"
 msgid "Is Admin"
 msgstr "Es Administrador"
 
+msgctxt "model:res.group,name:group_prospect"
+msgid "Prospects"
+msgstr "Prospectos"
+
+msgctxt "model:res.group,name:group_prospect_admin"
+msgid "Prospect Administrator"
+msgstr "Administración de Prospectos"
+
+msgctxt "model:res.group,name:group_call"
+msgid "Calls"
+msgstr "Llamadas"
+
+msgctxt "model:res.group,name:group_call_admin"
+msgid "Calls Administrator"
+msgstr "Administrador de Llamadas"
+
+msgctxt "model:res.group,name:group_prospect_trace"
+msgid "Prospect Traces"
+msgstr "Seguimiento de Prospectos"
+
+msgctxt "model:res.group,name:group_prospect_trace_admin"
+msgid "Traces Administrator"
+msgstr "Administración de Seguimientos"
+
 msgctxt "field:sale.prospect_trace,prospect:"
 msgid "Prospect"
 msgstr "Prospecto"
