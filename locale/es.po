@@ -46,6 +46,10 @@ msgctxt "field:sale.prospect,business_unit:"
 msgid "Business unit"
 msgstr "Unidad de negocio"
 
+msgctxt "view:sale.prospect:"
+msgid "Contact methods"
+msgstr "Metodos de contacto"
+
 msgctxt "field:sale.prospect,contact_methods:"
 msgid "Contact methods"
 msgstr "Métodos de contacto"
