@@ -2,10 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "field:res.user,user_admin:"
-msgid "Is Admin"
-msgstr "Es Administrador"
-
 msgctxt "model:res.group,name:group_prospect"
 msgid "Prospects"
 msgstr "Prospectos"
@@ -29,6 +25,10 @@ msgstr "Seguimiento de Prospectos"
 msgctxt "model:res.group,name:group_prospect_trace_admin"
 msgid "Traces Administrator"
 msgstr "Administración de Seguimientos"
+
+msgctxt "field:res.user,user_admin:"
+msgid "Is Admin"
+msgstr "Es Administrador"
 
 msgctxt "field:sale.prospect_trace,prospect:"
 msgid "Prospect"
@@ -226,6 +226,14 @@ msgctxt "field:sale.prospect_trace.make_call.ask,datetime:"
 msgid "Date time"
 msgstr "Fecha y hora"
 
+msgctxt "field:sale.pending_task,description:"
+msgid "Description"
+msgstr "Descripción"
+
+msgctxt "field:sale.pending_task,prospect_trace:"
+msgid "Prospect trace"
+msgstr "Seguimiento de prospecto"
+
 
 msgctxt "selection:sale.prospect,business_unit:"
 msgid "Brigade"
@@ -419,6 +427,10 @@ msgctxt "model:ir.ui.menu,name:menu_reassign_by_prospect_wizard"
 msgid "Reassign by prospect"
 msgstr "Reasignar por prospecto"
 
+msgctxt "model:ir.ui.menu,name:menu_pending_tasks"
+msgid "Pending tasks"
+msgstr "Tareas pendientes"
+
 
 msgctxt "model:ir.model.button,string:schedule_call_wizard_button"
 msgid "Schedule call"
@@ -435,6 +447,10 @@ msgstr "Cerrar seguimiento"
 msgctxt "model:ir.model.button,string:reopen_trace_button"
 msgid "Reopen trace"
 msgstr "Reabrir seguimiento"
+
+msgctxt "model:ir.model.button,string:close_task_button"
+msgid "Close task"
+msgstr "Cerrar tarea"
 
 
 msgctxt "wizard_button:sale.prospect_trace.make_call,start,end:"
@@ -512,6 +528,19 @@ msgstr "Sin asignar"
 msgctxt "model:ir.action.act_window.domain,name:act_prospect_domain_assigned"
 msgid "Assigned"
 msgstr "Asignado"
+
+msgctxt "model:ir.action.act_window.domain,name:act_task_domain_pending"
+msgid "Pending"
+msgstr "Pendiente"
+
+msgctxt "model:ir.action.act_window.domain,name:act_task_domain_done"
+msgid "Done"
+msgstr "Completado"
+
+msgctxt "model:ir.action.act_window.domain,name:act_task_domain_all"
+msgid "All"
+msgstr "Todo"
+
 
 msgctxt "model:ir.action,name:schedule_call_wizard"
 msgid "Schedule call"
