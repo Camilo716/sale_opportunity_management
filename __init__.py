@@ -14,8 +14,8 @@ def register():
     Pool.register(
         user.User,
         pending_call.PendingCall,
-        pending_call.PendingTask,
         call.Call,
+        call.Task,
         department.Department,
         city.City,
         prospect.ContactMethod,

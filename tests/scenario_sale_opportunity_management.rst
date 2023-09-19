@@ -265,7 +265,7 @@ Crear una llamada agendada previamente::
     >>> prospect_trace.state
     'open'
 
-Hacer llamada y programar tarea
+Hacer llamada y programar tarea::
     >>> make_call = Wizard('sale.prospect_trace.make_call', [prospect_trace])
     >>> make_call.form.description = 'Prospect told me to send him an email'
     >>> make_call.form.interest = '3'

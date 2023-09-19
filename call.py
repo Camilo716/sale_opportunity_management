@@ -47,3 +47,18 @@ class Call(ModelSQL, ModelView):
     @classmethod
     def default_date(cls):
         return date.today()
+
+
+class Task(ModelSQL, ModelView):
+    'Tarea pendiente a un seguimiento de prospecto'
+    __name__ = "sale.pending_task"
+
+    description = fields.Text('Description', required=True)
+    done = fields.Boolean('Done')
+    prospect_trace = fields.Many2One(
+        'sale.prospect_trace', 'Prospect trace',
+        required=True, readonly=True)
+
+    @classmethod
+    def default_done(cls):
+        return False
