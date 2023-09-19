@@ -24,8 +24,8 @@ class ProspectTrace(ModelSQL, ModelView):
         'Business unit', states=_states
     )
     prospect_contacts = fields.One2Many(
-        'prospect.contact_method', 'prospect_trace', 'Prospect contacts',
-        states=_states)
+        'prospect.contact_method', 'prospect_trace',
+        'Prospect contacts', required=True)
     prospect_city = fields.Many2One('sale.city', 'City',
                                     states=_states)
 
@@ -48,6 +48,11 @@ class ProspectTrace(ModelSQL, ModelView):
             ('closed', 'Closed')
             ], 'State',
             states=_states)
+
+    @fields.depends('prospect_contacts', 'prospect')
+    def on_change_prospect_contacts(self):
+        for contact in self.prospect_contacts:
+            contact.prospect = self.prospect
 
     @classmethod
     def __setup__(cls):

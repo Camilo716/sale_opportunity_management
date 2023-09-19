@@ -192,6 +192,11 @@ Verificar creación de seguimiento de prospecto::
     >>> prospect_trace.prospect_contacts
     [proteus.Model.get('prospect.contact_method')(1), proteus.Model.get('prospect.contact_method')(2), proteus.Model.get('prospect.contact_method')(3)]
 
+Agregar un método de contacto desde el seguimiento de prospecto::
+    >>> contact_method_ = prospect_trace.prospect_contacts.new(value='31231231212', name='Carlos', job='Supervisor')
+    >>> contact_method_.prospect
+    proteus.Model.get('sale.prospect')(1)
+
 
 Crear llamadas a un seguimiento de prospecto::
     >>> make_call = Wizard('sale.prospect_trace.make_call', [prospect_trace])
@@ -356,7 +361,6 @@ Crear un usuario de rol administrador::
     >>> admin.user_admin == True
     True
     
-  
 
 
 --------
