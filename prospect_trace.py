@@ -149,7 +149,7 @@ class MakeCallStart(ModelView):
 
     schedule_task = fields.Selection(
         [('yes', 'Yes'),
-         ('no', 'No')], 'Schedule call?', required=True)
+         ('no', 'No')], 'Schedule task?', required=True)
 
 
 class MakeCallAsk(ModelView):
@@ -171,7 +171,7 @@ class MakeCallAskTask(ModelView):
     'Posible agendación de tarea luego de hacer llamada actual'
     __name__ = 'sale.prospect_trace.make_call.ask_task'
 
-    task_description = fields.Text('Description')
+    task_description = fields.Text('Task description')
 
 
 class MakeCall(Wizard):

@@ -2,11 +2,17 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <form>
-    <label name="description"/>
-    <field name="description" colspan="6"/>
+    <group col="6" id="description">
+        <label name="description"/>
+        <field name="description"/>
+    </group>
     <newline/>
-    <label name="interest"/>
-    <field name="interest"/>
-    <label name="schedule_call"/>
-    <field name="schedule_call"/>
+    <group col="6" id="call_data">
+        <label name="interest"/>
+        <field name="interest" colspan="1"/>
+        <label name="schedule_call"/>
+        <field name="schedule_call"  colspan="1"/>
+        <label name="schedule_task"/>
+        <field name="schedule_task"  colspan="1"/>
+    </group>
 </form>
