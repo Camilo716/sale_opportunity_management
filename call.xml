@@ -105,5 +105,10 @@ this repository contains the full copyright notices and license terms. -->
         id="menu_pending_tasks"
         action="act_pending_task_tree"
         icon="tryton-graph"/>
+    <record model="ir.model.button" id="close_task_button">
+        <field name="name">close_task</field>
+        <field name="string">Close task</field>
+        <field name="model" search="[('model', '=', 'sale.pending_task')]"/>
+    </record>
     </data>
 </tryton>

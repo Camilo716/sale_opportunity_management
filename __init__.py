@@ -15,7 +15,7 @@ def register():
         user.User,
         pending_call.PendingCall,
         call.Call,
-        call.Task,
+        call.PendingTask,
         department.Department,
         city.City,
         prospect.ContactMethod,

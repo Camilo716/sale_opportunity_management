@@ -282,6 +282,13 @@ Hacer llamada y programar tarea::
     >>> task
     proteus.Model.get('sale.pending_task')(1)
 
+    >>> task.state
+    'pending'
+
+    >>> task.click('close_task') 
+    >>> task.state
+    'done'
+
 Hacer llamada y cerrar venta (Seguimiento de prospecto)::
     >>> make_call = Wizard('sale.prospect_trace.make_call', [prospect_trace])
     >>> make_call.form.description = 'Closed sale'
