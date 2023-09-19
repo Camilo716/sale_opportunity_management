@@ -95,6 +95,10 @@ Crear tercer prospecto::
     >>> prospect3.business_unit = 'optics'
     >>> prospect3.save()
 
+Asignar tipificación a un prospecto
+    >>> prospect3.rating = '1'
+    >>> prospect3.comments = 'Calificación al cliente' 
+
 ------------------------------------
 Asignación de prospectos a operarios
 ------------------------------------

@@ -22,13 +22,24 @@ this repository contains the full copyright notices and license terms. -->
         <page string="Contact methods" id="contact_methods">
             <field name="contact_methods" colspan="2"/>
         </page>
+        <page string="About prospect" id="contact_methods">
+            <label name="rating"/>
+            <field name="rating"/>
+            <newline/>
+            <label name="comments"/>
+            <field name="comments"/>
+        </page>
     </notebook>
     <newline/>
 
-    <group col="4" id="stated">
-	<label name="assigned_operator"/>
-	<field name="assigned_operator"/>
-	<label name="state"/>
-	<field name="state"/>
+    <group col="6" colspan="5" id="footer" yalign="0">
+        <label name="assigned_operator"/>
+        <field name="assigned_operator"/>
+        <label name="state"/>
+        <field name="state"/>
+        <group col="-1" colspan="1" id="checkboxes">
+            <label name="active"/>
+            <field name="active" xexpand="0" width="25"/>
+        </group>
     </group>
 </form>

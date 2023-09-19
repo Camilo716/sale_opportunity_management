@@ -1,12 +1,12 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from trytond.wizard import Wizard, StateView, Button, StateTransition
-from trytond.model import ModelSQL, ModelView, fields
+from trytond.model import ModelSQL, ModelView, fields, DeactivableMixin
 from trytond.pyson import Eval, If
 from trytond.pool import Pool
 
 
-class Prospect(ModelSQL, ModelView):
+class Prospect(ModelSQL, ModelView, DeactivableMixin):
     'Prospecto'
     __name__ = 'sale.prospect'
     _rec_name = 'name'
@@ -37,6 +37,15 @@ class Prospect(ModelSQL, ModelView):
         ('assigned', 'Assigned')], "State", readonly=True)
 
     prospect_trace = fields.Many2One('sale.prospect_trace', 'Prospect trace')
+
+    rating = fields.Selection(
+        [(None, None),
+         ('1', '1'),
+         ('2', '2'),
+         ('3', '3'),
+         ('4', '4'),
+         ('5', '5')], 'Rating')
+    comments = fields.Text('Comments')
 
     @classmethod
     def default_state(cls):
