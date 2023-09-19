@@ -265,6 +265,23 @@ Crear una llamada agendada previamente::
     >>> prospect_trace.state
     'open'
 
+Hacer llamada y programar tarea
+    >>> make_call = Wizard('sale.prospect_trace.make_call', [prospect_trace])
+    >>> make_call.form.description = 'Prospect told me to send him an email'
+    >>> make_call.form.interest = '3'
+    >>> make_call.form.schedule_call = 'yes'
+    >>> make_call.form.schedule_task = 'yes'
+    >>> make_call.execute('make_call')
+    >>> make_call.form.datetime = datetime(2023, 8, 14, 15, 30, 30)
+    >>> make_call.execute('schedule_call')
+    >>> make_call.form.task_description = 'I have to send a mail to prospect offering him this services...'
+    >>> make_call.execute('schedule_task')
+
+    >>> Task = Model.get('sale.pending_task')
+    >>> task, = Task.find([('description', '=', 'I have to send a mail to prospect offering him this services...')])
+    >>> task
+    proteus.Model.get('sale.pending_task')(1)
+
 Hacer llamada y cerrar venta (Seguimiento de prospecto)::
     >>> make_call = Wizard('sale.prospect_trace.make_call', [prospect_trace])
     >>> make_call.form.description = 'Closed sale'

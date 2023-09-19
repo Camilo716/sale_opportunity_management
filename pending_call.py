@@ -12,3 +12,18 @@ class PendingCall(ModelSQL, ModelView):
     def get_rec_name(self, name):
         if self.date:
             return str(self.date)
+
+
+class PendingTask(ModelSQL, ModelView):
+    'Tarea pendiente a un seguimiento de prospecto'
+    __name__ = "sale.pending_task"
+
+    description = fields.Text('Description', required=True)
+    done = fields.Boolean('Done')
+    prospect_trace = fields.Many2One(
+        'sale.prospect_trace', 'Prospect trace',
+        required=True, readonly=True)
+
+    @classmethod
+    def default_done(cls):
+        return False

@@ -14,6 +14,7 @@ def register():
     Pool.register(
         user.User,
         pending_call.PendingCall,
+        pending_call.PendingTask,
         call.Call,
         department.Department,
         city.City,
@@ -24,6 +25,7 @@ def register():
         prospect_trace.ScheduleCallStart,
         prospect_trace.MakeCallStart,
         prospect_trace.MakeCallAsk,
+        prospect_trace.MakeCallAskTask,
         prospect.ReassignProspectByOperatorStart,
         prospect.ReassignProspectByProspectStart,
         module='sale_opportunity_management', type_='model')

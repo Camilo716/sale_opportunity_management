@@ -147,6 +147,10 @@ class MakeCallStart(ModelView):
         [('yes', 'Yes'),
          ('no', 'No')], 'Schedule call?', required=True)
 
+    schedule_task = fields.Selection(
+        [('yes', 'Yes'),
+         ('no', 'No')], 'Schedule call?', required=True)
+
 
 class MakeCallAsk(ModelView):
     'Posible agendación de llamada luego de hacer llamada actual'
@@ -161,6 +165,13 @@ class MakeCallAsk(ModelView):
         date = datetime.now()
 
         return date
+
+
+class MakeCallAskTask(ModelView):
+    'Posible agendación de tarea luego de hacer llamada actual'
+    __name__ = 'sale.prospect_trace.make_call.ask_task'
+
+    task_description = fields.Text('Description')
 
 
 class MakeCall(Wizard):
@@ -181,6 +192,15 @@ class MakeCall(Wizard):
             Button(
                 "Schedule call", 'schedule_call', 'tryton-ok', default=True)])
     schedule_call = StateTransition()
+
+    ask_task = StateView(
+        'sale.prospect_trace.make_call.ask_task',
+        'sale_opportunity_management.make_call_ask_task_view_form', [
+            Button("Cancel", 'end', 'tryton-cancel'),
+            Button("Schedule task", 'schedule_task', 'tryton-ok', default=True)
+        ]
+    )
+    schedule_task = StateTransition()
 
     def transition_make_call(self):
         prospect_trace = self.record
@@ -216,11 +236,29 @@ class MakeCall(Wizard):
 
         if self.start.schedule_call == 'yes':
             return 'ask'
+        if self.start.schedule_task == 'yes':
+            return 'ask_task'
+        return 'end'
+
+    def transition_schedule_task(self):
+        self.create_schedule_task(self.ask_task.task_description, self.record)
         return 'end'
 
     def transition_schedule_call(self):
         self.create_schedule_call(self.ask.datetime, self.record)
+
+        if (self.start.schedule_call and self.start.schedule_task) == 'yes':
+            return 'ask_task'
         return 'end'
+
+    @classmethod
+    def create_schedule_task(cls, description, prospect_trace):
+        pool = Pool()
+        Task = pool.get('sale.pending_task')
+        task = Task()
+        task.description = description
+        task.prospect_trace = prospect_trace
+        task.save()
 
     @classmethod
     def create_schedule_call(cls, datetime, prospect_trace):
