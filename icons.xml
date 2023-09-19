@@ -27,5 +27,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">tryton-target</field>
             <field name="path">icons/tryton-target.svg</field>
         </record>
+        <record model="ir.ui.icon" id="call_icon">
+            <field name="name">tryton-phone</field>
+            <field name="path">icons/tryton-phone.svg</field>
+        </record>
     </data>
 </tryton>

@@ -23,7 +23,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Calls</field> 
             <field name="res_model">sale.call</field> 
         </record>
-	
         <record model="ir.ui.view" id="call_view_tree">
             <field name="model">sale.call</field> 
             <field name="type">tree</field>
@@ -34,7 +33,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type">form</field>
             <field name="name">call_form</field>
         </record>
-
         <record model="ir.action.act_window.view" id="act_call_tree_view1">
             <field name="sequence" eval="10"/>
             <field name="view" ref="call_view_tree"/>
@@ -44,11 +42,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="sequence" eval="20"/>
             <field name="view" ref="call_view_form"/>
             <field name="act_window" ref="act_call_tree"/>
-        </record>
-
-        <record model="ir.ui.icon" id="call_icon">
-            <field name="name">tryton-phone</field>
-            <field name="path">icons/tryton-phone.svg</field>
         </record>
         <menuitem
             name="Calls"
@@ -66,7 +59,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="menu" ref="menu_calls_tree"/>
             <field name="group" ref="group_call"/>
         </record>
-
 	<record model="ir.model.access" id="access_calls">
             <field name="model" search="[('model', '=', 'sale.call')]"/>
             <field name="perm_read" eval="False"/>
@@ -74,7 +66,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
          </record>
-	 
 	<record model="ir.model.access" id="access_calls_calls">
             <field name="model" search="[('model', '=', 'sale.call')]"/>
             <field name="group" ref="group_call"/>
@@ -82,6 +73,37 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_write" eval="True"/>
             <field name="perm_create" eval="True"/>
             <field name="perm_delete" eval="True"/>
-        </record>
+    </record>
+
+    <record model="ir.action.act_window" id="act_pending_task_tree">
+        <field name="name">Pending tasks</field> 
+        <field name="res_model">sale.pending_task</field> 
+    </record>
+    <record model="ir.ui.view" id="pending_task_view_tree">
+        <field name="model">sale.pending_task</field> 
+        <field name="type">tree</field>
+        <field name="name">pending_task_tree</field>
+    </record>
+    <record model="ir.ui.view" id="pending_task_view_form">
+        <field name="model">sale.pending_task</field> 
+        <field name="type">form</field>
+        <field name="name">pending_task_form</field>
+    </record>
+    <record model="ir.action.act_window.view" id="act_pending_task_tree_view1">
+        <field name="sequence" eval="30"/>
+        <field name="view" ref="pending_task_view_tree"/>
+        <field name="act_window" ref="act_pending_task_tree"/>
+    </record>
+    <record model="ir.action.act_window.view" id="act_pending_task_form_view1">
+        <field name="sequence" eval="40"/>
+        <field name="view" ref="pending_task_view_form"/>
+        <field name="act_window" ref="act_pending_task_tree"/>
+    </record>
+    <menuitem
+        parent="menu_calls"
+        sequence="60"
+        id="menu_pending_tasks"
+        action="act_pending_task_tree"
+        icon="tryton-graph"/>
     </data>
 </tryton>
