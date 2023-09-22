@@ -76,7 +76,11 @@ msgstr "Unidad de negocio"
 
 msgctxt "view:sale.prospect:"
 msgid "Contact methods"
-msgstr "Metodos de contacto"
+msgstr "Métodos de contacto"
+
+msgctxt "view:sale.prospect:"
+msgid "About prospect"
+msgstr "Tipificación del prospecto"
 
 msgctxt "field:sale.prospect,contact_methods:"
 msgid "Contact methods"
@@ -101,6 +105,14 @@ msgstr "Estado"
 msgctxt "field:sale.prospect,prospect_trace:"
 msgid "Prospect trace"
 msgstr "Seguimiento de prospecto"
+
+msgctxt "field:sale.prospect,rating:"
+msgid "Rating (1-5)"
+msgstr "Calificación (1-5)"
+
+msgctxt "field:sale.prospect,comments:"
+msgid "Comments"
+msgstr "Comentarios"
 
 msgctxt "field:sale.call,date:"
 msgid "Date"
@@ -273,6 +285,10 @@ msgstr "Celular"
 msgctxt "selection:prospect.contact_method,contact_type:"
 msgid "Mail"
 msgstr "Correo electrónico"
+
+msgctxt "selection:sale.prospect,rating:"
+msgid "None"
+msgstr "Sin calificación"
 
 msgctxt "selection:sale.prospect.assign.start,business_unit:"
 msgid "Brigade"

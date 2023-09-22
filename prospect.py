@@ -44,7 +44,7 @@ class Prospect(ModelSQL, ModelView, DeactivableMixin):
          ('2', '2'),
          ('3', '3'),
          ('4', '4'),
-         ('5', '5')], 'Rating')
+         ('5', '5')], 'Rating (1-5)')
     comments = fields.Text('Comments')
 
     @classmethod
