@@ -234,6 +234,13 @@ msgctxt "field:sale.pending_task,prospect_trace:"
 msgid "Prospect trace"
 msgstr "Seguimiento de prospecto"
 
+msgctxt "field:sale.prospect_trace.make_call.start,schedule_task:"
+msgid "Schedule task?"
+msgstr "¿Agendar tarea?"
+
+msgctxt "field:sale.prospect_trace.make_call.ask_task,task_description:"
+msgid "Task description"
+msgstr "Descripción de la tarea"
 
 msgctxt "selection:sale.prospect,business_unit:"
 msgid "Brigade"
@@ -395,6 +402,11 @@ msgctxt "selection:sale.call,call_business_unit:"
 msgid "Equipment"
 msgstr "Equipos"
 
+msgctxt "selection:sale.prospect_trace.make_call.start,schedule_task:"
+msgid "Yes"
+msgstr "Si"
+
+
 msgctxt "model:ir.ui.menu,name:menu_calls"
 msgid "Calls"
 msgstr "Llamadas"
@@ -476,6 +488,14 @@ msgstr "Cancelar"
 msgctxt "wizard_button:sale.prospect_trace.schedule,start,schedule:"
 msgid "Schedule"
 msgstr "Agendar"
+
+msgctxt "wizard_button:sale.prospect_trace.make_call,ask_task,end:"
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgctxt "wizard_button:sale.prospect_trace.make_call,ask_task,schedule_task:"
+msgid "Schedule task"
+msgstr "Agendar tarea"
 
 msgctxt "wizard_button:sale.prospect.assign,start,end:"
 msgid "Cancel"
