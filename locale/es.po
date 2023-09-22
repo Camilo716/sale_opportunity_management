@@ -495,7 +495,7 @@ msgstr "Cancelar"
 
 msgctxt "wizard_button:sale.prospect_trace.make_call,ask,schedule_call:"
 msgid "Schedule call"
-msgstr "Agendar"
+msgstr "Agendar llamada"
 
 msgctxt "wizard_button:sale.prospect_trace.schedule,start,end:"
 msgid "Cancel"
@@ -503,7 +503,7 @@ msgstr "Cancelar"
 
 msgctxt "wizard_button:sale.prospect_trace.schedule,start,schedule:"
 msgid "Schedule"
-msgstr "Agendar"
+msgstr "Agendar llamada"
 
 msgctxt "wizard_button:sale.prospect_trace.make_call,ask_task,end:"
 msgid "Cancel"

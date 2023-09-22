@@ -52,7 +52,12 @@ class PendingTask(ModelSQL, ModelView):
     'Tarea a realizar a un seguimiento de prospecto'
     __name__ = "sale.pending_task"
 
-    description = fields.Text('Description', required=True)
+    description = fields.Text(
+        'Description', required=True,
+        states={
+            'readonly': Eval('state') == 'done'
+        })
+
     state = fields.Selection(
         [('pending', 'Pending'),
         ('done', 'Done')],
