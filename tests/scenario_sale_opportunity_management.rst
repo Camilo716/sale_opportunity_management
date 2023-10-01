@@ -365,7 +365,14 @@ Crear un usuario de rol administrador::
     >>> admin.user_admin == True
     True
     
+.. Generar reporte por operario y consolidado::
+..     >>> PrintReportByOperator = Model.get('sale.print_report_by_operato`r', type='wizard')
+..     >>> session_id, _, _ = PrintReportByOperator.create()
 
+..     >>> print_report_by_operator = Wizard('sale.print_report_by_operator', [])
+..     >>> print_report_by_operator.form.start_date = date.today()
+..     >>> print_report_by_operator.form.end_date = date.today()
+..     >>> print_report_by_operator.execute('print_report')
 
 --------
 Reportes

@@ -1,0 +1,16 @@
+<!-- <?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.action.wizard" id="print_report_by_operator_wizard">
+            <field name="name">Print report by operator</field>
+            <field name="wiz_name">sale.print_report_by_operator</field>
+    	</record>
+        <record model="ir.ui.view" id="print_report_by_operator_start_view_form">
+            <field name="model">sale.print_report_by_operator.start</field>
+            <field name="type">form</field>
+            <field name="name">print_report_by_operator_start_form</field>
+        </record>
+    <data>
+<tryton/> -->

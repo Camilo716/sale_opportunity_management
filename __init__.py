@@ -4,6 +4,7 @@ from . import prospect_trace
 from . import call
 from . import pending_call
 from . import user
+from . import print_report_by_operator
 from .locations import city
 from .locations import department
 
@@ -28,6 +29,7 @@ def register():
         prospect_trace.MakeCallAskTask,
         prospect.ReassignProspectByOperatorStart,
         prospect.ReassignProspectByProspectStart,
+        print_report_by_operator.PrintReportByOperatorStart,
         module='sale_opportunity_management', type_='model')
     Pool.register(
         prospect_trace.ScheduleCall,
@@ -35,6 +37,7 @@ def register():
         prospect_trace.MakeCall,
         prospect.ReassignProspectByOperator,
         prospect.ReasignProspectByProspect,
+        print_report_by_operator.PrintReportByOperator,
         module='sale_opportunity_management', type_='wizard')
     Pool.register(
         module='sale_opportunity_management', type_='report')
