@@ -51,6 +51,11 @@ class Prospect(ModelSQL, ModelView, DeactivableMixin):
     def default_state(cls):
         return 'unassigned'
 
+    @fields.depends('prospect_trace', 'contact_methods')
+    def on_change_contact_methods(self):
+        for contact in self.contact_methods:
+            contact.prospect_trace = self.prospect_trace
+
     @fields.depends('city', 'department')
     def on_change_city(self):
         if self.city:
