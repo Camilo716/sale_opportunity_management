@@ -287,18 +287,42 @@ Hacer llamada y programar tarea::
     >>> make_call.execute('schedule_task')
 
     >>> Task = Model.get('sale.pending_task')
-    >>> task, = Task.find([('description', '=', 'I have to send a mail to prospect offering him this services...')])
-    >>> task
-    proteus.Model.get('sale.pending_task')(1)
+    >>> task1, = Task.find([('description', '=', 'I have to send a mail to prospect offering him this services...')])
 
-    >>> task.state
+    >>> task1
+    proteus.Model.get('sale.pending_task')(1)
+    >>> task1.state
     'pending'
 
-    >>> task.click('close_task') 
-    >>> task.state
+    >>> task1.click('close_task')
+ 
+    >>> task1.state
     'done'
-    >>> task.contacts[0].value == prospect_trace.prospect_contacts[0].value 
-    True
+    >>> task1.contacts[0].value
+    '12345678910'
+
+Programar segunda tarea al mismo seguimiento::
+    >>> make_call = Wizard('sale.prospect_trace.make_call', [prospect_trace])
+    >>> make_call.form.description = 'Prospect told me to send him an SMS'
+    >>> make_call.form.interest = '3'
+    >>> make_call.form.schedule_call = 'no'
+    >>> make_call.form.schedule_task = 'yes'
+    >>> make_call.execute('make_call')
+    >>> make_call.form.task_description = 'I have to send a SMS to prospect offering him this services...'
+    >>> make_call.execute('schedule_task')
+
+    >>> task1.save()
+    >>> Task = Model.get('sale.pending_task')
+    >>> task2, = Task.find([('description', '=', 'I have to send a SMS to prospect offering him this services...')])
+    >>> task2
+    proteus.Model.get('sale.pending_task')(2)
+
+    >>> task2.state
+    'pending'
+    >>> task2.contacts[0].value 
+    '12345678910'
+    >>> task1.contacts[0].value
+    '12345678910'
 
 Hacer llamada y cerrar venta (Seguimiento de prospecto)::
     >>> make_call = Wizard('sale.prospect_trace.make_call', [prospect_trace])

@@ -67,8 +67,10 @@ class PendingTask(ModelSQL, ModelView):
         'sale.prospect_trace', 'Prospect trace',
         required=True, readonly=True)
 
-    contacts = fields.One2Many(
-        'prospect.contact_method', 'task', 'Contacts', readonly=True)
+    contacts = fields.Many2Many(
+        'sale.pendingtask_contactmethod',
+        'pending_task_id', 'contact_method_id',
+        'Contact Methods')
 
     @classmethod
     def __setup__(cls):
@@ -89,3 +91,12 @@ class PendingTask(ModelSQL, ModelView):
     @classmethod
     def default_state(cls):
         return 'pending'
+
+
+class PendingTask_ContactMethod(ModelSQL):
+    'Relacion muchos a muchos entre tareas pendientes y mecanismos de contacto'
+    __name__ = "sale.pendingtask_contactmethod"
+
+    pending_task_id = fields.Many2One('sale.pending_task', 'Pending task id')
+    contact_method_id = fields.Many2One(
+        'prospect.contact_method', 'Contact method id')

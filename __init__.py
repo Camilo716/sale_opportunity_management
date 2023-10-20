@@ -28,6 +28,7 @@ def register():
         prospect_trace.MakeCallAskTask,
         prospect.ReassignProspectByOperatorStart,
         prospect.ReassignProspectByProspectStart,
+        call.PendingTask_ContactMethod,
         module='sale_opportunity_management', type_='model')
     Pool.register(
         prospect_trace.ScheduleCall,
