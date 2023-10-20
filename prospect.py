@@ -74,6 +74,7 @@ class ContactMethod(ModelSQL, ModelView):
     prospect = fields.Many2One('sale.prospect', 'Prospect', required=True)
     prospect_trace = fields.Many2One(
         'sale.prospect_trace', 'Prospect Trace', required=False)
+    task = fields.Many2One('sale.pending_task', 'task ', required=False)
 
     @classmethod
     def default_contact_type(cls):

@@ -67,6 +67,9 @@ class PendingTask(ModelSQL, ModelView):
         'sale.prospect_trace', 'Prospect trace',
         required=True, readonly=True)
 
+    contacts = fields.One2Many(
+        'prospect.contact_method', 'task', 'Contacts', readonly=True)
+
     @classmethod
     def __setup__(cls):
         super(PendingTask, cls).__setup__()

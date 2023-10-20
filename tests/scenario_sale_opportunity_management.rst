@@ -297,6 +297,8 @@ Hacer llamada y programar tarea::
     >>> task.click('close_task') 
     >>> task.state
     'done'
+    >>> task.contacts[0].value == prospect_trace.prospect_contacts[0].value 
+    True
 
 Hacer llamada y cerrar venta (Seguimiento de prospecto)::
     >>> make_call = Wizard('sale.prospect_trace.make_call', [prospect_trace])
@@ -347,7 +349,6 @@ Reasignar prospectos por prospecto::
     >>> reassign_by_prospect.form.prospect = prospect1
     >>> reassign_by_prospect.form.new_operator = user
     >>> reassign_by_prospect.execute('reassign_by_prospect')
-    
 
     >>> prospect1.reload()
     >>> prospect1.assigned_operator.name
@@ -364,7 +365,6 @@ Crear un usuario de rol administrador::
     >>> admin.save()
     >>> admin.user_admin == True
     True
-    
 
 
 --------

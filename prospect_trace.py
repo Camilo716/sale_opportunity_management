@@ -263,6 +263,7 @@ class MakeCall(Wizard):
         task = Task()
         task.description = description
         task.prospect_trace = prospect_trace
+        task.contacts = prospect_trace.prospect_contacts
         task.save()
 
     @classmethod
