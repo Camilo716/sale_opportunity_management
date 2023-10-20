@@ -8,5 +8,8 @@ this repository contains the full copyright notices and license terms. -->
         <newline/>
         <label name="description"/>
         <field name="description"/>
+        <newline/>
+        <label name="contacts"/>
+        <field name="contacts"/>
     </group>
 </form>
