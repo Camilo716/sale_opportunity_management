@@ -36,6 +36,9 @@ class ProspectTrace(ModelSQL, ModelView):
         'sale.call', 'prospect_trace', 'Calls', states=_states)
     pending_call = fields.Many2One(
         'sale.pending_call', 'Pending call', states=_states)
+    tasks = fields.One2Many(
+        'sale.pending_task', 'prospect_trace',
+        'Pending Tasks', states=_states)
 
     current_interest = fields.Selection(
         Interest.get_interest_levels(), 'Current interest',

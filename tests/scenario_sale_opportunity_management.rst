@@ -389,7 +389,7 @@ Crear un usuario de rol administrador::
     >>> admin.save()
     >>> admin.user_admin == True
     True
-    
+
 Agregar un nuevo método de contacto desde prospecto
     >>> contact_method = prospect1.contact_methods.new(value='0000000000', name='Nuevo', job='Puesto increíble') 
     >>> prospect1.save()

@@ -83,7 +83,7 @@ class ContactMethod(ModelSQL, ModelView):
     tasks = fields.Many2Many(
         'sale.pendingtask_contactmethod',
         'contact_method_id', 'pending_task_id',
-        'Contact Methods')
+        'Tasks')
 
     @classmethod
     def default_contact_type(cls):
@@ -92,8 +92,11 @@ class ContactMethod(ModelSQL, ModelView):
     def update_collaborators(self, changed_from):
         if (changed_from == 'prospect'):
             self.prospect_trace = self.prospect.prospect_trace
+            if (self.prospect_trace):
+                self.tasks = self.prospect.prospect_trace.tasks
         if (changed_from == 'prospect_trace'):
             self.prospect = self.prospect_trace.prospect
+            self.tasks = self.prospect_trace.tasks
 
     def get_rec_name(self, name):
         fields = [self.name, self.job, self.value]
