@@ -52,7 +52,7 @@ class ProspectTrace(ModelSQL, ModelView):
     @fields.depends('prospect_contacts', 'prospect')
     def on_change_prospect_contacts(self):
         for contact in self.prospect_contacts:
-            contact.prospect = self.prospect
+            contact.update_collaborators(changed_from='prospect_trace')
 
     @classmethod
     def __setup__(cls):

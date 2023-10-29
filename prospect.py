@@ -54,7 +54,7 @@ class Prospect(ModelSQL, ModelView, DeactivableMixin):
     @fields.depends('prospect_trace', 'contact_methods')
     def on_change_contact_methods(self):
         for contact in self.contact_methods:
-            contact.prospect_trace = self.prospect_trace
+            contact.update_collaborators(changed_from='prospect')
 
     @fields.depends('city', 'department')
     def on_change_city(self):
@@ -88,6 +88,12 @@ class ContactMethod(ModelSQL, ModelView):
     @classmethod
     def default_contact_type(cls):
         return 'mobile'
+
+    def update_collaborators(self, changed_from):
+        if (changed_from == 'prospect'):
+            self.prospect_trace = self.prospect.prospect_trace
+        if (changed_from == 'prospect_trace'):
+            self.prospect = self.prospect_trace.prospect
 
     def get_rec_name(self, name):
         fields = [self.name, self.job, self.value]
