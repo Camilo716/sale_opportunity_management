@@ -7,7 +7,7 @@
 [ ! -d "$SRC" ] && die "no se ubica ruta en SRC"
 
 # dependencias minimas
-pip3 install psycopg2 proteus inotify honcho
+pip3 install psycopg2 proteus==6.8 inotify honcho
 
 # instalar dependencias de tryton desde paquete
 python3 setup.py install
