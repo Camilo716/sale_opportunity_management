@@ -3,7 +3,7 @@ FROM node as builder-node
 
 ENV SERIES 6.8
 RUN npm install -g bower
-RUN curl https://downloads.tryton.org/${SERIES}/tryton-sao-last.tgz | tar zxf - -C /
+RUN curl https://downloads.tryton.org/${SERIES}/tryton-sao-6.8.4.tgz | tar zxf - -C /
 RUN cd /package && bower install --allow-root
 
 FROM python:3.9-bullseye
