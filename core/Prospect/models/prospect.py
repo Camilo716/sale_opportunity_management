@@ -69,8 +69,6 @@ class Prospect(ModelSQL, ModelView, DeactivableMixin):
         records = super().create(values)
 
         cls.try_assign_to_current_operator(records, user_id)
-        # Transaction().atexit(
-        #     lambda: cls.try_assign_to_current_operator(prospects, user_id))
         return records
 
     @classmethod
