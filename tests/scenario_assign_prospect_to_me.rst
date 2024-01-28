@@ -22,11 +22,15 @@
 ..     >>> prospect.business_unit = 'brigade'
 ..     >>> prospect.save()
 
-..     [ Se abre una ventana preguntandole al usuario si quiere asignarse a sí mismo el prospecto recién creado ]
-..     >>> assign_to_me_wizard = Wizard('sale.prospect.assign_to_me', [prospect])
-..     >>> assign_to_me_wizard.form.assign_to_me = true
-..     >>> assign_to_me_wizard.execute('assign_to_me')
+..     .. Opción 1:
+..     .. [ Se abre una ventana preguntandole al usuario si quiere asignarse a sí mismo el prospecto recién creado ]
+..     .. >>> assign_to_me_wizard = Wizard('sale.prospect.assign_to_me', [prospect])
+..     .. >>> assign_to_me_wizard.form.assign_to_me = True
+..     .. >>> assign_to_me_wizard.execute('assign_to_me')
 
+
+..     ..Opcion2:
+..     .. [Se evalua si el usuario actual es operador, de ser el caso se le asigna este prospecto]
 ..     [ Se inició seguimiento, asignado al operador que lo creó ]
 ..     >>> ProspectTrace = Model.get('sale.prospect_trace')
 ..     >>> prospect_trace, = ProspectTrace.find([('prospect', '=', prospect)])

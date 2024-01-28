@@ -6,6 +6,56 @@ from trytond.wizard import Wizard, StateView, Button, StateTransition
 from trytond.model import ModelView, fields
 from trytond.pyson import Eval
 from trytond.pool import Pool
+from core.Prospect.models.prospect import Prospect
+
+from core.ProspectTrace.models.prospect_trace import ProspectTrace
+
+
+class AssignOperator(Wizard):
+    'Asignar operador a prospecto'
+    __name__ = 'sale.prospect.assign'
+
+    start = StateView(
+        'sale.prospect.assign.start',
+        'sale_opportunity_management.assign_start_view_form', [
+            Button("Cancel", 'end', 'tryton-cancel'),
+            Button("Assign", 'assign', 'tryton-ok', default=True)])
+
+    assign = StateTransition()
+
+    def transition_assign(self):
+        _prospects = self.start.prospects
+        _operator = self.start.operator
+
+        self._assign_operator(_prospects, _operator)
+
+        return 'end'
+
+    def _assign_operator(self, prospects, operator):
+
+        for prospect in prospects:
+            prospect.assigned_operator = operator
+            prospect.state = 'assigned'
+
+            prospect_trace = self._create_prospect_trace(prospect)
+
+            prospect.prospect_trace = prospect_trace
+            prospect.save()
+
+    def _create_prospect_trace(self, prospect: Prospect) -> ProspectTrace:
+        pool = Pool()
+        ProspectTrace = pool.get('sale.prospect_trace')
+
+        prospect_trace = ProspectTrace(
+            prospect=prospect,
+            prospect_city=prospect.city,
+            prospect_business_unit=prospect.business_unit,
+            prospect_assigned_operator=prospect.assigned_operator,
+            prospect_contacts=prospect.contact_methods
+        )
+
+        prospect_trace.save()
+        return prospect_trace
 
 
 class AssignOperatorStart(ModelView):
@@ -45,39 +95,3 @@ class AssignOperatorStart(ModelView):
                 [('state', '=', 'unassigned'),
                  ('business_unit', '=', self.business_unit)],
                 limit=self.prospects_chunk)
-
-
-class AssignOperator(Wizard):
-    'Asignar operador a prospecto'
-    __name__ = 'sale.prospect.assign'
-
-    start = StateView(
-        'sale.prospect.assign.start',
-        'sale_opportunity_management.assign_start_view_form', [
-            Button("Cancel", 'end', 'tryton-cancel'),
-            Button("Assign", 'assign', 'tryton-ok', default=True)])
-
-    assign = StateTransition()
-
-    def transition_assign(self):
-        pool = Pool()
-        ProspectTrace = pool.get('sale.prospect_trace')
-
-        for prospect in self.start.prospects:
-            prospect.assigned_operator = self.start.operator
-            prospect.state = 'assigned'
-            prospect.save()
-
-            prospect_trace = ProspectTrace(
-                prospect=prospect,
-                prospect_city=prospect.city,
-                prospect_business_unit=prospect.business_unit,
-                prospect_assigned_operator=prospect.assigned_operator,
-                prospect_contacts=prospect.contact_methods
-            )
-            prospect_trace.save()
-
-            prospect.prospect_trace = prospect_trace
-            prospect.save()
-
-        return 'end'

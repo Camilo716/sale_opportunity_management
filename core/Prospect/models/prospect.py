@@ -59,3 +59,13 @@ class Prospect(ModelSQL, ModelView, DeactivableMixin):
     def on_change_city(self):
         if self.city:
             self.department = self.city.parent
+
+    # TODO assign to current user if is operator
+    # @classmethod
+    # def create(cls, values):
+    #     records = super().create(values)
+    #     Transaction.atexit(
+    #         lambda: cls.try_assign_to_current_operator(records))
+
+    # @classmethod
+    # def try_assign_to_current_operator(cls, prospect, user)
