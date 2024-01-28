@@ -8,7 +8,6 @@ Activar módulos::
 
     >>> config = activate_modules('sale_opportunity_management')
 
-
 Crear operario::
     >>> User = Model.get('res.user')
     >>> operator,  = User.find([('name', '=', 'Administrator')])
