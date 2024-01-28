@@ -3,183 +3,183 @@
 this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
-	    <record model="res.group" id="group_prospect">
-	        <field name="name">Prospects</field>
-	    </record>
-	    <record model="res.group" id="group_prospect_admin">
-            <field name="name">Prospect Administrator</field>
-            <field name="parent" ref="group_prospect"/>
-	    </record>
-	    <record model="res.user-res.group" id="user_admin_group_prospect">
-            <field name="user" ref="res.user_admin"/>
-            <field name="group" ref="group_prospect"/>
+        <record model="res.group" id="group_prospect">
+            <field name="name">Prospects</field>
         </record>
-	    <record model="res.user-res.group" id="user_admin_group_prospect_admin">
-            <field name="user" ref="res.user_admin"/>
-            <field name="group" ref="group_prospect_admin"/>
+        <record model="res.group" id="group_prospect_admin">
+            <field name="name">Prospect Administrator</field>
+            <field name="parent" ref="group_prospect" />
+        </record>
+        <record model="res.user-res.group" id="user_admin_group_prospect">
+            <field name="user" ref="res.user_admin" />
+            <field name="group" ref="group_prospect" />
+        </record>
+        <record model="res.user-res.group" id="user_admin_group_prospect_admin">
+            <field name="user" ref="res.user_admin" />
+            <field name="group" ref="group_prospect_admin" />
         </record>
 
         <record model="ir.action.act_window" id="act_prospect_tree">
-            <field name="name">Prospects</field> 
+            <field name="name">Prospects</field>
             <field name="domain"
-                   eval="[If(Eval('context', {}).get('user_admin', None), (), ('assigned_operator', '=', Eval('_user')))]"
-                   pyson="1"/>
-            <field name="res_model">sale.prospect</field> 
+                eval="[If(Eval('context', {}).get('user_admin', None), (), ('assigned_operator', '=', Eval('_user')))]"
+                pyson="1" />
+            <field name="res_model">sale.prospect</field>
         </record>
         <record model="ir.ui.view" id="prospect_view_tree">
-            <field name="model">sale.prospect</field> 
+            <field name="model">sale.prospect</field>
             <field name="type">tree</field>
             <field name="name">prospect_tree</field>
         </record>
         <record model="ir.ui.view" id="prospect_view_form">
-            <field name="model">sale.prospect</field> 
+            <field name="model">sale.prospect</field>
             <field name="type">form</field>
             <field name="name">prospect_form</field>
         </record>
         <record model="ir.action.act_window.view" id="act_prospect_tree_view1">
-            <field name="sequence" eval="10"/>
-            <field name="view" ref="prospect_view_tree"/>
-            <field name="act_window" ref="act_prospect_tree"/>
+            <field name="sequence" eval="10" />
+            <field name="view" ref="prospect_view_tree" />
+            <field name="act_window" ref="act_prospect_tree" />
         </record>
         <record model="ir.action.act_window.view" id="act_prospect_form_view1">
-            <field name="sequence" eval="20"/>
-            <field name="view" ref="prospect_view_form"/>
-            <field name="act_window" ref="act_prospect_tree"/>
+            <field name="sequence" eval="20" />
+            <field name="view" ref="prospect_view_form" />
+            <field name="act_window" ref="act_prospect_tree" />
         </record>
         <record model="ir.action.act_window.domain" id="act_prospect_domain_unassigned">
             <field name="name">Unassigned</field>
-            <field name="sequence" eval="10"/>
-            <field name="domain" eval="[('state', '=', 'unassigned')]" pyson="1"/>
-            <field name="count" eval="True"/>
-            <field name="act_window" ref="act_prospect_tree"/>
+            <field name="sequence" eval="10" />
+            <field name="domain" eval="[('state', '=', 'unassigned')]" pyson="1" />
+            <field name="count" eval="True" />
+            <field name="act_window" ref="act_prospect_tree" />
         </record>
         <record model="ir.action.act_window.domain" id="act_prospect_domain_assigned">
             <field name="name">Assigned</field>
-            <field name="sequence" eval="10"/>
-            <field name="domain" eval="[('state', '=', 'assigned')]" pyson="1"/>
-            <field name="count" eval="True"/>
-            <field name="act_window" ref="act_prospect_tree"/>
+            <field name="sequence" eval="10" />
+            <field name="domain" eval="[('state', '=', 'assigned')]" pyson="1" />
+            <field name="count" eval="True" />
+            <field name="act_window" ref="act_prospect_tree" />
         </record>
         <menuitem
             parent="menu_calls"
             sequence="10"
             id="menu_prospects_tree"
             icon="tryton-party"
-            action="act_prospect_tree"/>
+            action="act_prospect_tree" />
 
-	    <record model="ir.ui.menu-res.group" id="menu_prospects_group_prospect">
-            <field name="menu" ref="menu_prospects_tree"/>
-            <field name="group" ref="group_prospect"/>
+        <record model="ir.ui.menu-res.group" id="menu_prospects_group_prospect">
+            <field name="menu" ref="menu_prospects_tree" />
+            <field name="group" ref="group_prospect" />
         </record>
 
         <record model="ir.action.act_window" id="act_contact_method_tree">
-            <field name="name">Contact method</field> 
-            <field name="res_model">prospect.contact_method</field> 
+            <field name="name">Contact method</field>
+            <field name="res_model">prospect.contact_method</field>
         </record>
         <record model="ir.ui.view" id="contact_method_view_tree">
-            <field name="model">prospect.contact_method</field> 
+            <field name="model">prospect.contact_method</field>
             <field name="type">tree</field>
             <field name="name">contact_method_tree</field>
         </record>
         <record model="ir.ui.view" id="contact_method_view_form">
-            <field name="model">prospect.contact_method</field> 
+            <field name="model">prospect.contact_method</field>
             <field name="type">form</field>
             <field name="name">contact_method_form</field>
         </record>
         <record model="ir.action.act_window.view" id="act_contact_method_tree_view1">
-            <field name="sequence" eval="10"/>
-            <field name="view" ref="contact_method_view_tree"/>
-            <field name="act_window" ref="act_contact_method_tree"/>
+            <field name="sequence" eval="10" />
+            <field name="view" ref="contact_method_view_tree" />
+            <field name="act_window" ref="act_contact_method_tree" />
         </record>
         <record model="ir.action.act_window.view" id="act_contact_method_form_view1">
-            <field name="sequence" eval="20"/>
-            <field name="view" ref="contact_method_view_form"/>
-            <field name="act_window" ref="act_contact_method_tree"/>
+            <field name="sequence" eval="20" />
+            <field name="view" ref="contact_method_view_form" />
+            <field name="act_window" ref="act_contact_method_tree" />
         </record>
 
         <record model="ir.action.wizard" id="assign_operator_wizard">
             <field name="name">Assign Operator</field>
             <field name="wiz_name">sale.prospect.assign</field>
-    	</record>
+        </record>
         <record model="ir.ui.view" id="assign_start_view_form">
             <field name="model">sale.prospect.assign.start</field>
             <field name="type">form</field>
             <field name="name">assign_start_form</field>
-        </record>        
+        </record>
         <record model="ir.action.keyword" id="assign_operator_wizard_keyword">
             <field name="keyword">form_action</field>
             <field name="model">sale.prospect, -1</field>
-            <field name="action" ref="assign_operator_wizard"/>
+            <field name="action" ref="assign_operator_wizard" />
         </record>
         <menuitem
-                parent="menu_prospects_tree"
-                sequence="40"
-                id="menu_prospects_assigned_wizard"
-                action="assign_operator_wizard"/>
+            parent="menu_prospects_tree"
+            sequence="40"
+            id="menu_prospects_assigned_wizard"
+            action="assign_operator_wizard" />
 
-	    <record model="ir.ui.menu-res.group" id="menu_prospect_assigned_group_prospect">
-            <field name="menu" ref="menu_prospects_assigned_wizard"/>
-            <field name="group" ref="group_prospect_admin"/>
+        <record model="ir.ui.menu-res.group" id="menu_prospect_assigned_group_prospect">
+            <field name="menu" ref="menu_prospects_assigned_wizard" />
+            <field name="group" ref="group_prospect_admin" />
         </record>
 
         <record model="ir.action.wizard" id="reassign_by_operator_wizard">
             <field name="name">Reassign by operator</field>
             <field name="wiz_name">sale.prospect.reassign_by_operator</field>
-    	</record>
+        </record>
         <record model="ir.ui.view" id="reassign_by_operator_start_view_form">
             <field name="model">sale.prospect.reassign_by_operator.start</field>
             <field name="type">form</field>
             <field name="name">reassign_by_operator_form</field>
-        </record>  
+        </record>
         <menuitem
             name="Reassign"
             parent="menu_prospects_tree"
             sequence="50"
             id="menu_reassign"
-            icon='tryton-refresh'/>
+            icon='tryton-refresh' />
 
-	    <record model="ir.ui.menu-res.group" id="menu_prospect_reassigned_group_prospect">
-            <field name="menu" ref="menu_reassign"/>
-            <field name="group" ref="group_prospect_admin"/>
+        <record model="ir.ui.menu-res.group" id="menu_prospect_reassigned_group_prospect">
+            <field name="menu" ref="menu_reassign" />
+            <field name="group" ref="group_prospect_admin" />
         </record>
 
         <menuitem
             parent="menu_reassign"
             sequence="10"
             id="menu_reassign_by_operator_wizard"
-            action="reassign_by_operator_wizard"/>
+            action="reassign_by_operator_wizard" />
 
         <record model="ir.action.wizard" id="reassign_by_prospect_wizard">
             <field name="name">Reassign by prospect</field>
             <field name="wiz_name">sale.prospect.reassign_by_prospect</field>
-    	</record>
+        </record>
         <record model="ir.ui.view" id="reassign_by_prospect_start_view_form">
             <field name="model">sale.prospect.reassign_by_prospect.start</field>
             <field name="type">form</field>
             <field name="name">reassign_by_prospect_form</field>
-        </record>  
-         <menuitem
+        </record>
+        <menuitem
             parent="menu_reassign"
             sequence="20"
             id="menu_reassign_by_prospect_wizard"
-            action="reassign_by_prospect_wizard"/>
+            action="reassign_by_prospect_wizard" />
 
-	    <record model="ir.model.access" id="access_sale">
-            <field name="model" search="[('model', '=', 'sale.prospect')]"/>
-            <field name="perm_read" eval="False"/>
-            <field name="perm_write" eval="False"/>
-            <field name="perm_create" eval="False"/>
-            <field name="perm_delete" eval="False"/>
-         </record>
-	 
-	    <record model="ir.model.access" id="access_sale_prospect">
-            <field name="model" search="[('model', '=', 'sale.prospect')]"/>
-            <field name="group" ref="group_prospect"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="True"/>
-            <field name="perm_create" eval="True"/>
-            <field name="perm_delete" eval="True"/>
+
+        <record model="ir.model.access" id="access_sale">
+            <field name="model" search="[('model', '=', 'sale.prospect')]" />
+            <field name="perm_read" eval="False" />
+            <field name="perm_write" eval="False" />
+            <field name="perm_create" eval="False" />
+            <field name="perm_delete" eval="False" />
         </record>
-   </data>
 
+        <record model="ir.model.access" id="access_sale_prospect">
+            <field name="model" search="[('model', '=', 'sale.prospect')]" />
+            <field name="group" ref="group_prospect" />
+            <field name="perm_read" eval="True" />
+            <field name="perm_write" eval="True" />
+            <field name="perm_create" eval="True" />
+            <field name="perm_delete" eval="True" />
+        </record>
+    </data>
 </tryton>

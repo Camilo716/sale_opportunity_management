@@ -3,7 +3,9 @@
      this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath expr="//field[@name='name']" position="after">
-	<label name="user_admin"/>
-	<field name="user_admin"/>
+        <label name="user_admin" />
+        <field name="user_admin" />
+        <label name="is_operator" />
+        <field name="is_operator" />
     </xpath>
 </data>
