@@ -27,35 +27,9 @@ class AssignOperator(Wizard):
         _prospects = self.start.prospects
         _operator = self.start.operator
 
-        self._assign_operator(_prospects, _operator)
+        Assign.assign_operator(_prospects, _operator)
 
         return 'end'
-
-    def _assign_operator(self, prospects, operator):
-
-        for prospect in prospects:
-            prospect.assigned_operator = operator
-            prospect.state = 'assigned'
-
-            prospect_trace = self._create_prospect_trace(prospect)
-
-            prospect.prospect_trace = prospect_trace
-            prospect.save()
-
-    def _create_prospect_trace(self, prospect: Prospect) -> ProspectTrace:
-        pool = Pool()
-        ProspectTrace = pool.get('sale.prospect_trace')
-
-        prospect_trace = ProspectTrace(
-            prospect=prospect,
-            prospect_city=prospect.city,
-            prospect_business_unit=prospect.business_unit,
-            prospect_assigned_operator=prospect.assigned_operator,
-            prospect_contacts=prospect.contact_methods
-        )
-
-        prospect_trace.save()
-        return prospect_trace
 
 
 class AssignOperatorStart(ModelView):
@@ -95,3 +69,32 @@ class AssignOperatorStart(ModelView):
                 [('state', '=', 'unassigned'),
                  ('business_unit', '=', self.business_unit)],
                 limit=self.prospects_chunk)
+
+
+class Assign():
+    @classmethod
+    def assign_operator(cls, prospects, operator):
+        for prospect in prospects:
+            prospect.assigned_operator = operator
+            prospect.state = 'assigned'
+
+            prospect_trace = cls._create_trace_to_prospect(prospect)
+
+            prospect.prospect_trace = prospect_trace
+            prospect.save()
+
+    @staticmethod
+    def _create_trace_to_prospect(prospect: Prospect) -> ProspectTrace:
+        pool = Pool()
+        ProspectTrace = pool.get('sale.prospect_trace')
+
+        prospect_trace = ProspectTrace(
+            prospect=prospect,
+            prospect_city=prospect.city,
+            prospect_business_unit=prospect.business_unit,
+            prospect_assigned_operator=prospect.assigned_operator,
+            prospect_contacts=prospect.contact_methods
+        )
+
+        prospect_trace.save()
+        return prospect_trace
