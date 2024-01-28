@@ -10,6 +10,7 @@ class User(metaclass=PoolMeta):
     __name__ = 'res.user'
 
     user_admin = fields.Boolean('Is Admin')
+    is_operator = fields.Boolean('Is Operator')
 
     @classmethod
     def __setup__(cls):

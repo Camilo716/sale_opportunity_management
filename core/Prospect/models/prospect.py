@@ -3,6 +3,9 @@
 
 from trytond.model import ModelSQL, ModelView, fields, DeactivableMixin
 from trytond.pyson import Eval, If
+from trytond.transaction import Transaction
+from trytond.pool import Pool
+from core.Prospect.wizards.assign_operator import GenericAssign
 
 
 class Prospect(ModelSQL, ModelView, DeactivableMixin):
@@ -60,12 +63,20 @@ class Prospect(ModelSQL, ModelView, DeactivableMixin):
         if self.city:
             self.department = self.city.parent
 
-    # TODO assign to current user if is operator
-    # @classmethod
-    # def create(cls, values):
-    #     records = super().create(values)
-    #     Transaction.atexit(
-    #         lambda: cls.try_assign_to_current_operator(records))
+    @classmethod
+    def create(cls, values):
+        user_id = Transaction().user
+        records = super().create(values)
 
-    # @classmethod
-    # def try_assign_to_current_operator(cls, prospect, user)
+        cls.try_assign_to_current_operator(records, user_id)
+        # Transaction().atexit(
+        #     lambda: cls.try_assign_to_current_operator(prospects, user_id))
+        return records
+
+    @classmethod
+    def try_assign_to_current_operator(cls, prospects, user_id):
+        User = Pool().get('res.user')
+        user, = User.search([('id', '=', user_id)])
+
+        if user.is_operator:
+            GenericAssign.assign_prospects_to_operator(prospects, user)
