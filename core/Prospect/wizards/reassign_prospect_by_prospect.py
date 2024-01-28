@@ -1,10 +1,10 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
-
 from trytond.wizard import Wizard, StateView, Button, StateTransition
 from trytond.model import ModelView, fields
-from trytond.pool import Pool
+
+from core.Prospect.wizards.assign_operator import GenericAssign
 
 
 class ReassignProspectByProspectStart(ModelView):
@@ -32,17 +32,9 @@ class ReasignProspectByProspect(Wizard):
     reassign_by_prospect = StateTransition()
 
     def transition_reassign_by_prospect(self):
-        pool = Pool()
-        ProspectTrace = pool.get('sale.prospect_trace')
+        _prospect = self.start.prospect
+        _operator = self.start.new_operator
 
-        self.start.prospect.assigned_operator = self.start.new_operator
+        GenericAssign.assign_prospects_to_operator([_prospect], _operator)
 
-        if self.start.prospect.prospect_trace:
-            prospect_trace, = ProspectTrace.search(
-                [('prospect', '=', self.start.prospect)])
-            prospect_trace.prospect_assigned_operator =\
-                self.start.new_operator
-            prospect_trace.save()
-
-        self.start.prospect.save()
         return 'end'
