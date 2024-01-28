@@ -6,6 +6,8 @@ from trytond.wizard import Wizard, StateView, Button, StateTransition
 from trytond.model import ModelView, fields
 from trytond.pool import Pool
 
+from core.Prospect.wizards.assign_operator import GenericAssign
+
 
 class ReassignProspectByOperatorStart(ModelView):
     'Inicio de reasignación de prospecto por operario'
@@ -43,19 +45,9 @@ class ReassignProspectByOperator(Wizard):
     reassign_by_operator = StateTransition()
 
     def transition_reassign_by_operator(self):
-        pool = Pool()
-        ProspectTrace = pool.get('sale.prospect_trace')
+        _prospects = self.start.prospects
+        _operator = self.start.new_operator
 
-        for prospect in self.start.prospects:
-            prospect.assigned_operator = self.start.new_operator
-
-            if prospect.prospect_trace:
-                prospect_trace, = ProspectTrace.search(
-                    [('prospect', '=', prospect)])
-                prospect_trace.prospect_assigned_operator =\
-                    self.start.new_operator
-                prospect_trace.save()
-
-            prospect.save()
+        GenericAssign.assign_prospects_to_operator(_prospects, _operator)
 
         return 'end'

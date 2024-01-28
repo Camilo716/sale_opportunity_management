@@ -6,7 +6,6 @@ from trytond.wizard import Wizard, StateView, Button, StateTransition
 from trytond.model import ModelView, fields
 from trytond.pyson import Eval
 from trytond.pool import Pool
-from core.Prospect.models.prospect import Prospect
 
 from core.ProspectTrace.models.prospect_trace import ProspectTrace
 
@@ -27,7 +26,7 @@ class AssignOperator(Wizard):
         _prospects = self.start.prospects
         _operator = self.start.operator
 
-        Assign.assign_operator(_prospects, _operator)
+        GenericAssign.assign_prospects_to_operator(_prospects, _operator)
 
         return 'end'
 
@@ -71,30 +70,39 @@ class AssignOperatorStart(ModelView):
                 limit=self.prospects_chunk)
 
 
-class Assign():
+class GenericAssign():
     @classmethod
-    def assign_operator(cls, prospects, operator):
+    def assign_prospects_to_operator(cls, prospects, operator):
         for prospect in prospects:
             prospect.assigned_operator = operator
             prospect.state = 'assigned'
-
-            prospect_trace = cls._create_trace_to_prospect(prospect)
-
-            prospect.prospect_trace = prospect_trace
+            prospect.prospect_trace = cls._get_prosp_trace(prospect, operator)
             prospect.save()
 
+    @classmethod
+    def _get_prosp_trace(cls, prospect, operator):
+        ProspectTrace = Pool().get('sale.prospect_trace')
+
+        prospect_trace = ProspectTrace.search([('prospect', '=', prospect)])
+
+        if not prospect_trace:
+            created_trace = cls._create_base_prospect_trace(prospect, operator)
+            prospect_trace.append(created_trace)
+
+        prospect_trace, = prospect_trace
+        prospect_trace.prospect_assigned_operator = operator
+        prospect_trace.save()
+        return prospect_trace
+
     @staticmethod
-    def _create_trace_to_prospect(prospect: Prospect) -> ProspectTrace:
-        pool = Pool()
-        ProspectTrace = pool.get('sale.prospect_trace')
+    def _create_base_prospect_trace(prospect, operator) -> ProspectTrace:
+        ProspectTrace = Pool().get('sale.prospect_trace')
 
         prospect_trace = ProspectTrace(
             prospect=prospect,
             prospect_city=prospect.city,
             prospect_business_unit=prospect.business_unit,
-            prospect_assigned_operator=prospect.assigned_operator,
             prospect_contacts=prospect.contact_methods
         )
 
-        prospect_trace.save()
         return prospect_trace
