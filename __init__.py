@@ -9,7 +9,6 @@ from core.Prospect.wizards.reassign_prospect_by_prospect \
     import ReasignProspectByProspect, ReassignProspectByProspectStart
 from core.Prospect.wizards.reassign_prospect_by_operator \
     import ReassignProspectByOperator, ReassignProspectByOperatorStart
-from core.Prospect.wizards.assign_to_me import AssignToMe, AssignToMeStart
 
 # Prospect Trace Core
 from core.ProspectTrace.wizards.make_call \
@@ -51,7 +50,6 @@ def register():
         MakeCallAskTask,
         ReassignProspectByOperatorStart,
         ReassignProspectByProspectStart,
-        AssignToMeStart,
         module='sale_opportunity_management', type_='model')
     Pool.register(
         ScheduleCall,
@@ -59,7 +57,6 @@ def register():
         MakeCall,
         ReassignProspectByOperator,
         ReasignProspectByProspect,
-        AssignToMe,
         module='sale_opportunity_management', type_='wizard')
     Pool.register(
         module='sale_opportunity_management', type_='report')

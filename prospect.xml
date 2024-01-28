@@ -165,17 +165,6 @@ this repository contains the full copyright notices and license terms. -->
             action="reassign_by_prospect_wizard" />
 
 
-        <record model="ir.action.wizard" id="assign_to_me_wizard">
-            <field name="name">Assign to me</field>
-            <field name="wiz_name">sale.prospect.assign_to_me</field>
-        </record>
-        <record model="ir.ui.view" id="assign_to_me_start_view_form">
-            <field name="model">sale.prospect.assign_to_me.start</field>
-            <field name="type">form</field>
-            <field name="name">assign_to_me_form</field>
-        </record>
-
-
         <record model="ir.model.access" id="access_sale">
             <field name="model" search="[('model', '=', 'sale.prospect')]" />
             <field name="perm_read" eval="False" />

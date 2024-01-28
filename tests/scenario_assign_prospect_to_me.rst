@@ -32,4 +32,5 @@ Crear prospecto::
     >>> prospect_trace, = ProspectTrace.find([('prospect', '=', prospect)])
     >>> assigned_operator_id = prospect_trace.prospect_assigned_operator.id
     >>> assert operator.id == assigned_operator_id
+    >>> assert prospect.assigned_operator.id == assigned_operator_id
 
