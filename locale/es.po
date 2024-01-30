@@ -30,6 +30,10 @@ msgctxt "field:res.user,user_admin:"
 msgid "Is Admin"
 msgstr "Es Administrador"
 
+msgctxt "field:res.user,is_operator:"
+msgid "Is Operator"
+msgstr "Es Operador"
+
 msgctxt "field:sale.prospect_trace,prospect:"
 msgid "Prospect"
 msgstr "Prospecto"
