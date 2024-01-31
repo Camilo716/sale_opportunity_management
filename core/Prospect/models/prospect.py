@@ -5,7 +5,7 @@ from trytond.model import ModelSQL, ModelView, fields, DeactivableMixin
 from trytond.pyson import Eval, If
 from trytond.transaction import Transaction
 from trytond.pool import Pool
-from core.Prospect.wizards.assign_operator import GenericAssign
+from ....core.Prospect.wizards.assign_operator import GenericAssign
 
 
 class Prospect(ModelSQL, ModelView, DeactivableMixin):

@@ -7,7 +7,7 @@ from trytond.model import ModelView, fields
 from trytond.pyson import Eval
 from trytond.pool import Pool
 
-from core.ProspectTrace.models.prospect_trace import ProspectTrace
+from ....core.ProspectTrace.models.prospect_trace import ProspectTrace
 
 
 class AssignOperator(Wizard):

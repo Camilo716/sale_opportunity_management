@@ -5,7 +5,7 @@ from trytond.wizard import Wizard, StateView, Button, StateTransition
 from trytond.model import ModelView, fields
 from trytond.pyson import Eval
 from datetime import datetime
-from core.ProspectTrace.wizards.make_call import MakeCall
+from ....core.ProspectTrace.wizards.make_call import MakeCall
 
 
 class ScheduleCallStart(ModelView):

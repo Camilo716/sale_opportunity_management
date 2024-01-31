@@ -6,7 +6,7 @@ from trytond.wizard import Wizard, StateView, Button, StateTransition
 from trytond.model import ModelView, fields
 from trytond.pool import Pool
 
-from core.Prospect.wizards.assign_operator import GenericAssign
+from ....core.Prospect.wizards.assign_operator import GenericAssign
 
 
 class ReassignProspectByOperatorStart(ModelView):

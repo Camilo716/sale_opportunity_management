@@ -3,7 +3,7 @@
 
 from trytond.model import ModelSQL, ModelView, fields
 from trytond.pyson import Eval
-from selections.interest import Interest
+from ....selections.interest import Interest
 
 
 class ProspectTrace(ModelSQL, ModelView):
